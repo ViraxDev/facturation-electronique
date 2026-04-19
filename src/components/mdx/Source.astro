@@ -1,0 +1,9 @@
+---
+import { ExternalLink } from "lucide-react";
+export interface Props { url: string; label: string }
+const { url, label } = Astro.props;
+---
+<a href={url} target="_blank" rel="noopener noreferrer" class="not-prose inline-flex items-center gap-1 text-sm text-[var(--color-accent)] hover:underline">
+  <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+  <span>{label}</span>
+</a>

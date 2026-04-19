@@ -1,0 +1,87 @@
+---
+title: "Chorus Pro reste pour B2G"
+parcours: "ecosysteme"
+order: 9
+xp: 100
+duration: 10
+objectives:
+  - "Comprendre le maintien de Chorus Pro comme portail unique B2G"
+  - "Distinguer les flux B2G (Chorus Pro) et B2B (PA/PPF)"
+  - "Connaître l'articulation Chorus Pro / annuaire PPF"
+sources:
+  - label: "Chorus Pro — Portail officiel"
+    url: "https://chorus-pro.gouv.fr/"
+  - label: "Economie.gouv.fr — Chorus Pro"
+    url: "https://www.economie.gouv.fr/facturation-electronique-entreprises"
+  - label: "Legifrance — Ordonnance 2014-697 facturation publique"
+    url: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000029194770"
+quiz:
+  - question: "Chorus Pro concerne principalement quelles transactions ?"
+    options: ["B2B domestique", "B2C", "B2G (entreprise vers secteur public)", "Import-export"]
+    correct: 2
+    explanation: "Chorus Pro est le portail unique de facturation B2G : les fournisseurs de l'État, des collectivités et des établissements publics y déposent leurs factures."
+  - question: "Depuis quand la facturation électronique est-elle obligatoire pour les fournisseurs du secteur public ?"
+    options: ["2017-2020 selon la taille", "2024 pour tous", "2026", "2027"]
+    correct: 0
+    explanation: "L'obligation B2G a été déployée progressivement de 2017 (grandes entreprises) à 2020 (micro-entreprises) via Chorus Pro."
+  - question: "Avec la réforme 2026, que devient Chorus Pro ?"
+    options: ["Il disparaît au profit du PPF", "Il est maintenu comme portail dédié au B2G", "Il fusionne avec les PA", "Il devient payant"]
+    correct: 1
+    explanation: "Chorus Pro est maintenu comme portail unique B2G ; il ne gère pas les flux B2B de la nouvelle réforme."
+  - question: "Les PA peuvent-elles se connecter à Chorus Pro ?"
+    options: ["Non, jamais", "Oui, via une passerelle pour router les factures B2G de leurs clients", "Uniquement les PA immatriculées depuis 2024", "Uniquement pour les grandes entreprises"]
+    correct: 1
+    explanation: "Les PA peuvent s'interfacer avec Chorus Pro via des raccordements techniques (EDI, API) pour que leurs clients n'aient pas à utiliser deux outils."
+  - question: "Le format Factur-X est-il accepté par Chorus Pro ?"
+    options: ["Non, seul le PDF simple", "Oui, Factur-X et les formats UBL/CII sont supportés", "Uniquement pour les collectivités", "Uniquement pour l'État central"]
+    correct: 1
+    explanation: "Chorus Pro accepte Factur-X ainsi que les formats structurés UBL et CII depuis plusieurs années."
+---
+
+## Introduction
+
+Souvent oublié dans les discussions sur la réforme 2026, **Chorus Pro** reste un maillon essentiel de la facturation électronique française. Mis en place depuis 2017 sous l'impulsion de l'AIFE, Chorus Pro est le **portail unique de facturation B2G** (Business to Government), c'est-à-dire les factures émises par les fournisseurs à destination du secteur public : État, collectivités territoriales, établissements publics, hôpitaux. La réforme 2026 ne modifie pas cette architecture : Chorus Pro continue d'opérer pour le B2G, pendant que les PA et le PPF réduit gèrent le B2B domestique et l'e-reporting.
+
+## Le rôle historique de Chorus Pro
+
+L'ordonnance n° 2014-697 du 26 juin 2014 a imposé la dématérialisation des factures adressées au secteur public. Le déploiement s'est fait de façon échelonnée :
+
+- **1er janvier 2017** : grandes entreprises et personnes publiques.
+- **1er janvier 2018** : ETI.
+- **1er janvier 2019** : PME.
+- **1er janvier 2020** : TPE et micro-entreprises.
+
+Depuis 2020, **100 % des factures émises vers le secteur public** transitent par Chorus Pro, soit plusieurs dizaines de millions de factures par an. Le portail, gratuit pour les fournisseurs, propose une saisie en ligne, un dépôt de PDF, un import de Factur-X ou un raccordement EDI/API.
+
+## Ce qui change (ou pas) en 2026
+
+La réforme e-invoicing B2B ne remplace pas Chorus Pro. Les deux dispositifs coexistent :
+
+| Flux | Destinataire | Portail/acteur |
+|---|---|---|
+| B2G | Secteur public | **Chorus Pro** (maintenu) |
+| B2B domestique | Assujetti français | **PA** + annuaire PPF |
+| B2C | Particulier | E-reporting via PA |
+| International | Non-établi hors UE / UE | E-reporting via PA |
+
+Concrètement, une entreprise qui facture à la fois une commune (B2G) et des clients privés (B2B) devra articuler ses flux : les factures B2G passent par Chorus Pro, les factures B2B par sa PA. Pour éviter la double saisie, la plupart des PA proposent un **raccordement à Chorus Pro** : l'entreprise dépose ses factures dans la PA, qui les route automatiquement vers le bon canal (Chorus Pro pour B2G, annuaire PPF pour B2B).
+
+## Formats et interopérabilité
+
+Chorus Pro accepte déjà les formats du socle minimal de la réforme 2026 : **Factur-X, UBL, CII**. Une entreprise qui se met en conformité B2B pourra donc réutiliser ses chaînes de production (génération Factur-X) pour le B2G. C'est une bonne nouvelle pour la cohérence des systèmes d'information, d'autant que Chorus Pro s'aligne progressivement sur les standards européens (norme EN 16931, profils Peppol BIS Billing 3.0).
+
+## L'articulation avec l'annuaire PPF
+
+L'annuaire PPF de la réforme 2026 ne référence **que les acteurs B2B**. Le référencement des entités publiques reste géré en interne par Chorus Pro, via le **référentiel Structures Publiques** (codes services, engagements juridiques). Il n'y a pas de fusion annoncée entre les deux annuaires ; une PA qui doit router une facture B2G consulte Chorus Pro via API, et non l'annuaire PPF.
+
+## Exemple concret
+
+"BTP Ouest SAS", entreprise ETI de travaux publics, facture chaque année 60 % à des collectivités territoriales et 40 % à des promoteurs privés. À partir du 1er septembre 2026, l'entreprise doit respecter les deux dispositifs : ses factures à la mairie de Nantes continuent de transiter par **Chorus Pro** (avec engagement juridique, service exécutant, code service) ; ses factures au promoteur privé transitent par sa **PA** via l'annuaire PPF. Sa PA a intégré un connecteur Chorus Pro, de sorte que les équipes ADV utilisent un seul outil pour les deux flux.
+
+## À retenir
+
+- **Chorus Pro** reste le portail **unique B2G**, **maintenu** après la réforme 2026.
+- Les **flux B2B, B2C, internationaux** relèvent des PA et du PPF réduit.
+- Les formats **Factur-X, UBL, CII** sont acceptés des deux côtés : mutualisation possible.
+- Les PA proposent généralement un **connecteur Chorus Pro** pour simplifier le quotidien.
+- L'**annuaire PPF ne référence pas les entités publiques** ; le référentiel Chorus Pro reste distinct.

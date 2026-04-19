@@ -1,0 +1,19 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/layout/Footer.astro";
+import XPBar from "@/components/academy/XPBar";
+import type { SEO } from "@/lib/seo";
+export interface Props { seo?: SEO }
+const { seo } = Astro.props;
+---
+<BaseLayout seo={seo}>
+  <Header />
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4">
+    <XPBar client:load />
+  </div>
+  <main id="main" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>

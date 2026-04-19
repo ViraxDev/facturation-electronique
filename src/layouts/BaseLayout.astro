@@ -1,0 +1,38 @@
+---
+import "@/styles/global.css";
+import { resolveSEO, SITE, type SEO } from "@/lib/seo";
+
+export interface Props { seo?: SEO; bodyClass?: string }
+const { seo, bodyClass = "" } = Astro.props;
+const s = resolveSEO(seo);
+const canonical = new URL(Astro.url.pathname, SITE.url).toString();
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>{s.title}</title>
+    <meta name="description" content={s.description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content={s.type} />
+    <meta property="og:title" content={s.title} />
+    <meta property="og:description" content={s.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(s.image, SITE.url).toString()} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={s.title} />
+    <meta name="twitter:description" content={s.description} />
+    <meta name="twitter:image" content={new URL(s.image, SITE.url).toString()} />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="theme-color" content="#0F172A" />
+  </head>
+  <body class={`min-h-dvh bg-[var(--color-background)] text-[var(--color-foreground)] antialiased ${bodyClass}`}>
+    <a href="#main" class="skip-link">Aller au contenu</a>
+    <slot />
+  </body>
+</html>

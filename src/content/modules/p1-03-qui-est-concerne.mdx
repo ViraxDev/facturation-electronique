@@ -1,0 +1,118 @@
+---
+title: "Qui est concerné"
+parcours: "fondations"
+order: 3
+xp: 100
+duration: 10
+objectives:
+  - "Identifier précisément le périmètre B2B domestique concerné par l'e-invoicing"
+  - "Différencier e-invoicing, e-reporting et le cas Chorus Pro"
+  - "Traiter les cas limites : franchise de TVA, associations, auto-entrepreneurs"
+  - "Savoir orienter un client vers la bonne obligation"
+sources:
+  - label: "impots.gouv.fr — Les entreprises concernées"
+    url: "https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique"
+  - label: "Chorus Pro — Portail B2G"
+    url: "https://chorus-pro.gouv.fr"
+  - label: "service-public.fr — Franchise en base de TVA"
+    url: "https://entreprendre.service-public.fr/vosdroits/F21746"
+  - label: "FNFE-MPE — FAQ périmètre"
+    url: "https://fnfe-mpe.org"
+quiz:
+  - question: "Une facture émise par une entreprise française vers un client particulier (B2C) relève de :"
+    options: ["L'e-invoicing obligatoire", "L'e-reporting de transaction", "Aucune obligation", "Le portail Chorus Pro"]
+    correct: 1
+    explanation: "Les ventes B2C ne relèvent pas de l'e-invoicing (qui couvre le B2B domestique) mais de l'e-reporting : l'entreprise doit transmettre périodiquement à la DGFiP les données agrégées de ses transactions avec des particuliers."
+  - question: "Une entreprise française qui facture exclusivement des collectivités publiques :"
+    options: ["Est hors scope de toute obligation", "Doit utiliser la nouvelle plateforme de facturation électronique", "Continue d'utiliser Chorus Pro", "Doit utiliser les deux systèmes"]
+    correct: 2
+    explanation: "Le B2G (entreprises vers secteur public) reste traité via Chorus Pro, opérationnel depuis 2017. La réforme de 2026-2027 vise spécifiquement le B2B domestique, sans remplacer Chorus Pro."
+  - question: "Une micro-entreprise en franchise en base de TVA (chiffre d'affaires sous le seuil) est-elle concernée par l'obligation d'émettre en électronique ?"
+    options: ["Non, jamais", "Oui, dès 2026", "Oui, à partir du 1er septembre 2027", "Uniquement si elle facture plus de 100 euros"]
+    correct: 2
+    explanation: "Les micro-entreprises, même en franchise en base de TVA, sont assujetties à la TVA au sens du Code général des impôts (elles en sont seulement dispensées de collecter). Elles sont donc concernées par l'e-invoicing à compter du 1er septembre 2027 pour l'émission."
+  - question: "Une entreprise française qui vend un service à un client allemand (B2B intracommunautaire) relève de :"
+    options: ["L'e-invoicing domestique", "L'e-reporting international", "Chorus Pro", "Rien du tout"]
+    correct: 1
+    explanation: "Les opérations intracommunautaires et avec des entreprises étrangères sortent du périmètre de l'e-invoicing (qui couvre uniquement le B2B France-France). Elles relèvent de l'e-reporting : les données de transaction sont transmises à la DGFiP, mais la facture elle-même peut rester dans un format libre accepté par le client étranger."
+  - question: "Une association loi 1901 qui perçoit uniquement des cotisations d'adhérents est-elle concernée ?"
+    options: ["Oui, intégralement", "Non, tant qu'elle n'est pas assujettie à la TVA", "Uniquement pour ses événements", "Seulement au-delà de 100 000 euros de budget"]
+    correct: 1
+    explanation: "L'obligation repose sur l'assujettissement à la TVA au titre d'activités économiques. Une association qui se borne à percevoir des cotisations d'adhérents sans activité économique lucrative n'est pas assujettie et sort du périmètre. En revanche, une association ayant un secteur lucratif assujetti est concernée pour ce secteur."
+---
+
+## Introduction
+
+Délimiter le périmètre exact de la réforme est l'une des étapes les plus délicates de l'accompagnement d'un client. Toutes les factures ne sont pas concernées, et certaines situations frontalières (franchise de TVA, associations, activités mixtes, international) demandent une analyse cas par cas. Ce module fournit la cartographie complète du périmètre.
+
+## Section 1 — Le cœur du périmètre : le B2B domestique
+
+L'obligation d'e-invoicing concerne les opérations qui cumulent trois critères.
+
+Premier critère : l'émetteur est une entreprise établie en France et assujettie à la TVA. Toutes les formes juridiques sont concernées dès lors qu'elles exercent une activité économique dans le champ de la TVA : SARL, SAS, SA, EI, EURL, SCI à l'IS, professions libérales, agriculteurs au régime réel, etc.
+
+Deuxième critère : le destinataire est une autre entreprise établie en France et assujettie à la TVA. Les relations B2B France-France sont au cœur du dispositif.
+
+Troisième critère : l'opération est une livraison de biens ou une prestation de services située en France au sens des règles de TVA.
+
+Lorsque ces trois critères sont réunis, la facture doit être émise et reçue via une PA, dans un format électronique structuré conforme à la norme EN 16931.
+
+## Section 2 — Le périmètre e-reporting : le complément indispensable
+
+L'e-reporting capte tout ce qui sort du cadre B2B domestique mais reste pertinent fiscalement.
+
+**Les ventes B2C** (à des particuliers, clients finaux). L'entreprise n'émet pas de facture électronique structurée vers le client, mais transmet à la DGFiP les données agrégées des ventes B2C (fréquence variable selon le régime de TVA du redevable).
+
+**Les opérations internationales.** Export de biens, prestations de services vers des clients étrangers, opérations intracommunautaires. Ces transactions ne sont pas soumises à l'obligation d'e-invoicing car le partenaire étranger ne peut pas être raccordé au dispositif français. En revanche, les données doivent être reportées.
+
+**Les transactions avec des entreprises étrangères non établies en France** (y compris si elles font ponctuellement des opérations taxables en France via un représentant fiscal).
+
+**Les données de paiement** pour les prestations de services. La date d'encaissement conditionne l'exigibilité de la TVA pour les services, l'administration a donc besoin de cette information pour rapprocher les flux.
+
+## Section 3 — Le cas Chorus Pro (B2G) reste séparé
+
+Depuis 2017 (loi n° 2014-1545), les fournisseurs du secteur public transmettent leurs factures via Chorus Pro, portail géré par l'AIFE (Agence pour l'Informatique Financière de l'État). Ce dispositif continue de fonctionner indépendamment de la réforme B2B.
+
+Une entreprise qui facture l'État, les collectivités territoriales, les hôpitaux publics ou les établissements publics continue d'utiliser Chorus Pro. Si elle facture également des clients privés, elle aura deux canaux : Chorus Pro pour le public, sa PA pour le privé. Certaines PA proposent d'ailleurs une intégration transparente avec Chorus Pro pour offrir une interface unique aux utilisateurs.
+
+## Section 4 — Les cas limites à maîtriser
+
+**La franchise en base de TVA (article 293 B du CGI).** Une entreprise dont le chiffre d'affaires est sous les seuils (36 800 euros pour les prestations de services, 91 900 euros pour les ventes, seuils 2025) est dispensée de collecter la TVA. Elle reste cependant assujettie au sens juridique : elle est dans le champ d'application de la TVA, même si elle n'en facture pas. Conclusion : elle est pleinement soumise à l'obligation de facturation électronique aux mêmes dates que les autres TPE, soit 1er septembre 2026 en réception et 1er septembre 2027 en émission.
+
+**Les auto-entrepreneurs et micro-entrepreneurs.** Le régime micro est un régime fiscal simplifié, pas une exception au champ TVA. Mêmes obligations que les TPE classiques, avec une attention particulière à l'absence de TVA facturée qui doit se traduire correctement dans la structure XML de la facture (mentions obligatoires type « TVA non applicable, article 293 B du CGI »).
+
+**Les associations.** Deux cas. Les associations sans activité économique assujettie (simples cotisations, dons) sortent du périmètre. Les associations avec un secteur lucratif (ventes, prestations, billetterie soumise à TVA) sont concernées pour ce secteur, aux mêmes échéances que les entreprises commerciales.
+
+**Les activités mixtes.** Une entreprise qui vend à la fois à des professionnels et à des particuliers doit gérer les deux canaux : e-invoicing pour le B2B, e-reporting pour le B2C. Une boulangerie artisanale qui livre également des restaurants est un exemple classique.
+
+**Les opérations hors champ TVA.** Certaines opérations (cessions d'immobilisations incorporelles entre particuliers, indemnités sans contrepartie) ne donnent pas lieu à une facture au sens de la TVA. Elles restent en dehors du dispositif.
+
+## Section 5 — L'arbre de décision simplifié
+
+Face à une opération, l'ordre des questions est le suivant.
+
+- L'opération est-elle dans le champ de la TVA ? Si non, aucune obligation e-invoicing/e-reporting.
+- Le destinataire est-il une entité publique ? Si oui, Chorus Pro.
+- Le destinataire est-il un particulier ? Si oui, e-reporting.
+- Le destinataire est-il une entreprise étrangère ? Si oui, e-reporting.
+- Le destinataire est-il une entreprise française assujettie à la TVA ? Si oui, e-invoicing obligatoire.
+
+## Exemple concret
+
+Un consultant indépendant facture trois clients dans le même mois. Le client A est une SAS française (B2B domestique) : e-invoicing, facture électronique via PA. Le client B est la mairie de Lyon (B2G) : Chorus Pro, aucun changement. Le client C est une société allemande (B2B intracommunautaire) : facture en format libre ou électronique selon accord, et e-reporting de la transaction vers la DGFiP. Un même consultant gère donc trois flux distincts à partir de septembre 2027.
+
+## À retenir
+
+- L'e-invoicing concerne le B2B domestique (France-France, assujetti-assujetti, opération située en France).
+- L'e-reporting couvre le reste : B2C, international, paiements de services.
+- Le B2G reste sur Chorus Pro.
+- La franchise en base de TVA ne dispense pas de l'obligation : les auto-entrepreneurs sont pleinement concernés.
+- Les associations ne sont concernées que si elles exercent une activité économique assujettie à la TVA.
+
+## Aller plus loin
+
+- [Le champ de l'obligation — impots.gouv.fr](https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique)
+- [Portail Chorus Pro](https://chorus-pro.gouv.fr)
+- [Franchise en base de TVA — service-public.fr](https://entreprendre.service-public.fr/vosdroits/F21746)
+- [BOFiP — Facturation électronique](https://bofip.impots.gouv.fr)
+

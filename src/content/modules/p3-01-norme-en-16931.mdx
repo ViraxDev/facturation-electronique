@@ -1,0 +1,178 @@
+---
+title: "Norme EN 16931 : sémantique et BT/BG"
+parcours: "technique"
+order: 1
+xp: 150
+duration: 15
+objectives:
+  - "Comprendre la portée et les objectifs de la norme européenne EN 16931"
+  - "Distinguer Business Terms (BT) et Business Groups (BG) et leurs cardinalités"
+  - "Identifier les principaux Business Groups de BG-1 à BG-25"
+  - "Différencier le noyau CORE des extensions nationales (CIUS)"
+  - "Lire et interpréter un BT dans sa spécification technique"
+sources:
+  - label: "Norme EN 16931-1:2017+A1:2019 (CEN)"
+    url: "https://www.afnor.org/"
+  - label: "Guide fnfe-mpe.org : sémantique EN 16931"
+    url: "https://fnfe-mpe.org/factur-x/"
+  - label: "Documentation AFNOR / CEN TC 434"
+    url: "https://www.afnor.org/"
+quiz:
+  - question: "Que désigne un identifiant BT-3 dans la norme EN 16931 ?"
+    options:
+      - "Le numéro d'identification du destinataire"
+      - "Le code du type de document de facture"
+      - "La date d'émission de la facture"
+      - "Le montant total TTC"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Quelle est la différence essentielle entre un BT et un BG ?"
+    options:
+      - "Les BT sont optionnels, les BG obligatoires"
+      - "Les BT sont des éléments d'information atomiques, les BG des groupes structurants"
+      - "Les BG sont nationaux, les BT européens"
+      - "Il n'y a aucune différence, les termes sont synonymes"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Qu'est-ce qu'un CIUS au sens de la norme EN 16931 ?"
+    options:
+      - "Un code pays pour la TVA"
+      - "Une spécification d'usage de base conforme à la norme (Core Invoice Usage Specification)"
+      - "Un format de fichier XML alternatif"
+      - "Une extension binaire non normée"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Combien de syntaxes d'implémentation sont explicitement reconnues par la norme EN 16931 ?"
+    options:
+      - "Une seule : UBL"
+      - "Deux : UBL et UN/CEFACT CII"
+      - "Trois : UBL, CII et EDIFACT"
+      - "Aucune, la norme est purement sémantique"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Quel est l'objectif premier de la norme EN 16931 ?"
+    options:
+      - "Imposer un format PDF unique en Europe"
+      - "Garantir l'interopérabilité sémantique des factures électroniques"
+      - "Remplacer les ERP nationaux"
+      - "Définir les règles comptables OHADA"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+---
+# Norme EN 16931 : sémantique et BT/BG
+
+La norme européenne **EN 16931** est la pierre angulaire de l'interopérabilité des factures électroniques en Europe. Adoptée par le Comité européen de normalisation (CEN TC 434) et publiée en 2017, elle définit un **modèle sémantique commun** applicable à toute facture électronique de l'Union européenne. En France, elle sert de socle technique à la réforme de la facturation électronique des années 2026-2027, et tout acteur technique doit en maîtriser la structure.
+
+Contrairement à une idée répandue, EN 16931 n'est **pas un format de fichier** : c'est une spécification sémantique qui décrit *quelles informations* doivent figurer sur une facture, *comment elles se nomment*, *leur type de données* et *leur cardinalité*. L'encodage physique (UBL ou CII) vient ensuite.
+
+## 1. Objectifs et portée de la norme
+
+La norme répond à une exigence de la directive européenne **2014/55/UE**, qui impose aux marchés publics européens l'acceptation d'une facture électronique conforme. Ses objectifs :
+
+- **Interopérabilité transfrontalière** : une facture émise en France doit être lisible et exploitable par un acheteur allemand, italien ou espagnol sans adaptation.
+- **Neutralité syntaxique** : le modèle sémantique est indépendant de la syntaxe XML choisie (UBL ou CII).
+- **Couverture des cas d'usage majeurs** : ventes de biens, prestations de services, autoliquidation, remises, acomptes, notes de crédit, factures rectificatives.
+- **Extensibilité contrôlée** : les États membres peuvent définir des **CIUS** (Core Invoice Usage Specification) pour contraindre ou préciser les usages nationaux, sans casser l'interopérabilité.
+
+Selon la documentation officielle, la norme se compose de plusieurs parties : EN 16931-1 (modèle sémantique), EN 16931-2 (liste des syntaxes reconnues), EN 16931-3-x (bindings vers UBL, CII et autres).
+
+## 2. Structure : Business Terms et Business Groups
+
+Toute l'information d'une facture EN 16931 se décompose en deux types d'éléments :
+
+- **Business Terms (BT-XXX)** : éléments d'information **atomiques**, unitaires. Exemple : BT-1 est le numéro de la facture, BT-2 la date d'émission, BT-112 le montant total TTC.
+- **Business Groups (BG-XX)** : **regroupements** d'éléments logiquement liés. Un BG agrège plusieurs BT et parfois d'autres BG. Exemple : BG-4 regroupe les informations du vendeur (nom, adresse, identifiants).
+
+Chaque élément possède :
+
+- un **identifiant unique** (BT-3, BG-22, etc.),
+- un **nom sémantique** (ex : *Invoice type code*),
+- un **type de données** (Code, Identifier, Amount, Date, Text, Quantity, Unit Price Amount, Percentage…),
+- une **cardinalité** : `0..1` (optionnel), `1..1` (obligatoire unique), `0..n` (multiple optionnel), `1..n` (multiple obligatoire),
+- une **description métier** et souvent des **règles de gestion** (ex : BR-01, BR-CO-10).
+
+### Exemple détaillé : BT-3 (Invoice type code)
+
+Le BT-3 code le **type de document**. Il utilise la liste **UNTDID 1001** (Document Name Code). Valeurs typiques :
+
+- `380` : facture commerciale (Commercial invoice)
+- `381` : note de crédit (Credit note)
+- `384` : facture rectificative (Corrected invoice)
+- `389` : auto-facturation (Self-billed invoice)
+- `326` : facture partielle (Partial invoice)
+- `751` : facture informative uniquement (Invoice information for accounting purposes)
+
+Cardinalité : `1..1` (obligatoire unique). Type : Code. Règle associée (BR-01) : la facture doit contenir un code type valide.
+
+## 3. Les principaux Business Groups (BG-1 à BG-25)
+
+La norme définit environ 25 BG majeurs couvrant l'ensemble des zones d'une facture. Selon la documentation officielle EN 16931-1, on trouve notamment :
+
+- **BG-1** : *Invoice note* — Commentaires textuels attachés à la facture.
+- **BG-2** : *Process control* — Contrôle du processus (spécification de profil, identifiant de processus métier).
+- **BG-3** : *Preceding invoice reference* — Références aux factures précédentes (ex : pour une note de crédit).
+- **BG-4** : *Seller* — Informations sur le vendeur (nom légal, adresse, identifiants).
+- **BG-5** : *Seller postal address* — Adresse postale du vendeur.
+- **BG-6** : *Seller contact* — Contact du vendeur.
+- **BG-7** : *Buyer* — Informations sur l'acheteur.
+- **BG-8** : *Buyer postal address* — Adresse postale de l'acheteur.
+- **BG-9** : *Buyer contact* — Contact de l'acheteur.
+- **BG-10** : *Payee* — Bénéficiaire du paiement si différent du vendeur.
+- **BG-11** : *Seller tax representative party* — Représentant fiscal du vendeur.
+- **BG-12** : *Seller tax representative postal address* — Adresse du représentant fiscal.
+- **BG-13** : *Delivery information* — Informations de livraison.
+- **BG-14** : *Invoicing period* — Période de facturation.
+- **BG-15** : *Deliver to address* — Adresse de livraison.
+- **BG-16** : *Payment instructions* — Instructions de paiement.
+- **BG-17** : *Credit transfer* — Virement.
+- **BG-18** : *Payment card information* — Information sur la carte de paiement.
+- **BG-19** : *Direct debit* — Prélèvement automatique.
+- **BG-20** : *Document level allowances* — Remises au niveau document.
+- **BG-21** : *Document level charges* — Frais au niveau document.
+- **BG-22** : *Document totals* — Totaux de la facture (HT, TVA, TTC, à payer).
+- **BG-23** : *VAT breakdown* — Ventilation de la TVA par taux et catégorie.
+- **BG-24** : *Additional supporting documents* — Pièces jointes.
+- **BG-25** : *Invoice line* — Ligne de facture (le plus imbriqué : contient BG-26 Invoice line period, BG-27 Invoice line allowances, BG-28 Invoice line charges, BG-29 Price details, BG-30 Line VAT information, BG-31 Item information, BG-32 Item attributes).
+
+Cette liste peut varier légèrement selon la version de la norme. Il est recommandé de se référer à la publication officielle CEN pour l'exhaustivité.
+
+## 4. CORE vs extensions nationales (CIUS)
+
+La norme distingue :
+
+- **CORE** : le noyau sémantique EN 16931 partagé par tous les États membres. Tout outil conforme doit supporter le CORE.
+- **CIUS** : une *Core Invoice Usage Specification* est une restriction ou précision du CORE définie par un État ou un secteur. Elle ne peut **jamais ajouter** de BT/BG en dehors du CORE, seulement **restreindre** (cardinalités, listes de codes, règles métier).
+- **Extensions** : au-delà du CIUS, certains pays autorisent des extensions qui **ajoutent** des éléments. Attention : une extension dégrade potentiellement l'interopérabilité transfrontalière.
+
+En France, la réforme 2026 impose des **extensions spécifiques** pour le CTC (Continuous Transaction Controls) et le e-reporting, portées par le profil **Extended** de Factur-X (voir module P3-04). Ces extensions couvrent notamment la catégorisation biens/services, l'adresse de livraison enrichie et les flux B2C agrégés.
+
+## Exemple concret
+
+Voici la représentation sémantique abrégée d'une ligne de facture conforme au CORE :
+
+| ID | Nom | Type | Cardinalité | Valeur exemple |
+|----|-----|------|-------------|----------------|
+| BT-1 | Invoice number | Identifier | 1..1 | FAC-2026-00042 |
+| BT-2 | Invoice issue date | Date | 1..1 | 2026-04-19 |
+| BT-3 | Invoice type code | Code | 1..1 | 380 |
+| BT-5 | Invoice currency code | Code | 1..1 | EUR |
+| BG-4 / BT-27 | Seller name | Text | 1..1 | SARL EXEMPLE |
+| BG-4 / BT-30 | Seller legal registration id | Identifier | 0..1 | 552100554 |
+| BG-7 / BT-44 | Buyer name | Text | 1..1 | SA CLIENT |
+| BG-22 / BT-112 | Invoice total amount with VAT | Amount | 1..1 | 1200.00 |
+
+Cette table montre la puissance du modèle : chaque information a un identifiant stable, indépendant de la syntaxe XML finalement choisie.
+
+## À retenir
+
+- EN 16931 est une norme **sémantique**, pas un format de fichier.
+- L'information est structurée en **BT (atomes)** et **BG (groupes)**, chacun avec un identifiant stable.
+- Le **CORE** est le noyau interopérable ; les **CIUS** restreignent, les **extensions** ajoutent.
+- Deux syntaxes d'encodage sont officiellement reconnues : **UBL** et **UN/CEFACT CII**.
+- La France s'appuie sur EN 16931 pour sa réforme et y ajoute des extensions CTC portées par le profil Extended.
+
+## Aller plus loin
+
+- Prochain module : [Les 3 formats socles — UBL, CII, Factur-X](/p3-technique/p3-02-trois-formats-socles)
+- Publication officielle CEN : *EN 16931-1:2017+A1:2019 Electronic invoicing — Part 1: Semantic data model*
+- Ressources fnfe-mpe.org : guides de mapping sémantique français

@@ -1,0 +1,103 @@
+---
+title: "Cas spéciaux (auto-entrepreneur, franchise TVA)"
+parcours: "e-reporting"
+order: 27
+xp: 100
+duration: 10
+objectives:
+  - "Comprendre l'application de la réforme aux auto-entrepreneurs et franchisés TVA"
+  - "Identifier les obligations allégées et les adaptations prévues"
+  - "Anticiper les particularités des activités exonérées ou hors champ"
+sources:
+  - label: "Impots.gouv.fr — Auto-entrepreneurs et e-invoicing"
+    url: "https://www.impots.gouv.fr/facturation-electronique"
+  - label: "Legifrance — Article 293 B CGI (franchise TVA)"
+    url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047619551"
+  - label: "Francenum.gouv.fr — TPE et micro"
+    url: "https://www.francenum.gouv.fr/"
+quiz:
+  - question: "Un auto-entrepreneur en franchise TVA est-il concerné par la réforme ?"
+    options: ["Non, totalement exempté", "Oui, il doit recevoir et émettre des factures électroniques à partir du 1er septembre 2027", "Uniquement la réception", "Uniquement l'émission"]
+    correct: 1
+    explanation: "Tous les assujettis, y compris les auto-entrepreneurs et franchisés TVA, sont concernés (réception en 2026, émission en 2027 pour les micro)."
+  - question: "Un franchisé TVA doit-il transmettre des données de TVA ?"
+    options: ["Oui, même si non redevable", "Non, il n'a pas de TVA à collecter, mais il doit émettre des factures électroniques conformes avec la mention 'TVA non applicable art. 293 B'", "Uniquement si CA > 50 000 €", "Uniquement au-delà du seuil majoré"]
+    correct: 1
+    explanation: "Pas de TVA à transmettre mais obligation de mention légale et de facturation électronique conforme."
+  - question: "La mention obligatoire pour un franchisé TVA est :"
+    options: ["'TVA exonérée'", "'TVA non applicable, art. 293 B du CGI'", "'Sans TVA'", "Aucune mention requise"]
+    correct: 1
+    explanation: "L'article 293 B du CGI impose la mention 'TVA non applicable, art. 293 B du CGI' sur les factures."
+  - question: "Pour les activités hors champ de TVA (ex : certaines professions médicales), l'e-invoicing s'applique-t-il ?"
+    options: ["Oui pour toute facture B2B", "Non, les opérations hors champ TVA ne sont pas concernées par l'e-invoicing", "Uniquement l'e-reporting", "Uniquement à partir de 2030"]
+    correct: 1
+    explanation: "Les opérations hors champ de la TVA (art. 256 A CGI) ne relèvent pas de l'e-invoicing, mais des précisions administratives s'appliquent."
+  - question: "Un auto-entrepreneur B2C exclusivement (ex: coiffeur à domicile) doit :"
+    options: ["Rien, il est hors champ", "Faire de l'e-reporting agrégé B2C et être en capacité de recevoir en e-invoicing", "Émettre des factures électroniques à chaque client", "Envoyer ses tickets individuels"]
+    correct: 1
+    explanation: "B2C = e-reporting agrégé, pas de facture individuelle obligatoire ; et comme tout assujetti, il doit pouvoir recevoir en e-invoicing dès 2026."
+---
+
+## Introduction
+
+La réforme ne crée pas d'exemption générale pour les petites structures : **tous les assujettis à la TVA**, même ceux en **franchise en base** ou au **régime micro**, sont concernés. Cependant, certaines adaptations et tolérances sont prévues pour tenir compte de la réalité économique et technique de ces acteurs. Ce module fait le tour des cas particuliers : auto-entrepreneurs, micro-BNC/BIC, franchisés TVA (art. 293 B CGI), opérations hors champ, exonérées, etc.
+
+## Le cas de l'auto-entrepreneur
+
+Un auto-entrepreneur (micro-entreprise) est, au sens fiscal, un **assujetti à la TVA** — même s'il est en franchise en base. À ce titre :
+
+- Il doit **recevoir** les factures électroniques de ses fournisseurs à partir du **1er septembre 2026**.
+- Il doit **émettre** des factures électroniques à ses clients assujettis à partir du **1er septembre 2027**.
+- Il doit remonter les **données d'e-reporting** pour ses ventes B2C (qui sont souvent l'essentiel de son activité) et pour ses éventuelles transactions internationales.
+
+En pratique, de nombreuses **offres PA gratuites ou très économiques** (quelques euros par mois) sont proposées spécifiquement pour ce profil, souvent incluses dans un logiciel de gestion micro (Shine, Qonto, Indy, Tiime, Abby…).
+
+## La franchise en base de TVA
+
+La franchise en base (art. 293 B CGI) dispense de collecter la TVA sous certains seuils (évolutifs, autour de 85 800 € / 34 400 € en biens/services à date, régulièrement réévalués). Le franchisé :
+
+- **Ne facture pas de TVA** et appose la mention obligatoire : **"TVA non applicable, art. 293 B du CGI"**.
+- Doit néanmoins **émettre des factures électroniques conformes** (Factur-X, UBL, CII) avec les mentions légales complètes.
+- Remonte en **e-reporting** ses ventes B2C avec la mention du taux nul franchise.
+- N'a pas de déclaration CA3 (pas de TVA collectée), mais doit surveiller le seuil pour basculer en régime normal si dépassement.
+
+## Les opérations exonérées
+
+Certaines opérations sont exonérées par nature (art. 261 à 263 CGI) : formations professionnelles, opérations médicales, services financiers et d'assurance, ventes immobilières sous conditions. Pour ces opérations :
+
+- La facture électronique reste obligatoire si elle entre dans le champ de la TVA (même exonérée).
+- La **mention d'exonération** doit figurer (référence à l'article pertinent du CGI).
+- Les données remontent normalement à la PA et au PPF.
+
+## Les opérations hors champ
+
+À distinguer des exonérées : les opérations **hors champ** de la TVA (indemnités, subventions non contreparties, certaines cotisations) ne sont **pas concernées** par l'e-invoicing. L'entreprise doit néanmoins être vigilante sur la qualification : hors champ ou exonéré ?
+
+## Les autres cas particuliers
+
+- **Professions libérales réglementées** (avocats, médecins) : mêmes obligations selon leur statut assujetti/exonéré.
+- **Associations non lucratives** : hors champ sauf activités lucratives accessoires, auquel cas les obligations s'appliquent sur ces activités.
+- **SCI de location nue** : souvent hors champ TVA, mais attention aux locations meublées professionnelles et aux options TVA.
+- **Activités agricoles au forfait** : régime spécifique, articulation en cours de précision par la DGFiP.
+- **Artistes-auteurs au précompte** : régime hybride, dérogations spécifiques.
+
+## Les accompagnements dédiés
+
+Le gouvernement, via **francenum.gouv.fr** et **Bpifrance**, a prévu des accompagnements pour les très petites structures :
+
+- **Diagnostic gratuit** de conformité.
+- **Aides financières** ponctuelles pour le passage au numérique (dispositifs régionaux, chèques numériques).
+- **Sensibilisation** via les CCI, CMA et ordres professionnels.
+- **Offres PA gratuites** ou très low-cost spécialement dimensionnées micro.
+
+## Exemple concret
+
+"Julie, coach sportive indépendante", micro-entreprise en franchise TVA, CA 42 000 € annuels. Clientèle 95 % B2C (particuliers), 5 % B2B (entreprises pour des ateliers bien-être). À partir du 1er septembre 2026, elle doit être en capacité de **recevoir** les factures de ses fournisseurs (prestataires, loyer pro). Elle choisit une offre PA gratuite via son logiciel de gestion Indy. À partir du 1er septembre 2027, elle **émet** ses 2-3 factures mensuelles B2B en Factur-X via la PA, avec la mention "TVA non applicable, art. 293 B du CGI". Pour ses séances particuliers (B2C), elle remonte chaque mois les données agrégées (nombre de séances, CA total) via un export de son outil de gestion.
+
+## À retenir
+
+- **Aucune exemption générale** pour auto-entrepreneurs et franchisés TVA : ils sont concernés.
+- **Réception** : 1er septembre **2026** ; **émission** : 1er septembre **2027** pour TPE/micro.
+- Les **franchisés TVA** émettent des factures conformes avec la mention **art. 293 B CGI**.
+- Les opérations **hors champ** ne sont pas concernées, à la différence des **exonérées**.
+- Des **offres PA gratuites** et des **accompagnements publics** existent pour faciliter le passage.

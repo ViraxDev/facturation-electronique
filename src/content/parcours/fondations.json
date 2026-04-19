@@ -1,0 +1,9 @@
+{
+  "id": "fondations",
+  "titre": "Fondations légales",
+  "description": "Le cadre légal, le calendrier, les acteurs et les sanctions de la réforme française.",
+  "order": 1,
+  "icone": "Scale",
+  "couleur": "#0369A1",
+  "badge": "parcours-fondations"
+}

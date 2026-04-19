@@ -1,0 +1,112 @@
+---
+title: "Fréquences et échéances"
+parcours: "e-reporting"
+order: 26
+xp: 100
+duration: 10
+objectives:
+  - "Connaître les fréquences de transmission e-reporting selon le régime TVA"
+  - "Identifier les échéances et les tolérances post-période"
+  - "Anticiper les conséquences d'un retard ou d'une omission"
+sources:
+  - label: "Impots.gouv.fr — Fréquences e-reporting"
+    url: "https://www.impots.gouv.fr/facturation-electronique"
+  - label: "Legifrance — Article 287 CGI"
+    url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043664672"
+  - label: "Economie.gouv.fr — Régimes TVA"
+    url: "https://www.economie.gouv.fr/facturation-electronique-entreprises"
+quiz:
+  - question: "Quelle est la fréquence minimale pour un assujetti au régime réel normal mensuel ?"
+    options: ["Annuelle", "Mensuelle avec transmissions intermédiaires (hebdomadaire en pratique)", "Trimestrielle", "Quotidienne"]
+    correct: 1
+    explanation: "Au réel normal mensuel, l'e-reporting est mensuel consolidé avec remontées intermédiaires fréquentes (rythme aligné sur la CA3 mensuelle)."
+  - question: "Pour un régime simplifié (RSI), la fréquence est :"
+    options: ["Hebdomadaire", "Alignée sur la CA12 (annuelle avec acomptes)", "Trimestrielle", "Journalière"]
+    correct: 1
+    explanation: "Au RSI, la fréquence s'aligne sur la déclaration CA12 annuelle avec acomptes semestriels."
+  - question: "Quelle tolérance existe typiquement après la fin d'une période d'e-reporting ?"
+    options: ["Aucune", "Quelques jours (délai fiscal standard, généralement jusqu'à l'échéance CA3)", "30 jours", "90 jours"]
+    correct: 1
+    explanation: "La tolérance est courte ; la transmission doit intervenir au plus tard à l'échéance de la déclaration TVA correspondante."
+  - question: "Un retard de transmission peut entraîner :"
+    options: ["Rien", "Une amende par transaction non transmise, plafonnée annuellement", "La suspension de l'entreprise", "Une interdiction de facturer"]
+    correct: 1
+    explanation: "Les sanctions sont financières (amendes par manquement), comparables à celles des déclarations TVA (art. 1737 CGI adapté)."
+  - question: "Les transmissions intermédiaires en cours de période sont-elles possibles ?"
+    options: ["Non", "Oui, et elles sont même recommandées pour lisser la charge", "Uniquement pour les grandes entreprises", "Uniquement en fin d'année"]
+    correct: 1
+    explanation: "Les PA transmettent souvent en continu : pas besoin d'attendre la fin de période, ce qui fluidifie la charge."
+---
+
+## Introduction
+
+L'e-reporting n'a de sens que s'il est **à jour** : une donnée remontée trois mois après la transaction perd l'essentiel de son intérêt pour le pré-remplissage TVA et la lutte anti-fraude. La réglementation impose donc des **fréquences** et des **échéances** précises, calées sur le **régime TVA** de chaque entreprise. Ce module fait le tour des rythmes à respecter et des pièges à éviter.
+
+## Les régimes TVA français
+
+La fréquence d'e-reporting s'aligne sur le régime TVA :
+
+- **Réel normal mensuel (RN mensuel)** : concerne les entreprises dont le chiffre d'affaires est significatif. Déclaration CA3 mensuelle (avant le 19, 21, 24 du mois suivant selon la forme juridique et le département).
+- **Réel normal trimestriel (RN trimestriel)** : applicable si la TVA due annuelle est < 4 000 €. Déclaration CA3 trimestrielle.
+- **Régime simplifié (RSI)** : déclaration CA12 annuelle avec 2 acomptes semestriels (juillet, décembre). S'applique aux entreprises sous certains seuils de CA (autour de 840 000 € biens ou 254 000 € services, revalorisés régulièrement).
+- **Franchise en base de TVA** : pas de TVA à déclarer (voir module dédié aux cas spéciaux).
+
+## Les fréquences e-reporting
+
+Les fréquences minimales ont été précisées par l'administration :
+
+| Régime TVA | Fréquence e-reporting | Échéance |
+|---|---|---|
+| RN mensuel | Mensuelle (consolidation) | Alignée sur la CA3 mensuelle |
+| RN trimestriel | Trimestrielle | Alignée sur la CA3 trimestrielle |
+| RSI | Semestrielle / annuelle | Alignée sur acomptes et CA12 |
+| Franchise | Annuelle simplifiée | À préciser selon textes |
+
+En pratique, les PA transmettent **au fil de l'eau** (hebdomadairement voire quotidiennement) pour les flux automatisables. Cela évite une "tempête" de fin de mois et donne une meilleure qualité de donnée.
+
+## Les statuts obligatoires et leur timing
+
+Au-delà du e-reporting "agrégé", certains **statuts de cycle de vie** (e-invoicing) ont leur propre timing :
+
+- Statut **"déposée / reçue"** : en quasi temps réel, à la livraison de la facture.
+- Statut **"rejetée"** (cadre technique) : rapidement, dans les jours suivants.
+- Statut **"refusée"** (cadre commercial) : dans les délais définis par les parties.
+- Statut **"encaissée"** : remonté **dès l'encaissement effectif**, au plus tard à l'échéance CA3.
+
+## Les tolérances et les sanctions
+
+La tolérance temporelle est **courte** : typiquement quelques jours après la fin de la période. Au-delà, des sanctions financières sont prévues, sur un modèle proche des sanctions TVA :
+
+- **Amende forfaitaire** par manquement (en général **15 € par facture** non transmise, plafonnée à 15 000 € par an et par entreprise, en cohérence avec l'art. 1737 CGI adapté à l'e-invoicing/e-reporting).
+- **Majoration** en cas de manquements répétés.
+- **Procédure de mise en demeure** avant sanctions lourdes.
+
+La DGFiP a annoncé une **tolérance pédagogique** sur les premiers mois de mise en œuvre (rolling wave 2026 pour GE/ETI, 2027 pour PME/TPE/micro), mais cette tolérance n'a pas été chiffrée dans la réglementation.
+
+## L'importance du pilotage
+
+Côté entreprise, il faut mettre en place un **pilotage mensuel** :
+
+- **Check hebdomadaire** des transmissions PA → PPF (dashboard PA).
+- **Contrôle de cohérence** entre e-reporting et comptabilité.
+- **Alerte** sur les rejets techniques (formats invalides, TVA incohérente).
+- **Clôture e-reporting** avant clôture CA3, pour que les données concordent.
+
+## Exemple concret
+
+"Bureau d'Études Thermiques SAS", PME au RN mensuel, CA3 à déposer le 19 de M+1. Mise en conformité au 1er septembre 2027. Sa PA est configurée pour transmettre :
+
+- Les factures émises : **au fil de l'eau** (chaque jour).
+- Les statuts d'encaissement : **chaque jour** après lettrage bancaire automatisé.
+- La consolidation mensuelle : **le 5 de M+1**, avec contrôle de cohérence.
+- La CA3 est pré-remplie par la DGFiP le 10, validée par l'expert-comptable le 15, déposée le 19.
+
+En cas de retard exceptionnel (incident informatique), la PA prévoit un processus de rattrapage avant le 19 pour éviter la sanction.
+
+## À retenir
+
+- Les **fréquences** d'e-reporting s'alignent sur le **régime TVA** (RN mensuel, RN trimestriel, RSI, franchise).
+- L'**échéance** est calée sur la **CA3/CA12** correspondante.
+- Les PA transmettent idéalement **au fil de l'eau**, pas en fin de période.
+- Le **statut "encaissée"** a un timing spécifique, lié à la date d'encaissement.
+- **Sanctions** financières en cas de manquement (env. 15 €/facture, plafond 15 000 €/an).

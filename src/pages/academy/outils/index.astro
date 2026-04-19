@@ -1,0 +1,29 @@
+---
+import AcademyLayout from "@/layouts/AcademyLayout.astro";
+import { FileCheck, Scale, Calculator, FileSearch, ArrowRight } from "lucide-react";
+
+const tools = [
+  { href: "/academy/outils/eligibilite", Icon: FileCheck, title: "Simulateur d'éligibilité", desc: "6 questions pour connaître vos obligations et les dates qui vous concernent." },
+  { href: "/academy/outils/comparateur-pa", Icon: Scale, title: "Comparateur de Plateformes Agréées", desc: "Filtrez parmi les plateformes immatriculées DGFiP selon vos besoins." },
+  { href: "/academy/outils/roi-cabinet", Icon: Calculator, title: "Calculateur ROI cabinet", desc: "Projetez les revenus annuels d'un pack facturation électronique." },
+  { href: "/academy/outils/factur-x-viewer", Icon: FileSearch, title: "Visualiseur Factur-X", desc: "Inspectez le XML embarqué dans un PDF Factur-X, en local." },
+];
+---
+<AcademyLayout seo={{ title: "Outils — Academy", description: "Simulateur d'éligibilité, comparateur PA, calculateur ROI, visualiseur Factur-X." }}>
+  <header class="mb-8">
+    <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-primary)] tracking-tight">Outils interactifs</h1>
+    <p class="mt-3 text-lg text-[var(--color-muted-foreground)]">4 outils pratiques pour comprendre, comparer et projeter.</p>
+  </header>
+  <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {tools.map(({ href, Icon, title, desc }) => (
+      <li>
+        <a href={href} class="group block rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+          <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-sky-700"><Icon className="h-5 w-5" aria-hidden="true"/></div>
+          <h2 class="mt-4 text-lg font-semibold text-[var(--color-primary)] group-hover:text-[var(--color-accent)]">{title}</h2>
+          <p class="mt-2 text-sm text-[var(--color-muted-foreground)]">{desc}</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[var(--color-accent)]">Ouvrir <ArrowRight className="h-3.5 w-3.5" aria-hidden="true"/></span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</AcademyLayout>

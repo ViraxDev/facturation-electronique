@@ -1,0 +1,204 @@
+---
+title: "Les 5 profils Factur-X"
+parcours: "technique"
+order: 4
+xp: 200
+duration: 15
+objectives:
+  - "Identifier les 5 profils Factur-X et leurs cas d'usage"
+  - "Comprendre la progressivité de la richesse sémantique entre profils"
+  - "Identifier le profil requis par la France pour la réforme 2026-2027"
+  - "Choisir le profil adéquat selon le contexte métier"
+  - "Connaître les extensions françaises portées par le profil Extended"
+sources:
+  - label: "FNFE-MPE — Factur-X 1.0.07 Technical Specification"
+    url: "https://fnfe-mpe.org/factur-x/"
+  - label: "ZUGFeRD 2.3.2 — Profiles documentation"
+    url: "https://www.impots.gouv.fr/"
+  - label: "AIFE — Spécifications externes Chorus Pro / PPF"
+    url: "https://www.impots.gouv.fr/"
+quiz:
+  - question: "Combien de Business Terms contient typiquement le profil MINIMUM ?"
+    options:
+      - "Environ 5"
+      - "Environ 30"
+      - "Environ 100"
+      - "L'ensemble de la norme EN 16931"
+    correct: 0
+    explanation: "Voir la section correspondante du module."
+  - question: "Quelle est la spécificité du profil BASIC WL ?"
+    options:
+      - "Il contient des lignes détaillées"
+      - "Il n'a pas de lignes de facture (Without Lines)"
+      - "Il est réservé aux virements"
+      - "Il est un profil de test"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Quel profil est strictement conforme au CORE EN 16931 ?"
+    options:
+      - "MINIMUM"
+      - "BASIC"
+      - "EN 16931"
+      - "EXTENDED"
+    correct: 2
+    explanation: "Voir la section correspondante du module."
+  - question: "Quel profil est requis par la France pour transmettre les extensions CTC spécifiques ?"
+    options:
+      - "MINIMUM"
+      - "BASIC"
+      - "EN 16931"
+      - "EXTENDED"
+    correct: 3
+    explanation: "Voir la section correspondante du module."
+  - question: "Quelle valeur de ConformanceLevel indique le profil EN 16931 dans XMP ?"
+    options:
+      - "MINIMUM"
+      - "BASIC"
+      - "EN 16931"
+      - "FULL"
+    correct: 2
+    explanation: "Voir la section correspondante du module."
+---
+# Les 5 profils Factur-X
+
+Factur-X n'est pas monolithique : il définit **5 profils** de richesse croissante. Chaque profil détermine quels Business Terms (BT) et Business Groups (BG) sont présents dans le XML embarqué. Le choix du profil est un arbitrage entre **simplicité d'implémentation** et **exhaustivité fonctionnelle**.
+
+## 1. Vue d'ensemble des profils
+
+| Profil | Richesse | Usage principal | Conformité EN 16931 |
+|--------|----------|-----------------|---------------------|
+| MINIMUM | ~5 BT | Rapprochement comptable léger | Non (sous-ensemble) |
+| BASIC WL | ~30 BT | Synthèse sans lignes | Non (sous-ensemble) |
+| BASIC | ~50-60 BT | Facture avec lignes simplifiées | Partielle |
+| EN 16931 | ~100+ BT | Facture complète CORE | **Oui, conforme CORE** |
+| EXTENDED | EN 16931 + extensions | CTC France, B2G, secteurs spécifiques | Oui + extensions nationales |
+
+Selon la documentation FNFE-MPE, les nombres de BT sont indicatifs et peuvent varier selon l'édition de la spécification. L'ordre et la sémantique cumulative sont en revanche stables.
+
+## 2. Profil MINIMUM
+
+**Objectif** : permettre un rapprochement comptable minimal à partir d'un PDF visuel.
+
+Contenu typique :
+
+- BT-1 : numéro de facture
+- BT-2 : date d'émission
+- BT-3 : code type (380, 381…)
+- BG-4 : identification vendeur (nom, SIREN)
+- BG-7 : identification acheteur
+- BG-22 : montants totaux (HT, TVA, TTC)
+
+**Pas de lignes**, **pas de ventilation TVA détaillée**, **pas de conditions de paiement**. Ce profil est volontairement **pauvre** pour faciliter l'adoption.
+
+Cas d'usage : petite entreprise qui veut commencer à émettre du Factur-X sans refondre son ERP, simple enrichissement du PDF existant.
+
+Attention : **le profil MINIMUM ne couvre pas les exigences de la réforme française**. Il est utilisable pour les échanges internes mais ne satisfait pas le CTC DGFiP.
+
+## 3. Profil BASIC WL (Without Lines)
+
+**Objectif** : donner une vision **synthétique** de la facture, sans détail des lignes.
+
+Contient :
+
+- Tout le MINIMUM.
+- La **ventilation TVA par taux** (BG-23 partielle).
+- Les **conditions de paiement** (BG-16).
+- Les **remises/frais au niveau document** (BG-20, BG-21).
+- Les **informations bancaires** (BG-17 CreditTransfer).
+
+Toujours pas de lignes (`BG-25 InvoiceLine` absent ou minimal).
+
+Cas d'usage : factures de synthèse pour des entreprises qui communiquent un détail en annexe (bons de commande déjà connus de l'acheteur, contrats cadres).
+
+## 4. Profil BASIC
+
+**Objectif** : inclure les **lignes de facture** avec les informations essentielles, mais pas toute la richesse de EN 16931.
+
+Contient :
+
+- Tout le BASIC WL.
+- **Lignes de facture** (BG-25) avec : identifiant ligne, libellé, quantité, prix unitaire, montant ligne, TVA applicable.
+- Certaines informations simplifiées (pas forcément toutes les sous-granularités BG-28/BG-29).
+
+C'est un **bon compromis** pour les PME qui veulent émettre une facture structurée sans supporter la totalité du modèle. **Attention** : BASIC n'est pas totalement conforme à EN 16931 CORE ; il en est un sous-ensemble.
+
+## 5. Profil EN 16931
+
+**Objectif** : conformité stricte au **CORE** de la norme européenne EN 16931.
+
+Contient la **totalité** des BT/BG du CORE, incluant :
+
+- Périodes de facturation (BG-14).
+- Adresse de livraison (BG-15).
+- Références aux factures précédentes (BG-3).
+- Toutes les ventilations TVA fines (BG-23 complet).
+- Tous les niveaux de remises et frais.
+- Pièces jointes structurées (BG-24).
+
+C'est le profil **recommandé** pour les échanges B2B et B2G standards, et il garantit l'**interopérabilité européenne**. Il correspond au binding EN 16931-3-3 (CII).
+
+Pour la France, ce profil est **nécessaire mais pas toujours suffisant** : les extensions CTC passent par Extended.
+
+## 6. Profil EXTENDED
+
+**Objectif** : ajouter aux données EN 16931 des **extensions nationales** ou sectorielles.
+
+Pour la France, le profil EXTENDED porte les éléments spécifiques au CTC :
+
+- **Catégorisation biens/services** ligne par ligne (nécessaire pour le e-reporting TVA).
+- **Adresse de livraison enrichie** (pour certaines règles de territorialité TVA).
+- **Option TVA sur débits** (mention obligatoire française).
+- **Références internes** pour le rapprochement avec les plateformes.
+- **Données pour le e-reporting B2C** (montants agrégés, flux transactionnels).
+- **Identifiants métiers additionnels** (numéro engagement pour le secteur public, marché, etc.).
+
+La France rend **le profil EXTENDED nécessaire** pour toutes les factures soumises aux extensions CTC, selon les spécifications externes de l'AIFE. Les profils MINIMUM, BASIC WL et BASIC sont insuffisants pour la réforme en B2B domestique.
+
+Selon la documentation officielle, la règle opérationnelle française est :
+
+- **B2G Chorus Pro / PPF** : EN 16931 minimum, EXTENDED recommandé.
+- **B2B soumis au CTC** : EXTENDED requis pour porter les extensions DGFiP.
+- **B2C et e-reporting** : EXTENDED avec champs spécifiques e-reporting.
+
+## 7. Matrice des cas d'usage
+
+| Cas d'usage | Profil recommandé | Motif |
+|-------------|-------------------|-------|
+| Facture B2B France post-2026 | EXTENDED | Extensions CTC obligatoires |
+| Facture B2G Chorus Pro | EN 16931 ou EXTENDED | Exigences PPF |
+| Facture transfrontalière UE | EN 16931 | Interopérabilité PEPPOL |
+| Facture interne / rapprochement | MINIMUM ou BASIC WL | Simplicité |
+| PME en démarrage progressif | BASIC | Équilibre coût/richesse |
+| Secteur réglementé (santé, BTP) | EXTENDED | Champs métiers |
+
+## 8. Ce qui est transmis à la DGFiP
+
+La DGFiP reçoit, via les PA, les **données structurées** extraites du XML selon les champs définis par les spécifications externes. En pratique :
+
+- Profil MINIMUM : transmission incomplète, rejet probable en flux CTC.
+- Profil BASIC WL/BASIC : transmission possible mais incomplète pour le e-reporting.
+- Profil EN 16931 : quasi complet, manque certaines extensions CTC.
+- Profil EXTENDED : transmission complète incluant les champs e-reporting français.
+
+## Exemple concret
+
+Une boulangerie SARL émet 2 types de factures :
+
+- **Factures B2B aux collectivités** : elle doit produire du Factur-X **EXTENDED** (extensions CTC et catégorisation biens).
+- **Flux B2C quotidien** : pas de Factur-X individuel, mais un **e-reporting agrégé** (transmission structurée des totaux à la DGFiP), typiquement en format UBL ou CII simplifié défini par le PPF.
+
+Le cabinet comptable l'accompagne sur le choix du profil via son logiciel.
+
+## À retenir
+
+- **5 profils** de richesse croissante : MINIMUM, BASIC WL, BASIC, EN 16931, EXTENDED.
+- Seuls **EN 16931** et **EXTENDED** sont strictement conformes au CORE.
+- Pour la France post-2026 CTC, le profil **EXTENDED** est la norme opérationnelle en B2B.
+- Les profils MINIMUM et BASIC restent utiles pour l'adoption progressive et les usages internes.
+- Le profil se déclare dans les **métadonnées XMP** via `fx:ConformanceLevel`.
+
+## Aller plus loin
+
+- Prochain module : [Mentions obligatoires (26 socle + 8 cibles)](/p3-technique/p3-05-mentions-obligatoires)
+- Spécifications externes AIFE pour le PPF
+- Documentation FNFE-MPE profils Factur-X

@@ -1,0 +1,97 @@
+---
+title: "B2C domestique : que transmettre"
+parcours: "e-reporting"
+order: 23
+xp: 100
+duration: 10
+objectives:
+  - "Identifier les données e-reporting à transmettre pour le B2C domestique"
+  - "Comprendre les modalités d'agrégation (ticket Z, totaux par taux)"
+  - "Articuler les systèmes de caisse avec la PA"
+sources:
+  - label: "Impots.gouv.fr — E-reporting B2C"
+    url: "https://www.impots.gouv.fr/facturation-electronique"
+  - label: "Legifrance — Article 286 CGI caisse"
+    url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031817330"
+  - label: "Economie.gouv.fr — Obligations commerçants"
+    url: "https://www.economie.gouv.fr/facturation-electronique-entreprises"
+quiz:
+  - question: "Pour le B2C, faut-il transmettre chaque ticket individuellement ?"
+    options: ["Oui, chaque ticket", "Non, des données agrégées par période (généralement jour)", "Uniquement au-delà de 25 €", "Uniquement en fin d'année"]
+    correct: 1
+    explanation: "Les données B2C sont agrégées : totaux par période et par taux de TVA, pas ticket par ticket."
+  - question: "Quelle période d'agrégation est typique pour l'e-reporting B2C ?"
+    options: ["L'heure", "La journée (ticket Z)", "Le mois", "L'année"]
+    correct: 1
+    explanation: "L'agrégation quotidienne calée sur le ticket Z du système de caisse est la pratique standard."
+  - question: "Quels totaux doivent être transmis au minimum ?"
+    options: ["Uniquement le chiffre d'affaires global", "Totaux HT et TVA par taux, nombre de transactions", "Nom des clients", "Mode de paiement uniquement"]
+    correct: 1
+    explanation: "Les totaux attendus sont HT et TVA ventilés par taux (5,5 %, 10 %, 20 %...) et le nombre de transactions."
+  - question: "Le système de caisse doit-il être connecté à la PA ?"
+    options: ["Non, saisie manuelle acceptée", "Oui, pour automatiser la transmission des Z à la PA", "Uniquement pour les grandes enseignes", "Uniquement si le CA dépasse 1 M€"]
+    correct: 1
+    explanation: "Les caisses conformes (certification NF525 ou équivalent) doivent pouvoir exporter les Z vers la PA, manuellement ou par API."
+  - question: "Les données nominatives du client sont-elles transmises en B2C ?"
+    options: ["Oui, toujours", "Non, les données sont agrégées et anonymes", "Uniquement pour les cartes de fidélité", "Uniquement si le client est étranger"]
+    correct: 1
+    explanation: "L'e-reporting B2C n'implique pas la transmission d'identifiants client : il s'agit d'agrégats."
+---
+
+## Introduction
+
+Parmi les flux couverts par l'e-reporting, le **B2C domestique** est le plus volumétriquement massif : ventes en commerce, restauration, e-commerce grand public, services à la personne. À la différence de l'e-invoicing B2B, il n'y a pas de facture électronique structurée par transaction : l'administration attend des **données agrégées** sur une base régulière. Ce module détaille quoi transmettre, comment, et avec quelle périodicité.
+
+## Quelles données transmettre
+
+Pour chaque période (généralement la journée), la PA transmet au PPF pour le compte de l'entreprise :
+
+- **Chiffre d'affaires HT** ventilé par **taux de TVA** (taux normal 20 %, taux intermédiaire 10 %, taux réduits 5,5 % et 2,1 %, taux spécifiques DOM).
+- **Montants de TVA collectée** correspondant à chaque taux.
+- **Nombre de transactions** réalisées sur la période.
+- **Date et identifiant de la période** agrégée.
+- **Identifiant de l'établissement** (SIRET) pour les entreprises multi-sites.
+- **Code devise** (EUR par défaut).
+
+Aucune donnée nominative de client n'est transmise : le B2C e-reporting est **structurellement anonyme**, ce qui le distingue de l'e-invoicing où les identifiants des parties sont obligatoires.
+
+## La source : le ticket Z
+
+Le **ticket Z** (clôture journalière d'un système de caisse certifié) est la source naturelle de l'e-reporting B2C. La réglementation française (article 286-I-3° bis du CGI et loi anti-fraude TVA de 2018) impose déjà aux commerçants l'usage d'un **logiciel de caisse sécurisé** certifié NF525 ou attesté par l'éditeur. Ce logiciel produit un Z quotidien inaltérable. L'e-reporting réutilise cette production existante.
+
+Dans la pratique, trois schémas :
+
+1. **Caisse connectée à la PA** via API : transmission automatique du Z à la fin de chaque journée.
+2. **Export du Z** en fichier standard (JSON, XML) puis import manuel dans le portail de la PA.
+3. **Saisie manuelle** dans le portail de la PA pour les très petites structures sans caisse informatisée.
+
+## La périodicité
+
+La périodicité de **transmission** à la PA/PPF dépend du régime TVA de l'entreprise (voir module dédié "Fréquences et échéances") :
+
+- **Régime réel normal mensuel** : transmission au minimum hebdomadaire, avec une transmission mensuelle consolidée.
+- **Régime réel normal trimestriel** : agrégation trimestrielle tolérée.
+- **Régime simplifié (RSI)** : périodicité alignée sur la CA12.
+
+Dans tous les cas, la **fenêtre de tolérance** après la date d'agrégation est courte : quelques jours seulement. Les caisses connectées automatisent ce flux.
+
+## Les cas particuliers
+
+Certains cas B2C domestique demandent de l'attention :
+
+- **Auto-entrepreneurs en franchise TVA** : pas de TVA à déclarer, mais obligation de transmettre le CA par taux nul (voir module dédié).
+- **Ventes mixtes** (produit + service) : décomposition des lignes par taux.
+- **Remboursements et annulations** : remontés en négatif sur la période.
+- **Plateformes e-commerce** : la plateforme peut, selon son modèle (marketplace vs. vendeur), être assujettie ou simple intermédiaire — les règles de l'article 293 bis A du CGI s'appliquent.
+
+## Exemple concret
+
+"Café de la Gare", petite brasserie, utilise une caisse certifiée NF525 connectée à sa PA. Journée du 15 septembre 2027 : 320 tickets, 4 250 € HT au taux 10 % (restauration), 580 € HT au taux 20 % (alcools), 85 € HT au taux 5,5 % (eau minérale en bouteille selon régime). La caisse clôture le Z à 23h30, le pousse à la PA via API à 00h05. La PA agrège, signe, transmet au PPF. Le dashboard de l'entreprise affiche le Z du jour et la confirmation DGFiP. Aucun nom de client n'est jamais transmis.
+
+## À retenir
+
+- L'e-reporting B2C transmet des **données agrégées**, pas des tickets individuels.
+- Les totaux attendus : **HT et TVA par taux, nombre de transactions, SIRET**.
+- La source naturelle est le **ticket Z** du système de caisse certifié.
+- La transmission est **automatisable** via API caisse ↔ PA, ou manuelle en portail.
+- **Aucune donnée nominative client** : l'e-reporting B2C est anonyme.

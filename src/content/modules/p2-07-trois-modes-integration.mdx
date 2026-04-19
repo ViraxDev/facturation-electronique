@@ -1,0 +1,124 @@
+---
+title: "Les 3 modes : PA directe / OD+PA / PPF"
+parcours: "ecosysteme"
+order: 12
+xp: 100
+duration: 10
+objectives:
+  - "Identifier les trois modes d'intégration possibles à l'écosystème"
+  - "Comparer coûts, complexité et responsabilités de chaque mode"
+  - "Choisir le mode adapté au profil et à l'organisation"
+sources:
+  - label: "Impots.gouv.fr — Modalités de raccordement"
+    url: "https://www.impots.gouv.fr/facturation-electronique"
+  - label: "FNFE-MPE — Guides pratiques"
+    url: "https://fnfe-mpe.org/"
+  - label: "Economie.gouv.fr — Accompagnement réforme"
+    url: "https://www.economie.gouv.fr/facturation-electronique-entreprises"
+quiz:
+  - question: "Quels sont les trois modes de raccordement à l'écosystème ?"
+    options: ["Papier, PDF, EDI", "PA directe, OD+PA, PPF réduit", "Chorus Pro, PPF, PA", "B2B, B2C, B2G"]
+    correct: 1
+    explanation: "Les trois modes sont : raccordement direct à une PA, via un OD adossé à une PA, ou via le PPF réduit (minimal)."
+  - question: "Le mode 'PPF réduit' permet-il d'émettre des factures ?"
+    options: ["Oui, librement", "Non, il ne permet que la réception minimale et la consultation", "Oui, mais uniquement pour les TPE", "Uniquement pour le B2G"]
+    correct: 1
+    explanation: "Le PPF réduit n'offre plus de service d'émission ; il permet essentiellement la réception minimale via l'annuaire."
+  - question: "Quel mode est privilégié par les grandes entreprises ?"
+    options: ["PPF réduit", "OD+PA via l'éditeur ERP", "PA directe (intégration API dédiée)", "Papier avec conversion"]
+    correct: 2
+    explanation: "Les GE/ETI disposent de volumes et de spécificités qui justifient une intégration API directe avec leur PA."
+  - question: "Quel mode est typique des TPE/PME utilisant un logiciel de facturation SaaS ?"
+    options: ["PA directe", "OD+PA (l'éditeur SaaS est l'OD)", "Papier", "PPF direct"]
+    correct: 1
+    explanation: "La majorité des TPE/PME passent par leur éditeur SaaS (OD) qui s'adosse à une PA partenaire."
+  - question: "Peut-on cumuler plusieurs modes dans une même entreprise ?"
+    options: ["Non, c'est interdit", "Oui, par exemple une PA pour le B2B et Chorus Pro pour le B2G", "Uniquement pour les grandes entreprises", "Uniquement pour les éditeurs"]
+    correct: 1
+    explanation: "Les modes peuvent coexister selon les besoins : PA pour B2B, Chorus Pro pour B2G, éventuellement OD secondaire pour un flux sectoriel."
+---
+
+## Introduction
+
+Une fois l'écosystème compris (PA, OD, PPF, Chorus Pro, annuaire, flux Y), l'entreprise doit choisir **comment se raccorder** concrètement. La réforme offre trois modes d'intégration principaux, chacun avec ses avantages, inconvénients, profils cibles et coûts. Ce module compare ces trois modes pour aider à orienter la décision.
+
+## Mode 1 : PA directe
+
+Dans ce mode, l'entreprise souscrit un contrat **directement avec une PA immatriculée** et intègre ses systèmes (ERP, SI finance) à l'API ou au portail de la PA.
+
+**Caractéristiques** :
+- Relation contractuelle directe avec la PA.
+- Intégration technique à la charge de l'entreprise (API, SFTP, AS4).
+- Portail utilisateur fourni par la PA pour la saisie manuelle et le pilotage.
+
+**Avantages** :
+- **Maîtrise directe** de la chaîne, SLA négocié au plus près.
+- **Pas d'intermédiaire** : moins de latence, moins de points de panne.
+- **Tarification souvent dégressive** au volume pour les gros émetteurs.
+
+**Inconvénients** :
+- **Coût d'intégration** (développement, recette) à la charge de l'entreprise.
+- Nécessite une **équipe SI** compétente.
+
+**Profil cible** : grandes entreprises, ETI avec ERP custom ou SAP, entités à fort volume (> 10 000 factures/an).
+
+## Mode 2 : OD + PA
+
+C'est le mode le plus répandu. L'entreprise utilise son **logiciel métier habituel** (ERP, comptabilité, facturation SaaS), qui joue le rôle d'**OD** et est adossé à une **PA partenaire**.
+
+**Caractéristiques** :
+- L'éditeur fournit la conformité e-invoicing dans son produit.
+- L'entreprise ne contracte pas directement avec la PA : la relation passe par l'éditeur.
+- L'éditeur publie le nom de la PA adossée.
+
+**Avantages** :
+- **Simplicité de mise en œuvre** : activation d'une option dans le logiciel.
+- **Intégration native** : pas de double saisie.
+- **Coût souvent inclus** dans l'abonnement logiciel, ou en léger supplément.
+
+**Inconvénients** :
+- **Dépendance à l'éditeur** : changement d'éditeur = changement de PA potentiel.
+- **Moins de flexibilité** sur le choix de la PA.
+
+**Profil cible** : TPE, PME, micro-entreprises utilisant Sage, Cegid, EBP, Pennylane, QuickBooks, Odoo, etc.
+
+## Mode 3 : PPF réduit (minimal)
+
+Théoriquement accessible, ce mode est désormais très limité. Le PPF ne propose plus de service d'émission. Il reste possible pour une entreprise sans éditeur et sans PA d'être référencée dans l'annuaire pour **recevoir une facture minimale**, mais ce n'est pas un mode opérationnel durable.
+
+**Caractéristiques** :
+- Référencement SIREN dans l'annuaire PPF avec une PA "par défaut" désignée.
+- Pas de service d'émission ni d'intégration ERP.
+
+**Avantages** :
+- Théoriquement gratuit.
+- Conformité réception minimale.
+
+**Inconvénients** :
+- **Aucune émission** possible : bloquant à partir du 1er septembre 2027 pour les PME/TPE/micro.
+- **Pas d'archivage légal** fourni.
+- **Pas d'ingestion** dans les outils métier.
+
+**Profil cible** : aucun en pratique pour une entreprise opérationnelle ; éventuellement une structure inactive.
+
+## Comparatif synthétique
+
+| Critère | PA directe | OD + PA | PPF réduit |
+|---|---|---|---|
+| Coût initial | Élevé | Faible | Nul |
+| Coût récurrent | Variable | Faible à moyen | Nul |
+| Intégration SI | Forte | Native | Aucune |
+| Flexibilité PA | Maximale | Moyenne | Aucune |
+| Profil cible | GE / ETI | TPE / PME | Exception |
+
+## Exemple concret
+
+Un groupe industriel "Industria Group" (3 filiales, 2 ERP différents) opte pour le **mode 1 (PA directe)** : un contrat-cadre avec une PA unique, intégration API sur les deux ERP via un middleware. À l'inverse, "Atelier Durand", artisan électricien, utilise EBP Compta. Il choisit le **mode 2 (OD+PA)** : activation de l'option e-invoicing dans EBP, qui est adossé à une PA immatriculée ; aucun développement, un surcoût de 9 €/mois.
+
+## À retenir
+
+- Trois modes : **PA directe**, **OD+PA**, **PPF réduit**.
+- **PA directe** : maîtrise et performance, pour GE/ETI.
+- **OD+PA** : simplicité et natif dans le logiciel, pour TPE/PME.
+- **PPF réduit** : très limité, pas un mode opérationnel réel.
+- Les modes peuvent **coexister** (B2B via PA, B2G via Chorus Pro, etc.).

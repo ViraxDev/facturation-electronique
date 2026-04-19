@@ -1,0 +1,9 @@
+{
+  "id": "ecosysteme",
+  "titre": "Écosystème",
+  "description": "PA, OD, PPF, Chorus Pro, flux Y : comprendre l'architecture cible.",
+  "order": 2,
+  "icone": "Network",
+  "couleur": "#0284C7",
+  "badge": "parcours-ecosysteme"
+}

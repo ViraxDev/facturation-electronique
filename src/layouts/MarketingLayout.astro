@@ -1,0 +1,15 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/layout/Footer.astro";
+import type { SEO } from "@/lib/seo";
+export interface Props { seo?: SEO }
+const { seo } = Astro.props;
+---
+<BaseLayout seo={seo}>
+  <Header />
+  <main id="main" class="min-h-[60vh]">
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>

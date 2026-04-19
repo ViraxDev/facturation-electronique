@@ -1,0 +1,29 @@
+---
+import MarketingLayout from "@/layouts/MarketingLayout.astro";
+import { FileText, BookOpen, Wrench, ArrowRight } from "lucide-react";
+
+const items = [
+  { href: "/academy", Icon: BookOpen, title: "Academy — 30 modules", text: "Parcours pédagogique gamifié sur 5 parcours (fondations, écosystème, technique, e-reporting, business)." },
+  { href: "/academy/outils", Icon: Wrench, title: "4 outils interactifs", text: "Simulateur d'éligibilité, comparateur PA, calculateur ROI, visualiseur Factur-X." },
+  { href: "/academy/lexique", Icon: FileText, title: "Lexique (40 termes)", text: "PA, OD, PPF, Factur-X, EN 16931, flux Y — définitions expertes." },
+  { href: "/academy/veille", Icon: FileText, title: "Timeline de la réforme", text: "De 2019 à 2027, tous les jalons législatifs et techniques." },
+];
+---
+<MarketingLayout seo={{ title: "Ressources", description: "Academy, outils, lexique, veille : tout pour maîtriser la réforme." }}>
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-[var(--color-primary)]">Ressources</h1>
+    <p class="mt-3 text-lg text-[var(--color-muted-foreground)]">Toutes nos ressources gratuites pour former vos équipes.</p>
+    <ul class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+      {items.map(({ href, Icon, title, text }) => (
+        <li>
+          <a href={href} class="group block rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+            <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-sky-700"><Icon className="h-5 w-5" aria-hidden="true"/></div>
+            <h2 class="mt-4 text-lg font-semibold text-[var(--color-primary)] group-hover:text-[var(--color-accent)]">{title}</h2>
+            <p class="mt-2 text-sm text-[var(--color-muted-foreground)]">{text}</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[var(--color-accent)]">Ouvrir <ArrowRight className="h-3.5 w-3.5" aria-hidden="true"/></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</MarketingLayout>

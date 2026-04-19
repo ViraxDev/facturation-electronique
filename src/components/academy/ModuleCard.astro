@@ -1,0 +1,16 @@
+---
+import { Clock, Award, ArrowRight } from "lucide-react";
+export interface Props { slug: string; title: string; duration: number; xp: number; order: number; parcours: string }
+const { slug, title, duration, xp, order, parcours } = Astro.props;
+---
+<a href={`/academy/modules/${slug}`} class="group block rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-5 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+  <div class="flex items-center justify-between text-xs font-medium text-[var(--color-muted-foreground)] mb-2">
+    <span class="rounded-full bg-sky-100 text-sky-900 px-2 py-0.5">Module {order}</span>
+    <span class="inline-flex items-center gap-1"><Clock className="h-3 w-3" aria-hidden="true"/> {duration} min</span>
+  </div>
+  <h3 class="text-base font-semibold text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">{title}</h3>
+  <div class="mt-3 flex items-center justify-between text-xs text-[var(--color-muted-foreground)]">
+    <span class="inline-flex items-center gap-1 text-amber-600 font-semibold"><Award className="h-3.5 w-3.5" aria-hidden="true"/> +{xp} XP</span>
+    <span class="inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">Commencer <ArrowRight className="h-3.5 w-3.5" aria-hidden="true"/></span>
+  </div>
+</a>

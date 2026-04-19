@@ -1,0 +1,9 @@
+{
+  "id": "e-reporting",
+  "titre": "E-reporting",
+  "description": "Le second volet de la réforme : B2C, international, paiement, fréquences.",
+  "order": 4,
+  "icone": "BarChart3",
+  "couleur": "#059669",
+  "badge": "parcours-e-reporting"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "technique",
+  "titre": "Technique",
+  "description": "EN 16931, Factur-X, UBL, CII, profils, cycle de vie, intégration ERP.",
+  "order": 3,
+  "icone": "Code2",
+  "couleur": "#7C3AED",
+  "badge": "parcours-technique"
+}

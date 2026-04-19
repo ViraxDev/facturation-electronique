@@ -1,0 +1,102 @@
+---
+title: "Transactions internationales B2B/B2C"
+parcours: "e-reporting"
+order: 24
+xp: 100
+duration: 10
+objectives:
+  - "Identifier les transactions internationales relevant de l'e-reporting"
+  - "Comprendre le traitement des opérations UE vs hors UE"
+  - "Anticiper la convergence ViDA à horizon 2030"
+sources:
+  - label: "Impots.gouv.fr — Transactions internationales"
+    url: "https://www.impots.gouv.fr/facturation-electronique"
+  - label: "Legifrance — Article 289 CGI"
+    url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046859812"
+  - label: "Economie.gouv.fr — ViDA"
+    url: "https://www.economie.gouv.fr/facturation-electronique-entreprises"
+quiz:
+  - question: "Une vente à un client allemand assujetti (B2B intra-UE) relève-t-elle de l'e-invoicing ou de l'e-reporting ?"
+    options: ["E-invoicing", "E-reporting", "Ni l'un ni l'autre", "Chorus Pro"]
+    correct: 1
+    explanation: "Le client n'étant pas établi en France, la transaction relève de l'e-reporting (et non de l'e-invoicing domestique)."
+  - question: "Les livraisons intracommunautaires figurent-elles déjà dans une déclaration existante ?"
+    options: ["Non", "Oui, dans la DEB/DES (remplacée par EMEBI/DES)", "Uniquement dans la CA3", "Uniquement dans la liasse fiscale"]
+    correct: 1
+    explanation: "Les livraisons intracommunautaires sont déjà déclarées via l'EMEBI et la DES ; l'e-reporting s'y ajoute mais peut converger à terme."
+  - question: "Un achat auprès d'un fournisseur suisse (hors UE) relève-t-il de l'e-reporting ?"
+    options: ["Non", "Oui, au titre des opérations avec un non-établi en UE", "Uniquement si le montant > 10 000 €", "Uniquement les achats de services"]
+    correct: 1
+    explanation: "Les achats auprès de non-établis relèvent de l'e-reporting (généralement en auto-liquidation TVA)."
+  - question: "Qu'est-ce que ViDA ?"
+    options: ["Une norme française", "Le paquet européen 'VAT in the Digital Age' qui généralise l'e-reporting intra-UE", "Un logiciel de caisse", "Une association professionnelle"]
+    correct: 1
+    explanation: "ViDA (VAT in the Digital Age) est le paquet législatif européen qui harmonise l'e-reporting transfrontalier à horizon 2030."
+  - question: "Les transactions B2C avec un client non établi en France relèvent-elles de l'e-reporting ?"
+    options: ["Non", "Oui, quand le lieu d'imposition est la France ou selon les règles TVA applicables", "Uniquement si paiement en euros", "Uniquement vers l'UE"]
+    correct: 1
+    explanation: "Les ventes B2C transfrontalières relèvent de l'e-reporting selon les règles TVA (OSS/IOSS notamment)."
+---
+
+## Introduction
+
+La dimension internationale est souvent le **point aveugle** des projets e-invoicing. L'e-invoicing B2B domestique concerne les transactions entre assujettis français ; dès qu'une partie est **non établie en France**, on bascule sur l'**e-reporting**. Le régime varie selon qu'il s'agit d'**UE** ou de **hors UE**, de **B2B** ou de **B2C**, de **livraisons de biens** ou de **prestations de services**. Ce module fait le tour de ces situations, de leur traitement et de la convergence attendue avec le paquet européen **ViDA**.
+
+## Cartographie des transactions internationales
+
+Trois axes structurent l'analyse :
+
+1. **Sens du flux** : vente (émission) ou achat (réception).
+2. **Nature du client/fournisseur** : assujetti (B2B) ou particulier (B2C).
+3. **Localisation** : UE (intracommunautaire) ou hors UE (import/export).
+
+Cela donne 8 combinaisons principales, qui relèvent **toutes de l'e-reporting** dans la réforme française (sous réserve d'exceptions pour les opérations non imposables en France).
+
+## Les ventes (émission)
+
+- **B2B intra-UE (LIC)** : livraison intracommunautaire exonérée (art. 262 ter I CGI). L'e-reporting remonte les données au PPF, en plus de l'EMEBI/DES déjà existantes.
+- **B2B hors UE (exportation)** : exonération à l'exportation (art. 262 I CGI). E-reporting obligatoire.
+- **B2C intra-UE** : selon le seuil de ventes à distance (10 000 € UE), application de la TVA française ou de la TVA du pays du client via le guichet OSS. E-reporting obligatoire.
+- **B2C hors UE** : exportation (souvent exonérée), e-reporting requis.
+
+## Les achats (réception)
+
+- **B2B intra-UE (AIC)** : acquisition intracommunautaire, auto-liquidation TVA française (art. 256 bis CGI). L'e-reporting remonte ces achats.
+- **B2B hors UE (importation)** : TVA à l'importation auto-liquidée depuis 2022 (CA3). E-reporting complémentaire.
+- **Prestations de services intra ou extra-UE** : auto-liquidation généralement (art. 283-2 CGI), e-reporting.
+
+## Les données à transmettre
+
+Pour chaque transaction internationale, l'e-reporting attend typiquement :
+
+- **Identifiant de la contrepartie** (numéro TVA intracommunautaire pour l'UE, identifiant fiscal ou pays pour le reste).
+- **Pays de la contrepartie**.
+- **Nature de l'opération** (LIC, AIC, export, import, prestation de service).
+- **Montants HT par taux / par nature** (exonération, auto-liquidation).
+- **Date d'opération** et **date d'exigibilité**.
+- **Référence de la facture** ou équivalent.
+
+À la différence du B2C domestique, l'e-reporting international est **transaction par transaction**, pas agrégé. C'est logique car l'administration veut une traçabilité fine pour lutter contre la fraude carrousel.
+
+## Convergence ViDA
+
+Le paquet **ViDA (VAT in the Digital Age)**, adopté par le Conseil de l'UE en mars 2025, impose à horizon **2030** un **Digital Reporting Requirement (DRR)** harmonisé pour les transactions intracommunautaires. Les États membres devront transmettre les données dans un format unique et dans un délai court (quelques jours) après l'opération. L'e-reporting français est **anticipateur** de ce mouvement et structurellement compatible. Les entreprises qui se mettent en conformité dès 2026-2027 ne devraient pas avoir de refonte majeure à prévoir en 2030.
+
+## Exemple concret
+
+"Export Vins SAS" (Bordeaux) réalise 40 % de son CA en France, 35 % en UE (Allemagne, Belgique, Pays-Bas), 25 % hors UE (USA, Japon, Suisse). À partir du 1er septembre 2027, l'entreprise :
+
+- Émet des **factures électroniques** pour les ventes en France (e-invoicing).
+- Transmet en **e-reporting détaillé** chaque vente UE (avec n° TVA client, pays, montants).
+- Transmet en **e-reporting** chaque exportation hors UE (facture export, pays).
+- Conserve l'EMEBI et la DES pour les flux UE jusqu'à la convergence ViDA en 2030.
+
+Sa PA gère automatiquement l'aiguillage entre e-invoicing et e-reporting en fonction du numéro TVA / pays du client détecté dans la facture source.
+
+## À retenir
+
+- **Dès qu'une partie n'est pas établie en France**, la transaction relève de l'**e-reporting**, pas de l'e-invoicing.
+- Toutes les combinaisons (B2B/B2C, UE/hors UE, vente/achat) sont concernées.
+- L'e-reporting international est **détaillé** (transaction par transaction), contrairement au B2C domestique agrégé.
+- **EMEBI/DES** persistent mais **ViDA** harmonisera à horizon 2030.
+- Les PA **aiguillent automatiquement** e-invoicing/e-reporting selon la contrepartie.

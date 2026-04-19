@@ -1,0 +1,100 @@
+---
+title: "Comment choisir sa PA"
+parcours: "ecosysteme"
+order: 11
+xp: 100
+duration: 10
+objectives:
+  - "Identifier les critères clés de sélection d'une PA"
+  - "Évaluer les offres selon son profil (TPE, PME, ETI, GE)"
+  - "Anticiper les pièges et les questions contractuelles"
+sources:
+  - label: "Impots.gouv.fr — Liste des PA immatriculées"
+    url: "https://www.impots.gouv.fr/facturation-electronique"
+  - label: "FNFE-MPE — Guide de choix PA"
+    url: "https://fnfe-mpe.org/"
+  - label: "Francenum.gouv.fr — Accompagnement numérique"
+    url: "https://www.francenum.gouv.fr/"
+quiz:
+  - question: "Une PA en candidature (non encore immatriculée) est-elle un choix sûr ?"
+    options: ["Oui, c'est équivalent à une PA immatriculée", "Non, il faut vérifier l'immatriculation définitive sur impots.gouv.fr", "Oui si elle est française", "Oui si elle appartient à un grand groupe"]
+    correct: 1
+    explanation: "Seule l'immatriculation définitive publiée par la DGFiP garantit la conformité réglementaire à partir du 1er septembre 2026."
+  - question: "Quel critère technique est particulièrement important pour une PME ?"
+    options: ["Un tarif au volume de factures", "La compatibilité native avec son logiciel comptable/ERP", "Le support en anglais uniquement", "Le nombre d'utilisateurs illimité"]
+    correct: 1
+    explanation: "Le connecteur natif avec l'ERP/logiciel comptable existant est un gain de temps et évite la double saisie."
+  - question: "Le prix doit-il être le critère principal ?"
+    options: ["Oui, le moins cher gagne", "Non, il faut équilibrer prix, SLA, pérennité, conformité et support", "Oui, surtout pour une TPE", "Non, seule la pérennité compte"]
+    correct: 1
+    explanation: "Le choix doit être multi-critère : une PA low-cost sans SLA solide peut coûter cher en cas d'incident."
+  - question: "Que vérifier dans le contrat PA concernant la réversibilité ?"
+    options: ["Rien, la réversibilité est automatique", "Les conditions d'export des données et de notification au PPF en cas de changement de PA", "Le prix de revente", "Uniquement les clauses de confidentialité"]
+    correct: 1
+    explanation: "La réversibilité doit couvrir l'export de l'archive et la mise à jour de l'annuaire PPF pour basculer vers une autre PA."
+  - question: "Une PA peut-elle proposer des offres gratuites pour TPE/micro ?"
+    options: ["Non, c'est interdit", "Oui, plusieurs PA proposent une offre d'entrée gratuite financée par des services annexes", "Uniquement pendant 6 mois", "Uniquement pour les auto-entrepreneurs"]
+    correct: 1
+    explanation: "Le marché a vu émerger des offres gratuites financées par des services à valeur ajoutée (comptabilité, financement, etc.)."
+---
+
+## Introduction
+
+Choisir sa **Plateforme Agréée (PA)** est l'une des décisions structurantes de la mise en conformité à la réforme e-invoicing. Ce choix engage l'entreprise pour plusieurs années, conditionne la qualité de son pilotage financier et, surtout, sa conformité fiscale. La liste officielle des PA immatriculées est publiée sur **impots.gouv.fr** et s'étoffe au fil des immatriculations délivrées par la DGFiP. Ce module propose une grille de critères pour structurer la décision.
+
+## Vérifier l'immatriculation
+
+Premier critère non négociable : l'**immatriculation définitive**. La DGFiP publie la liste des PA immatriculées avec leur numéro et la date de validité. Attention à la distinction entre :
+
+- PA **immatriculée** : agrément définitif, utilisable en production dès 2026.
+- PA **candidate** (en cours d'immatriculation) : commercialisation possible, mais risque si l'immatriculation n'est pas obtenue à temps.
+- PA **en partenariat** (adossement OD) : l'éditeur lui-même n'est pas PA, il s'adosse à une PA immatriculée ; vérifier laquelle.
+
+## Les critères fonctionnels
+
+Selon le profil de l'entreprise, plusieurs critères fonctionnels entrent en jeu :
+
+- **Intégration ERP/logiciel comptable** : existe-t-il un connecteur natif avec Sage, Cegid, EBP, SAP, Oracle, Divalto, Odoo… ? Une PA non intégrée suppose une interface manuelle ou un développement spécifique.
+- **Formats supportés** : tous doivent supporter Factur-X, UBL, CII (socle obligatoire) ; certaines proposent en plus EDI, XML sectoriel, etc.
+- **Gestion des spécificités métier** : mentions réglementées, multi-établissements, multi-devises, autoliquidation, franchise TVA, factures d'acompte.
+- **Portail utilisateur** : saisie manuelle possible pour les petits volumes, tableau de bord de suivi, recherche full-text.
+- **Connecteur Chorus Pro** : pour les entreprises mixtes B2B/B2G.
+
+## Les critères techniques et juridiques
+
+Les critères moins visibles mais critiques :
+
+- **SLA et disponibilité** : engagement contractuel, généralement > 99,5 %, avec pénalités en cas de défaillance.
+- **Sécurité** : certifications SecNumCloud, ISO 27001, hébergement en France ou UE.
+- **Conservation** : archivage à valeur probante sur 10 ans inclus ou en option.
+- **Réversibilité** : conditions d'export des archives, notification au PPF, assistance à la migration vers une autre PA.
+- **Prix** : modèle d'abonnement (au volume, forfaitaire, par utilisateur), coûts d'intégration, coût de sortie.
+- **Pérennité du prestataire** : solidité financière, taille, gouvernance, actionnariat.
+
+## Les critères d'accompagnement
+
+Pour une TPE ou une PME, la qualité de l'accompagnement est souvent déterminante :
+
+- **Support francophone**, accessible téléphone + mail + chat.
+- **Documentation et formation** disponibles en français.
+- **Cabinet d'expertise comptable partenaire** : de nombreuses PA sont intégrées aux portails EC (MyUnisoft, iPaidThat, Pennylane…).
+- **Programme de mise en conformité** : diagnostic, accompagnement au démarrage, recette.
+
+## Exemple concret
+
+"SARL Menuiseries du Rhône", PME de 45 salariés, utilise Sage 100 Comptabilité et a 70 % de son CA en B2B, 30 % en B2G. Grille d'analyse :
+
+1. Elle liste 4 PA immatriculées compatibles Sage 100 : Alpha, Beta, Gamma, Delta.
+2. Elle écarte Gamma (pas de connecteur Chorus Pro natif).
+3. Elle compare tarifs : Alpha = 79 €/mois forfait 1000 factures ; Beta = 0,12 €/facture sans abonnement ; Delta = 120 €/mois avec archivage premium.
+4. Volume réel : 400 factures/mois. Beta = 48 €, Alpha = 79 €, Delta = 120 €.
+5. Elle examine SLA : Alpha 99,9 %, Beta 99,5 %, Delta 99,95 %.
+6. Elle choisit **Beta** pour le rapport qualité-prix et le connecteur Sage natif, après vérification de la clause de réversibilité.
+
+## À retenir
+
+- Vérifier l'**immatriculation définitive** sur impots.gouv.fr, pas seulement la candidature.
+- Évaluer l'**intégration native** avec l'ERP et le logiciel comptable existant.
+- Comparer **SLA, sécurité, conservation, réversibilité, pérennité** — pas seulement le prix.
+- Anticiper les **spécificités métier** (multi-établissement, autoliquidation, B2G).
+- Valider la qualité du **support francophone** et de l'accompagnement.

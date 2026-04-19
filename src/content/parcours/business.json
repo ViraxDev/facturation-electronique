@@ -1,0 +1,9 @@
+{
+  "id": "business",
+  "titre": "Business",
+  "description": "Argumentaire cabinet, offre packagée, pricing et ROI.",
+  "order": 5,
+  "icone": "Briefcase",
+  "couleur": "#F59E0B",
+  "badge": "parcours-business"
+}

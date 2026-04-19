@@ -1,0 +1,84 @@
+---
+title: "PA (ex-PDP) : rôle et obligations"
+parcours: "ecosysteme"
+order: 6
+xp: 100
+duration: 10
+objectives:
+  - "Comprendre ce qu'est une Plateforme Agréée (PA) et son rôle central"
+  - "Identifier les obligations réglementaires et techniques d'une PA"
+  - "Distinguer PA, OD et PPF dans l'écosystème de la réforme"
+sources:
+  - label: "Impots.gouv.fr — Facturation électronique"
+    url: "https://www.impots.gouv.fr/facturation-electronique"
+  - label: "Economie.gouv.fr — Facturation électronique entreprises"
+    url: "https://www.economie.gouv.fr/facturation-electronique-entreprises"
+  - label: "FNFE-MPE — Ressources PDP/PA"
+    url: "https://fnfe-mpe.org/"
+quiz:
+  - question: "Que signifie l'acronyme PA dans la réforme française ?"
+    options: ["Plateforme Administrative", "Plateforme Agréée", "Portail Administratif", "Plateforme Associée"]
+    correct: 1
+    explanation: "PA signifie Plateforme Agréée, nouveau nom des PDP (Plateformes de Dématérialisation Partenaires) utilisé depuis 2024."
+  - question: "Quelle autorité délivre l'immatriculation d'une PA ?"
+    options: ["La CNIL", "L'AIFE sous tutelle de la DGFiP", "L'ARCEP", "Bpifrance"]
+    correct: 1
+    explanation: "C'est l'AIFE (Agence pour l'Informatique Financière de l'État), sous la tutelle de la DGFiP, qui instruit et délivre l'immatriculation des PA."
+  - question: "Quelle est la durée de l'immatriculation d'une PA ?"
+    options: ["1 an", "2 ans", "3 ans renouvelable", "Illimitée"]
+    correct: 2
+    explanation: "L'immatriculation est accordée pour 3 ans renouvelables, sous réserve du maintien des conditions d'agrément."
+  - question: "Quelle est une obligation technique imposée aux PA ?"
+    options: ["Hébergement obligatoire aux États-Unis", "Support des formats du socle Factur-X, UBL et CII", "Utilisation exclusive du PDF simple", "Stockage limité à 1 an"]
+    correct: 1
+    explanation: "Les PA doivent obligatoirement supporter les trois formats du socle minimal : Factur-X, UBL et CII (Cross Industry Invoice)."
+  - question: "Combien de temps une PA doit-elle conserver les factures émises ou reçues ?"
+    options: ["3 ans", "6 ans", "10 ans", "À vie"]
+    correct: 2
+    explanation: "La durée légale de conservation est de 10 ans, conformément aux obligations fiscales et comptables françaises."
+---
+
+## Introduction
+
+La réforme de la facturation électronique française repose sur un acteur central : la **Plateforme Agréée (PA)**, anciennement appelée **Plateforme de Dématérialisation Partenaire (PDP)**. Depuis la refonte du dispositif annoncée en 2024, l'administration a privilégié le terme PA pour insister sur la dimension d'agrément et de contrôle exercé par l'État. Comprendre le rôle des PA est indispensable : elles constituent le pivot opérationnel par lequel transitent les factures électroniques entre émetteurs et destinataires à partir du **1er septembre 2026** (obligation de réception pour toutes les entreprises, et émission pour les grandes entreprises et ETI).
+
+## Qu'est-ce qu'une PA ?
+
+Une PA est un opérateur privé, immatriculé par l'**AIFE** (Agence pour l'Informatique Financière de l'État) sous la tutelle de la DGFiP, qui assume trois missions fondamentales :
+
+1. **Émission et réception de factures électroniques** entre assujettis français (B2B domestique).
+2. **Transmission à l'administration fiscale** des données de facturation (e-invoicing) et des données de transaction (e-reporting).
+3. **Interopérabilité** avec toutes les autres PA via un annuaire central géré par le **PPF** (Portail Public de Facturation).
+
+L'immatriculation PA est délivrée pour une durée de **3 ans renouvelables** après un dossier d'agrément exigeant : audit technique, conformité RGPD, SecNumCloud ou équivalent, engagement de service, capacités financières et garanties assurantielles. Au printemps 2025, plus de 80 candidats étaient engagés dans le processus d'immatriculation.
+
+## Les obligations techniques
+
+Les PA doivent respecter un socle technique strict, défini par le cahier des charges AIFE publié sur impots.gouv.fr :
+
+- **Formats supportés** : le socle minimal impose Factur-X, UBL (Universal Business Language) et CII (Cross Industry Invoice). D'autres formats structurés peuvent être acceptés en complément.
+- **Sécurité** : chiffrement des flux (TLS 1.2 minimum), authentification forte, journalisation horodatée de toutes les opérations.
+- **Conservation** : stockage légal des factures pendant **10 ans**, avec garantie d'intégrité, de lisibilité et d'accessibilité.
+- **Disponibilité** : engagement de service (SLA) avec un taux minimal de disponibilité, généralement supérieur à 99,5 %.
+- **Interopérabilité** : consultation et alimentation de l'annuaire central du PPF, routage correct via le Peppol français adapté.
+
+## Les obligations fonctionnelles
+
+Au-delà de la technique, la PA assume des obligations métier critiques :
+
+- **Contrôle de conformité** : vérification des mentions obligatoires (art. 242 nonies A du CGI), cohérence TVA, validité des numéros SIREN/TVA intracommunautaire.
+- **Gestion des statuts de cycle de vie** : transmission des statuts obligatoires (déposée, rejetée, refusée, encaissée) et des statuts recommandés.
+- **Extraction et transmission des données fiscales** au PPF selon les fréquences imposées (au minimum hebdomadaire pour le e-reporting).
+- **Support utilisateur** en français, avec traçabilité des incidents.
+
+## Exemple concret
+
+Une ETI industrielle de 800 salariés, "Alumétal SA", choisit une PA nationale immatriculée. À partir du 1er septembre 2026, toutes ses factures fournisseurs doivent transiter par cette PA : l'éditeur comptable de l'entreprise pousse les factures sortantes en Factur-X vers la PA, qui contrôle la conformité, transmet les données à la DGFiP, route la facture vers la PA du client via l'annuaire PPF, et récupère les statuts du cycle de vie. Simultanément, Alumétal reçoit ses factures entrantes via la même PA, qui les traduit si nécessaire dans un format compatible avec son ERP.
+
+## À retenir
+
+- La **PA (ex-PDP)** est l'acteur pivot de la réforme : elle émet, reçoit, contrôle, transmet.
+- L'immatriculation est délivrée par l'**AIFE/DGFiP** pour **3 ans renouvelables**.
+- Le socle technique impose **Factur-X, UBL et CII**, une conservation de **10 ans** et un SLA élevé.
+- Les PA sont **interopérables** via l'annuaire central du PPF.
+- Choisir une PA, c'est choisir un prestataire réglementé qui engage sa responsabilité vis-à-vis de l'administration fiscale.

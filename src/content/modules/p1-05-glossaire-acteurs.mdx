@@ -1,0 +1,127 @@
+---
+title: "Glossaire des acteurs"
+parcours: "fondations"
+order: 5
+xp: 150
+duration: 12
+objectives:
+  - "Cartographier tous les acteurs du dispositif français"
+  - "Comprendre la hiérarchie entre DGFiP, PA, OD et Annuaire central"
+  - "Distinguer les rôles normatifs (AFNOR, FNFE-MPE) des rôles opérationnels"
+  - "Savoir positionner l'Ordre des experts-comptables dans l'écosystème"
+sources:
+  - label: "impots.gouv.fr — Les acteurs de la facturation électronique"
+    url: "https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique"
+  - label: "FNFE-MPE — Forum National"
+    url: "https://fnfe-mpe.org"
+  - label: "Ordre des experts-comptables"
+    url: "https://www.experts-comptables.fr"
+  - label: "AFNOR — Normalisation facturation"
+    url: "https://www.afnor.org"
+quiz:
+  - question: "Quel acteur tient l'Annuaire central du dispositif français ?"
+    options: ["L'AFNOR", "La DGFiP", "Le FNFE-MPE", "L'Ordre des experts-comptables"]
+    correct: 1
+    explanation: "L'Annuaire central est tenu par la DGFiP (Direction Générale des Finances Publiques). Il recense toutes les entreprises françaises et leurs plateformes de routage, et joue le rôle de registre d'adressage pour les factures électroniques."
+  - question: "Que signifie l'acronyme PA dans le nouveau vocabulaire officiel ?"
+    options: ["Plateforme Administrative", "Plateforme Agréée", "Partenaire Agréé", "Prestataire Autorisé"]
+    correct: 1
+    explanation: "PA signifie Plateforme Agréée. Ce terme, retenu dans les dernières évolutions, remplace l'ancienne appellation PDP (Plateforme de Dématérialisation Partenaire) utilisée dans les premières versions du dispositif."
+  - question: "Quel est le rôle d'un Opérateur de Dématérialisation (OD) ?"
+    options: ["Il remplace la PA", "Il offre des services de dématérialisation sans être raccordé directement au dispositif fiscal", "Il contrôle les PA", "Il est l'émetteur de la norme"]
+    correct: 1
+    explanation: "Un OD est un prestataire technique qui gère la dématérialisation pour le compte d'une entreprise (ex : un éditeur de logiciel de facturation) mais qui n'a pas le statut d'immatriculation auprès de la DGFiP. Il doit s'appuyer sur une PA pour injecter ou récupérer les flux dans le dispositif."
+  - question: "Le FNFE-MPE est :"
+    options: ["Un organisme public qui délivre les agréments", "Un syndicat d'éditeurs de logiciels", "Un forum multipartite qui promeut la facturation électronique", "Une société commerciale"]
+    correct: 2
+    explanation: "Le FNFE-MPE (Forum National de la Facture Électronique et des Marchés Publics Électroniques) est un forum multipartite réunissant administrations, entreprises, éditeurs et experts. Il joue un rôle de normalisation et d'information, sans pouvoir réglementaire direct."
+  - question: "Quel organisme français assume la fonction de normalisation pour les formats de facture électronique ?"
+    options: ["La DGFiP", "L'AFNOR", "Le FNFE-MPE", "L'INSEE"]
+    correct: 1
+    explanation: "L'AFNOR (Association Française de Normalisation) est l'organisme de normalisation qui porte la transposition des normes européennes, notamment EN 16931 (norme sémantique de la facture électronique). Les autres acteurs (DGFiP, FNFE-MPE) appliquent ou diffusent ces normes sans en être l'émetteur."
+---
+
+## Introduction
+
+Le dispositif français de facturation électronique mobilise une dizaine d'acteurs aux rôles parfois proches et facilement confondus. Une cartographie claire est indispensable pour comprendre les flux, choisir les partenaires et dialoguer avec les clients. Ce module présente chaque acteur, son rôle, sa position dans la hiérarchie, et illustre l'ensemble par un schéma narratif.
+
+## Section 1 — Les acteurs institutionnels
+
+**La DGFiP (Direction Générale des Finances Publiques)** est le maître d'œuvre réglementaire et opérationnel. Elle pilote la réforme au nom du ministère de l'Économie, rédige les spécifications techniques (Dossier de spécifications externes, ou DSE), délivre les agréments aux Plateformes Agréées, tient l'Annuaire central, et reçoit les données d'e-invoicing et d'e-reporting. C'est l'autorité fiscale destinataire finale des flux.
+
+**L'AIFE (Agence pour l'Informatique Financière de l'État)** est rattachée au ministère de l'Économie et gère Chorus Pro, la plateforme B2G opérationnelle depuis 2017. Dans la réforme B2B, l'AIFE joue un rôle indirect mais important : Chorus Pro est appelé à s'articuler avec les PA, et certaines briques techniques (annuaire, standards) ont été mutualisées.
+
+**L'AFNOR (Association Française de Normalisation)** est l'organisme national de normalisation. Elle transpose les normes européennes (notamment EN 16931, norme sémantique de la facture électronique) et publie les normes françaises complémentaires, dont la NF Z12-012 qui spécifie Factur-X en tant que norme française. L'AFNOR n'a pas de pouvoir réglementaire direct mais ses normes sont utilisées par la DGFiP comme référence technique.
+
+## Section 2 — Les acteurs opérationnels du flux de facturation
+
+**La Plateforme Agréée (PA)**, anciennement appelée PDP (Plateforme de Dématérialisation Partenaire) dans les premières versions du dispositif, est le pilier du système. Il s'agit d'un opérateur privé agréé par la DGFiP qui peut :
+
+- recevoir les factures de ses clients émetteurs ;
+- router les factures vers la PA du destinataire en interrogeant l'Annuaire central ;
+- transmettre les données de l'Annuaire (statut de la facture) ;
+- transmettre les données fiscales à la DGFiP ;
+- garantir l'archivage à valeur probante et la conservation légale.
+
+Le statut de PA impose des obligations strictes : immatriculation, résilience technique, conformité RGPD, obligation de service public de routage. Seules les entreprises agréées peuvent exercer ce rôle. Le marché français devrait compter plusieurs dizaines de PA agréées, de grands acteurs de la dématérialisation (Docaposte, Esker, Basware, Generix, Pagero, Sage, Cegid, etc.) aux acteurs plus spécialisés.
+
+**L'Opérateur de Dématérialisation (OD)** est un prestataire technique non agréé. Il gère typiquement le logiciel de facturation ou la saisie client, mais il n'est pas raccordé directement au dispositif fiscal. Il agit comme un sous-traitant : l'entreprise cliente choisit une PA, et l'OD s'interface avec cette PA pour lui transmettre les factures. La majorité des éditeurs de logiciels de facturation du marché (Pennylane, Tiime, Sellsy, Facture.net, etc.) se positionnent soit comme OD adossés à une PA partenaire, soit comme PA à part entière en demandant leur propre immatriculation.
+
+**L'Annuaire central**, tenu par la DGFiP, est le registre d'adressage national. Il associe à chaque SIREN/SIRET la PA d'émission et la PA de réception déclarées par l'entreprise (qui peuvent être la même ou deux plateformes distinctes). Quand une PA A reçoit une facture destinée à une entreprise X, elle interroge l'Annuaire pour savoir quelle PA (appelons-la B) reçoit les factures de X, puis route le flux vers B. Ce mécanisme décentralisé est parfois qualifié de « schéma en Y » : l'Annuaire est le nœud central, les PA sont les branches.
+
+**La DGFiP**, en plus de son rôle d'autorité, est aussi destinataire des données fiscales. Chaque facture transitant par une PA donne lieu à l'envoi automatisé à la DGFiP d'un extrait de données fiscales (lifecycle, montants de TVA, statuts) qui alimente les traitements de lutte contre la fraude et de pré-remplissage déclaratif.
+
+Note importante sur le PPF. Dans les premières versions du dispositif (2021-2023), une Plateforme Publique de Facturation (PPF) gratuite, opérée par l'État, devait être proposée aux petites entreprises comme alternative aux PA privées. En 2023, le gouvernement a annoncé que le PPF n'offrirait plus le service complet de routage. Le rôle du PPF, rebaptisé « portail public de facturation » dans la communication récente, se recentre sur l'Annuaire central et la concentration des données fiscales. Les entreprises doivent donc toutes passer par une PA privée pour émettre et recevoir.
+
+## Section 3 — Les acteurs d'influence et d'accompagnement
+
+**Le FNFE-MPE (Forum National de la Facture Électronique et des Marchés Publics Électroniques)** est un forum multipartite créé en 2011 sous l'égide du ministère de l'Économie. Il réunit administrations, grandes entreprises, éditeurs, experts et associations professionnelles. Son rôle est de promouvoir la facturation électronique, de diffuser les bonnes pratiques, de participer aux groupes de travail techniques, et d'accompagner la normalisation. Le FNFE-MPE a notamment piloté la spécification Factur-X conjointement avec son homologue allemand (FeRD / ZUGFeRD). Il n'a pas de pouvoir réglementaire mais sa voix pèse fortement dans les arbitrages techniques.
+
+**L'Ordre des experts-comptables** est l'organisme professionnel qui encadre la profession. Dans le cadre de la réforme, il joue un rôle de relais auprès de ses 20 000 membres : formation, diffusion des bonnes pratiques, négociation de partenariats avec des PA, production d'outils de référence. Le Conseil supérieur de l'Ordre (CSOEC) publie des vademecums et anime des groupes de travail. Pour un développeur qui vise la clientèle cabinet, la position de l'Ordre est un signal de légitimité professionnelle (une solution recommandée par l'Ordre bénéficie d'un avantage fort).
+
+**La Compagnie nationale des commissaires aux comptes (CNCC)** est l'équivalent pour les CAC. Elle a un rôle plus marginal dans la facturation électronique stricto sensu mais veille à la compatibilité du nouveau dispositif avec les diligences d'audit.
+
+**Les syndicats et fédérations professionnelles** (CGPME/CPME, MEDEF, U2P, Fédération du Conseil, etc.) servent de relais d'information auprès de leurs adhérents et remontent les difficultés d'application au gouvernement.
+
+## Section 4 — Le schéma en Y, illustré narrativement
+
+Imaginons une facture émise par Atelier Dupuis à destination de Groupe Industrix. Atelier Dupuis utilise la PA Alpha, Industrix utilise la PA Beta.
+
+1. Atelier Dupuis saisit la facture dans son logiciel de comptabilité.
+2. Le logiciel (OD ou intégration native) transmet la facture à la PA Alpha au format Factur-X.
+3. La PA Alpha interroge l'Annuaire central DGFiP pour identifier la PA de réception d'Industrix : elle obtient la PA Beta.
+4. La PA Alpha transmet la facture à la PA Beta, au format structuré.
+5. La PA Beta la met à disposition d'Industrix, qui l'intègre dans son système.
+6. En parallèle, les PA Alpha et Beta transmettent à la DGFiP l'extrait de données fiscales (lifecycle de la facture, TVA, statut de paiement).
+7. L'Annuaire central enregistre l'événement.
+
+Le « Y » se dessine : deux branches (émetteur et récepteur) convergent vers l'Annuaire central DGFiP. Ce modèle est décentralisé sur le plan de l'acheminement (pas de plateforme unique d'État qui traiterait tous les flux) mais centralisé sur le plan de la donnée fiscale (la DGFiP voit tout passer).
+
+## Section 5 — La position du développeur dans l'écosystème
+
+Un développeur qui vend un service d'accompagnement aux cabinets n'a pas vocation à devenir PA (barrière technique et financière trop élevée), sauf projet industriel ambitieux. Les trois positions réalistes sont :
+
+- **Revendeur ou intégrateur d'une PA existante** : commission sur les abonnements souscrits par les clients cabinet.
+- **OD spécialisé** : outil métier intégré à une ou plusieurs PA, avec un positionnement vertical (secteur, taille, problématique spécifique).
+- **Conseil et accompagnement pur** : audit, choix de PA, configuration, formation, facturation au forfait ou à la mission.
+
+## Exemple concret
+
+Un cabinet de 8 collaborateurs gère 250 clients. Il signe un partenariat avec une PA agréée X pour l'ensemble de ses clients TPE-PME. Pour les clients ayant déjà un OD (logiciel métier spécifique), le cabinet vérifie que cet OD a un partenariat avec une PA agréée, et conseille de garder cette chaîne. Pour les clients sans solution, le cabinet déploie la PA X et son tableau de bord cabinet. L'Annuaire central est interrogé automatiquement par la PA : le cabinet ne s'en occupe pas directement, mais doit vérifier que la fiche client y est à jour (SIRET, contact, PA déclarée).
+
+## À retenir
+
+- L'autorité réglementaire est la DGFiP ; elle tient l'Annuaire central et reçoit les données fiscales.
+- La PA (Plateforme Agréée, ex-PDP) est l'acteur opérationnel du routage ; l'OD est un prestataire technique non agréé qui s'appuie sur une PA.
+- Le FNFE-MPE est un forum multipartite d'influence et de normalisation, sans pouvoir réglementaire.
+- L'AFNOR porte la normalisation (EN 16931, NF Z12-012 Factur-X).
+- L'Ordre des experts-comptables relaie et accompagne la profession.
+- Le schéma en Y articule émetteur, Annuaire central DGFiP et récepteur.
+
+## Aller plus loin
+
+- [Les acteurs de la facturation électronique — impots.gouv.fr](https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique)
+- [FNFE-MPE](https://fnfe-mpe.org)
+- [Ordre des experts-comptables](https://www.experts-comptables.fr)
+- [AFNOR — Normes EN 16931 et NF Z12-012](https://www.afnor.org)
+

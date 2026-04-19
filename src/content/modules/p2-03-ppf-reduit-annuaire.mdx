@@ -1,0 +1,84 @@
+---
+title: "PPF réduit : annuaire + concentrateur"
+parcours: "ecosysteme"
+order: 8
+xp: 100
+duration: 10
+objectives:
+  - "Comprendre l'évolution du PPF vers un rôle réduit depuis 2024"
+  - "Identifier les deux fonctions maintenues : annuaire et concentrateur fiscal"
+  - "Saisir les conséquences pour les entreprises ne passant pas par une PA"
+sources:
+  - label: "Impots.gouv.fr — PPF et annuaire"
+    url: "https://www.impots.gouv.fr/facturation-electronique"
+  - label: "Economie.gouv.fr — Réforme facturation"
+    url: "https://www.economie.gouv.fr/facturation-electronique-entreprises"
+  - label: "Legifrance — Décret 2022-1299"
+    url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000046398184"
+quiz:
+  - question: "Que signifie PPF ?"
+    options: ["Portail Privé de Facturation", "Portail Public de Facturation", "Plateforme Principale Française", "Plateforme Publique Fiscale"]
+    correct: 1
+    explanation: "PPF signifie Portail Public de Facturation, opéré par l'AIFE pour le compte de la DGFiP."
+  - question: "Depuis l'annonce de juillet 2024, quel est le rôle réduit du PPF ?"
+    options: ["Émettre toutes les factures gratuitement", "Annuaire central + concentrateur fiscal", "Remplacer Chorus Pro", "Assurer l'archivage de toutes les entreprises"]
+    correct: 1
+    explanation: "Le PPF se recentre sur deux missions : la gestion de l'annuaire central et la concentration des données fiscales pour la DGFiP."
+  - question: "À quoi sert l'annuaire du PPF ?"
+    options: ["Lister les clients finaux", "Identifier la PA de chaque entreprise pour le routage", "Répertorier les numéros de TVA européens", "Publier les factures impayées"]
+    correct: 1
+    explanation: "L'annuaire permet à chaque PA de savoir vers quelle PA destinataire router une facture, via le SIREN/SIRET."
+  - question: "Le PPF émet-il encore gratuitement des factures pour les TPE ?"
+    options: ["Oui, c'est la principale mission", "Non, cette fonction a été abandonnée en 2024", "Oui, mais uniquement pour le B2G", "Oui, uniquement pour les auto-entrepreneurs"]
+    correct: 1
+    explanation: "L'annonce d'octobre 2024 a confirmé l'abandon du PPF gratuit d'émission ; les entreprises doivent passer par une PA."
+  - question: "Quelle donnée l'annuaire PPF contient-il ?"
+    options: ["Le mot de passe des entreprises", "Le SIREN/SIRET et la PA déclarée de chaque entreprise", "Le chiffre d'affaires", "Les données personnelles des dirigeants"]
+    correct: 1
+    explanation: "L'annuaire référence chaque entreprise par son identifiant (SIREN/SIRET) et la PA qu'elle a choisie pour recevoir ses factures."
+---
+
+## Introduction
+
+Pensé à l'origine comme la pièce maîtresse de la réforme, le **PPF (Portail Public de Facturation)** devait jouer un double rôle : offrir un service gratuit d'émission et de réception pour toutes les entreprises, et centraliser les données fiscales. L'annonce du ministère de l'Économie et des Finances en **juillet 2024**, confirmée en octobre 2024, a profondément modifié cette architecture. Le PPF conserve désormais un **rôle réduit**, centré sur deux fonctions techniques : **l'annuaire central** et le **concentrateur fiscal**. Comprendre cette évolution est indispensable pour dimensionner son projet de conformité.
+
+## La genèse et l'évolution du PPF
+
+Initialement, le PPF avait vocation à être l'équivalent B2B de Chorus Pro : une plateforme gratuite, accessible à toutes les entreprises, permettant d'émettre et de recevoir leurs factures sans passer par un prestataire privé. Cette ambition s'est heurtée à deux difficultés : la **complexité technique** de construire un service d'émission couvrant la diversité des besoins métier, et le **coût budgétaire** pour l'État. Le gouvernement a donc recentré le PPF sur ses missions strictement régaliennes, laissant aux PA privées le marché de l'émission/réception.
+
+## L'annuaire central
+
+Première mission maintenue : l'**annuaire**. C'est une base de données nationale, alimentée et consultée par toutes les PA immatriculées. Pour chaque entreprise assujettie, l'annuaire indique :
+
+- Le **SIREN ou SIRET** de l'entité.
+- La **PA destinataire** choisie pour recevoir les factures (une entreprise peut avoir plusieurs points de réception selon ses établissements).
+- Les **formats acceptés** et éventuelles spécificités sectorielles.
+- Le **statut actif** de l'inscription.
+
+Cet annuaire est le pivot du routage interopérable : quand la PA de l'émetteur prépare une facture, elle interroge l'annuaire pour identifier la PA du destinataire et router le message en conséquence, de façon comparable au réseau Peppol européen.
+
+## Le concentrateur fiscal
+
+Seconde mission : la **concentration des données fiscales**. Les PA transmettent au PPF :
+
+- Les **données de facturation (e-invoicing)** extraites de chaque facture B2B domestique.
+- Les **données de transaction (e-reporting)** pour le B2C, l'international et les paiements.
+- Les **statuts de cycle de vie** obligatoires (encaissement notamment, essentiel pour l'exigibilité TVA sur prestations de services).
+
+Le PPF agrège ces données, les normalise et les met à disposition de la DGFiP pour l'exploitation fiscale (pré-remplissage de la TVA, lutte contre la fraude, statistiques conjoncturelles).
+
+## Les conséquences pour les entreprises
+
+La réduction du PPF a une conséquence claire : **toutes les entreprises doivent choisir une PA** pour émettre et recevoir. Le "chemin gratuit" via le portail public n'existe plus sous la forme imaginée en 2022. Les TPE et micro-entreprises peuvent encore bénéficier d'offres PA gratuites ou à très faible coût, mais ces offres relèvent désormais du marché, non d'un service public universel.
+
+## Exemple concret
+
+"Boulangerie Martin", micro-entreprise, doit recevoir ses factures fournisseurs à partir du 1er septembre 2026. Elle ne peut pas s'inscrire directement sur le PPF pour recevoir gratuitement : elle doit choisir une PA (souvent proposée en offre d'entrée de gamme gratuite par un éditeur de caisse ou un expert-comptable). Une fois la PA choisie, l'annuaire PPF est mis à jour avec le SIRET de la boulangerie et l'identifiant de la PA. Quand le meunier émet sa facture, sa propre PA interroge l'annuaire et route la facture vers la PA de la boulangerie.
+
+## À retenir
+
+- Le **PPF a un rôle réduit** depuis l'annonce de juillet 2024 : plus de service gratuit d'émission/réception.
+- Il conserve deux missions : **l'annuaire central** (routage) et le **concentrateur fiscal** (données).
+- Toutes les entreprises doivent **choisir une PA** pour émettre et recevoir leurs factures B2B.
+- L'annuaire contient **SIREN/SIRET + PA déclarée + formats acceptés**.
+- Le PPF reste un organe **régalien et technique**, opéré par l'AIFE sous tutelle DGFiP.

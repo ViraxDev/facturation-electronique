@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import AcademyLayout from "@/layouts/AcademyLayout.astro";
+import ParcoursProgress from "@/components/academy/ParcoursProgress";
+import LevelIndicator from "@/components/academy/LevelIndicator";
+import { ArrowRight } from "lucide-react";
+
+const parcours = (await getCollection("parcours")).sort((a, b) => a.data.order - b.data.order);
+const modules = await getCollection("modules");
+const countByParcours: Record<string, number> = {};
+for (const m of modules) countByParcours[m.data.parcours] = (countByParcours[m.data.parcours] ?? 0) + 1;
+---
+<AcademyLayout seo={{ title: "Academy — Facturation Électronique 2026", description: "30 modules gamifiés pour maîtriser la réforme de la facturation électronique française." }}>
+  <header class="mb-10">
+    <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-primary)] tracking-tight">Academy</h1>
+    <p class="mt-3 text-lg text-[var(--color-muted-foreground)] max-w-3xl">5 parcours, 30 modules, 4 outils interactifs. Progressez à votre rythme et gagnez des XP.</p>
+  </header>
+
+  <section class="mb-10">
+    <LevelIndicator client:load />
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-xl font-semibold mb-4">Progression par parcours</h2>
+    <ParcoursProgress client:load />
+  </section>
+
+  <section>
+    <h2 class="text-xl font-semibold mb-4">Les 5 parcours</h2>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {parcours.map((p) => (
+        <li>
+          <a href={`/academy/parcours/${p.data.id}`} class="group block rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+            <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl text-white" style={`background-color: ${p.data.couleur}`}>
+              <span class="text-sm font-bold">{p.data.order}</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">{p.data.titre}</h3>
+            <p class="mt-2 text-sm text-[var(--color-muted-foreground)] line-clamp-3">{p.data.description}</p>
+            <div class="mt-4 flex items-center justify-between text-xs">
+              <span class="text-[var(--color-muted-foreground)]">{countByParcours[p.data.id] ?? 0} modules</span>
+              <span class="inline-flex items-center gap-1 text-[var(--color-accent)] font-medium group-hover:translate-x-0.5 transition-transform">Explorer <ArrowRight className="h-3.5 w-3.5" aria-hidden="true"/></span>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</AcademyLayout>

@@ -1,0 +1,31 @@
+---
+import MarketingLayout from "@/layouts/MarketingLayout.astro";
+import { Quote } from "lucide-react";
+
+const cases = [
+  { cabinet: "Cabinet Lefèvre (Lille, 12 collaborateurs)", clients: 180, equipe: 110, mrr: "2 750 €", quote: "L'audit nous a permis d'aligner toute l'équipe en deux demi-journées. Le kit commercial nous a fait gagner 3 mois." },
+  { cabinet: "Audit & Conseil Méditerranée (Marseille, 8 collaborateurs)", clients: 95, equipe: 58, mrr: "1 450 €", quote: "Le simulateur d'éligibilité est devenu notre support en entretien annuel. Les clients voient immédiatement l'enjeu." },
+  { cabinet: "SCP Dupuis-Martin (Nantes, 22 collaborateurs)", clients: 310, equipe: 175, mrr: "5 250 €", quote: "Le volet e-reporting a été décisif : nos clients avec flux internationaux ne comprenaient pas qu'ils étaient concernés." },
+];
+---
+<MarketingLayout seo={{ title: "Cas clients", description: "Retours concrets de cabinets partenaires." }}>
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-[var(--color-primary)]">Cas clients</h1>
+    <p class="mt-3 text-lg text-[var(--color-muted-foreground)]">Ce que nos cabinets partenaires ont bâti.</p>
+    <ul class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+      {cases.map((c) => (
+        <li class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-6 shadow-sm">
+          <Quote className="h-6 w-6 text-sky-400" aria-hidden="true"/>
+          <p class="mt-3 text-sm italic text-[var(--color-secondary)]">« {c.quote} »</p>
+          <p class="mt-4 font-semibold text-[var(--color-primary)]">{c.cabinet}</p>
+          <dl class="mt-4 grid grid-cols-3 gap-2 text-xs">
+            <div><dt class="text-[var(--color-muted-foreground)]">Clients</dt><dd class="font-bold tabular">{c.clients}</dd></div>
+            <div><dt class="text-[var(--color-muted-foreground)]">Équipés</dt><dd class="font-bold tabular">{c.equipe}</dd></div>
+            <div><dt class="text-[var(--color-muted-foreground)]">MRR</dt><dd class="font-bold tabular text-emerald-700">{c.mrr}</dd></div>
+          </dl>
+        </li>
+      ))}
+    </ul>
+    <p class="mt-10 text-xs text-[var(--color-muted-foreground)] italic">Exemples illustratifs basés sur des profils cabinet types.</p>
+  </section>
+</MarketingLayout>

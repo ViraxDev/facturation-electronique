@@ -1,0 +1,90 @@
+---
+title: "APIs typiques d'une PA : REST, webhooks"
+parcours: "technique"
+order: 8
+xp: 250
+duration: 18
+objectives:
+  - "Identifier les endpoints typiques d'une API de Plateforme Agréée"
+  - "Mettre en œuvre une authentification OAuth 2.0 ou API Key"
+  - "Consommer les webhooks de changement de statut"
+  - "Appliquer les patterns d'idempotency et de gestion de rate limits"
+  - "Écrire des exemples d'appels curl/JSON prêts à l'emploi"
+sources:
+  - label: "Spécifications externes AIFE — API PPF"
+    url: "https://www.impots.gouv.fr/"
+  - label: "Documentations publiques PDP (plateformes de dématérialisation)"
+    url: "https://www.impots.gouv.fr/particulier/la-facturation-electronique"
+  - label: "RFC 6749 OAuth 2.0, RFC 8725 JWT Best Practices"
+    url: "https://www.impots.gouv.fr/"
+quiz:
+  - question: "Quel endpoint est typique pour soumettre une facture à une PA ?"
+    options:
+      - "GET /invoices"
+      - "POST /invoices/send"
+      - "DELETE /invoices"
+      - "PUT /health"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Quelle est la fonction d'un en-tête Idempotency-Key ?"
+    options:
+      - "Accélérer la requête"
+      - "Garantir qu'une même requête soumise 2 fois ne crée qu'une seule facture"
+      - "Signer la requête"
+      - "Chiffrer le corps"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Un webhook de la PA permet typiquement :"
+    options:
+      - "De télécharger un PDF"
+      - "D'être notifié en push des changements de statut"
+      - "De valider un certificat"
+      - "De configurer les rate limits"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "OAuth 2.0 utilise typiquement quel grant type pour un ERP server-to-server ?"
+    options:
+      - "Authorization code"
+      - "Implicit"
+      - "Client credentials"
+      - "Password"
+    correct: 2
+    explanation: "Voir la section correspondante du module."
+  - question: "Un code HTTP 429 signifie :"
+    options:
+      - "Ressource introuvable"
+      - "Erreur serveur"
+      - "Trop de requêtes (rate limit dépassé)"
+      - "Requête malformée"
+    correct: 2
+    explanation: "Voir la section correspondante du module."
+---
+# APIs typiques d'une PA : REST, webhooks
+
+Les Plateformes Agréées exposent à leurs clients (ERP, portails, SaaS) des **APIs REST** pour le dépôt, la consultation et le suivi des factures. Si chaque PA personnalise son offre, un **tronc commun** se dégage, conforme aux spécifications externes AIFE. Ce module décrit les patterns récurrents, l'authentification, les webhooks et les bonnes pratiques d'intégration.
+
+## 1. Endpoints typiques
+
+Une API PA propose habituellement les opérations suivantes (les chemins varient, l'intention est la même) :
+
+| Verbe | Endpoint | Rôle |
+|-------|----------|------|
+| POST | `/v1/invoices/send` | Soumettre une facture (UBL, CII ou Factur-X) |
+| GET | `/v1/invoices/{id}` | Récupérer une facture déposée |
+| GET | `/v1/invoices/{id}/lifecycle` | Lister les statuts d'une facture |
+| POST | `/v1/invoices/{id}/status` | Émettre un statut (Refusée, Encaissée…) |
+| GET | `/v1/invoices?status=Refusée&since=2026-04-01` | Lister selon filtres |
+| POST | `/v1/reporting/transactions` | Soumettre un e-reporting (B2C, transfrontalier) |
+| GET | `/v1/directory/{siren}` | Rechercher un destinataire dans l'annuaire PPF |
+| POST | `/v1/webhooks` | Enregistrer un endpoint pour les notifications |
+| GET | `/v1/health` | Sonde de disponibilité |
+
+Les formats d'échange privilégient **JSON** pour les métadonnées et **XML** (UBL/CII) ou **PDF** (Factur-X) pour le payload de facture, souvent transporté en `multipart/form-data` ou encapsulé en base64.
+
+## 2. Authentification
+
+Deux modes dominent :
+
+### OAuth 2.0 Client Credentials
+
+Recommandé pour les intégrations server-to-server. Flux :

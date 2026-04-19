@@ -1,0 +1,59 @@
+---
+import MarketingLayout from "@/layouts/MarketingLayout.astro";
+import { Target, Users, Briefcase, TrendingUp, ArrowRight, CheckCircle2 } from "lucide-react";
+
+const painPoints = [
+  "Vos clients TPE/PME ne comprennent pas encore l'obligation 2026/2027.",
+  "Vous cherchez un canal de revenus récurrent aligné sur votre expertise.",
+  "Vous devez qualifier vite quelle Plateforme Agréée recommander.",
+  "Vous voulez un livrable clé-en-main à vendre en entretien annuel.",
+];
+
+const benefits = [
+  { Icon: Target, title: "Audit 360°", text: "Diagnostic express de chaque client : date butoir, flux, outil en place." },
+  { Icon: Users, title: "Onboarding piloté", text: "Scripts d'appel, checklists, modèles de contrats et de courriers." },
+  { Icon: Briefcase, title: "Tarification prête", text: "3 packs (Starter / Pro / Expert) à revendre avec marge cabinet." },
+  { Icon: TrendingUp, title: "Revenus récurrents", text: "Sur 150 clients TPE équipés 25 €/mois : 45 k€ de MRR." },
+];
+---
+<MarketingLayout seo={{ title: "Pour les cabinets d'experts-comptables", description: "Transformez l'obligation 2026 en opportunité commerciale récurrente." }}>
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="max-w-3xl">
+      <span class="inline-flex items-center gap-2 rounded-full bg-sky-100 text-sky-900 px-3 py-1 text-xs font-semibold">Pour les cabinets</span>
+      <h1 class="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-[var(--color-primary)]">L'obligation 2026 est une opportunité récurrente.</h1>
+      <p class="mt-5 text-lg text-[var(--color-secondary)]">Nous fournissons au cabinet l'expertise, les outils et les offres pour équiper sa base clients TPE/PME avant le 1ᵉʳ septembre 2027.</p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-6">
+        <h2 class="text-lg font-semibold text-[var(--color-primary)]">Les frictions que l'on lève</h2>
+        <ul class="mt-4 space-y-2 text-sm">
+          {painPoints.map((p) => <li class="flex gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-600 flex-shrink-0 mt-0.5" aria-hidden="true"/><span>{p}</span></li>)}
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-gradient-to-br from-[var(--color-primary)] to-slate-800 text-white p-6">
+        <h2 class="text-lg font-semibold">Projection cabinet type</h2>
+        <dl class="mt-4 space-y-3 text-sm">
+          <div class="flex justify-between"><dt>150 clients TPE/PME</dt><dd class="tabular">× 60 % équipés</dd></div>
+          <div class="flex justify-between"><dt>Prix mensuel moyen</dt><dd class="tabular">25 € HT</dd></div>
+          <div class="flex justify-between pt-3 border-t border-white/20"><dt class="font-semibold">MRR additionnel</dt><dd class="tabular text-amber-300 font-bold">2 250 € / mois</dd></div>
+          <div class="flex justify-between"><dt class="font-semibold">Année 1</dt><dd class="tabular text-amber-300 font-bold">≈ 40 500 €</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {benefits.map(({ Icon, title, text }) => (
+        <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-5">
+          <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-700"><Icon className="h-5 w-5" aria-hidden="true"/></div>
+          <h3 class="mt-4 font-semibold text-[var(--color-primary)]">{title}</h3>
+          <p class="mt-2 text-sm text-[var(--color-muted-foreground)]">{text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16 text-center">
+      <a href="/contact" class="btn-primary inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold">Demander une démo 30 min <ArrowRight className="h-4 w-4" aria-hidden="true"/></a>
+    </div>
+  </section>
+</MarketingLayout>

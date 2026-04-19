@@ -1,0 +1,137 @@
+---
+title: "Pricing, ROI cabinet et contrat type"
+parcours: "business"
+order: 30
+xp: 200
+duration: 15
+objectives:
+  - "Comparer les trois grands modèles de pricing (forfait, récurrent, revshare PA)"
+  - "Calculer le ROI d'un cabinet type"
+  - "Maîtriser les sections essentielles d'un contrat d'accompagnement"
+  - "Positionner les clauses RGPD, SLA et résiliation"
+sources:
+  - label: "Conseil supérieur de l'Ordre — Contrats et honoraires"
+    url: "https://www.experts-comptables.fr"
+  - label: "CNIL — Contrats de sous-traitance RGPD"
+    url: "https://www.cnil.fr/fr/sous-traitant"
+  - label: "Code de commerce — Contrats commerciaux"
+    url: "https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000005634379"
+  - label: "FNFE-MPE — Cadre contractuel PA"
+    url: "https://fnfe-mpe.org"
+quiz:
+  - question: "Dans un modèle forfait setup + récurrent mensuel, quelle est la fourchette tarifaire la plus répandue pour une TPE ?"
+    options: ["0 euro setup + 100 euros/mois", "500 à 1 500 euros setup + 40 à 75 euros/mois", "3 000 à 5 000 euros setup + 200 euros/mois", "Aucun setup, 500 euros/mois"]
+    correct: 1
+    explanation: "Les tarifs observés sur le marché pour une offre cabinet TPE-PME se situent entre 500 et 1 500 euros de setup et entre 40 et 75 euros de récurrent mensuel. Ces niveaux couvrent les coûts d'accompagnement tout en restant acceptables pour un client final habitué à 80-150 euros/mois de honoraires cabinet."
+  - question: "Pour un cabinet de 250 clients avec 30 % d'adhésion à 60 euros/mois, quel est le chiffre d'affaires récurrent annuel brut ?"
+    options: ["9 000 euros", "18 000 euros", "45 000 euros", "90 000 euros"]
+    correct: 2
+    explanation: "Le calcul est : 250 × 30 % × 60 × 12 = 54 000 euros brut. La bonne fourchette s'arrondit à 45 000 euros en considérant un taux d'adhésion légèrement inférieur ou des remises sur certains clients. Cette base permet au développeur de projeter des revenus récurrents structurants."
+  - question: "Quelle clause est obligatoire dans tout contrat impliquant un traitement de données à caractère personnel ?"
+    options: ["Une clause de non-concurrence", "Un engagement RGPD avec rôles et obligations de sous-traitance", "Une assurance dommages", "Un droit de préemption"]
+    correct: 1
+    explanation: "L'article 28 du RGPD impose un contrat écrit entre responsable de traitement et sous-traitant, précisant l'objet, la durée, la nature, la finalité du traitement, et les obligations de chacun. C'est une obligation légale non négociable pour tout contrat impliquant des données à caractère personnel."
+  - question: "Quelle est la durée de résiliation classique dans un contrat d'accompagnement cabinet ?"
+    options: ["Sans préavis", "1 mois de préavis", "3 mois de préavis", "2 ans d'engagement minimum"]
+    correct: 2
+    explanation: "Un préavis de 3 mois est le standard du marché cabinet. Il permet de couvrir la bascule opérationnelle (reprise des données, formation d'un autre prestataire) sans bloquer excessivement le client. Des engagements plus longs sont mal perçus et compliquent la vente."
+  - question: "Quel est l'avantage principal du modèle revshare PA par rapport au forfait récurrent ?"
+    options: ["Il rapporte toujours plus", "Il aligne les incitations avec la PA partenaire et simplifie la facturation cabinet", "Il est imposé par la loi", "Il supprime la TVA"]
+    correct: 1
+    explanation: "Le modèle revshare (commission sur les abonnements PA souscrits par les clients) aligne les intérêts entre la PA et l'apporteur d'affaires, et simplifie la facturation pour le cabinet (la PA facture directement le client). En contrepartie, la part revshare est généralement inférieure à la marge d'une revente directe, ce qui limite le gain."
+---
+
+## Introduction
+
+Le pricing d'une offre cabinet conditionne deux choses : sa rentabilité pour le développeur et son acceptabilité par le cabinet et ses clients. Mal calibré, il détruit la relation commerciale ; bien calibré, il finance la pérennité du modèle et justifie la qualité du service. Ce module présente les trois grands modèles de facturation, le calcul de ROI d'un cabinet type, et la structure d'un contrat d'accompagnement juridiquement solide.
+
+## Section 1 — Les trois modèles de pricing
+
+**Modèle 1 — Forfait setup + récurrent revendu.** Le développeur facture un forfait d'installation (500 à 1 500 euros selon la complexité) et un abonnement mensuel (40 à 75 euros par client) qui inclut la licence PA. Il achète la licence à la PA en gros (typiquement 15 à 30 euros/mois/client en tarif partenaire) et la revend avec sa marge. Avantage : marge maîtrisée, contrôle du client. Inconvénient : le développeur porte le risque de recouvrement et la facturation mensuelle.
+
+**Modèle 2 — Forfait setup uniquement + revshare PA.** Le développeur facture le setup au client mais le récurrent est facturé directement par la PA. En contrepartie, la PA reverse une commission (revshare), typiquement 15 à 30 % du revenu récurrent pendant la durée de vie du client. Avantage : zéro risque de recouvrement, facturation simplifiée. Inconvénient : marge récurrente plus faible, dépendance à la PA pour la visibilité.
+
+**Modèle 3 — Honoraires projet.** Le développeur facture l'intégralité de la mission au forfait (entre 2 000 et 8 000 euros selon le client), sans récurrent. Avantage : revenu immédiat et prévisible. Inconvénient : pas de flux récurrent, cycle de vente long à chaque mission, pas de verrouillage client.
+
+Le mix recommandé pour un développeur solo ou petite structure est un modèle 1 principal pour les clients PME (revenus récurrents structurants), complété par un modèle 3 pour les missions ponctuelles (clients qui ne veulent pas de récurrent) et un modèle 2 de secours quand le cabinet préfère déléguer la facturation.
+
+## Section 2 — Le calcul de ROI d'un cabinet type
+
+Prenons un cabinet de 250 clients, représentatif du marché français. L'hypothèse médiane est : 70 % de TPE (175), 25 % de PME (63), 5 % d'ETI (12). Taux d'adhésion à l'offre cabinet : 40 % des TPE (70), 60 % des PME (38), 80 % des ETI (10), soit 118 clients facturés.
+
+Setup facturé : 70 × 700 + 38 × 1 200 + 10 × 2 500 = 49 000 + 45 600 + 25 000 = 119 600 euros étalés sur 18 mois, soit environ 80 000 euros par an en régime de démarrage.
+
+Récurrent mensuel : 70 × 50 + 38 × 65 + 10 × 85 = 3 500 + 2 470 + 850 = 6 820 euros par mois, soit 81 840 euros par an.
+
+CA total annuel en régime de croisière (après la phase de setup) : environ 82 000 euros récurrents. Si la marge nette est de 40 à 50 % (coûts licences PA + coûts humains + outils), la marge nette pour le développeur est de 33 000 à 41 000 euros par an pour ce seul cabinet partenaire.
+
+**Pour le cabinet**, le calcul est distinct. S'il partage 30 % avec le développeur (soit 24 000 euros reversés) et conserve 70 %, son revenu additionnel est de 57 000 euros par an, pour une charge de travail interne limitée (le développeur porte l'opérationnel). C'est cette perspective qu'il faut présenter au dirigeant cabinet lors du pitch : « 45 à 60 000 euros de CA récurrent additionnel par an, sans alourdir la production. »
+
+L'approximation souvent citée (« 250 clients × 30 % × 60 euros = 45 000 euros/an ») est volontairement conservatrice : elle correspond à un cabinet plus petit ou à un taux d'adhésion plus faible. Elle a le mérite de donner un ordre de grandeur vendable en rendez-vous.
+
+## Section 3 — Le contrat type : les sept sections essentielles
+
+Un contrat d'accompagnement cabinet couvre sept sections minimales.
+
+**Section 1 — Objet.** Définition claire de la mission : « accompagnement à la mise en conformité facturation électronique », avec renvoi vers un annexe de périmètre détaillé. Mention de la PA choisie et de l'architecture (OD/PA). Le périmètre doit préciser ce qui est inclus et ce qui est exclu (ex : migration historique en option facturée à part).
+
+**Section 2 — Livrables.** Liste numérotée des livrables, dates de remise, critères d'acceptation. Cette section est la base de tout litige ultérieur : un livrable mal défini est un risque financier.
+
+**Section 3 — Prix et modalités de paiement.** Décomposition du setup, du récurrent, des options, des frais éventuels (déplacements, formations supplémentaires). Indexation annuelle possible (typiquement INSEE syntec + inflation plafonnée). Pénalités de retard de paiement (article L.441-10 du Code de commerce, taux BCE + 10 points + 40 euros d'indemnité forfaitaire).
+
+**Section 4 — RGPD et protection des données.** Clause de sous-traitance au sens de l'article 28 RGPD. Identification du responsable de traitement (le client ou le cabinet selon montage), du sous-traitant (le développeur), des finalités, de la durée, des mesures de sécurité, des droits des personnes concernées. Cette clause n'est pas optionnelle : son absence expose aux sanctions CNIL jusqu'à 4 % du CA annuel mondial.
+
+**Section 5 — SLA.** Engagement de service : délai de réponse à une demande support (ex : 24 heures ouvrées pour un ticket standard, 4 heures pour un ticket critique), disponibilité de la PA (garantie typique 99,5 % mensuelle), procédure de gestion d'incident. Pénalités pour manquement SLA : typiquement 10 à 30 % du récurrent mensuel en avoir. Bien distinguer la part du développeur (accompagnement) et la part de la PA (technique) : le développeur ne peut pas s'engager sur les SLA de la PA, il renvoie au contrat PA.
+
+**Section 6 — Durée et résiliation.** Durée initiale (typiquement 12 mois), renouvellement tacite annuel, préavis de résiliation (3 mois standard), conditions de résiliation anticipée pour faute, restitution des données à la fin du contrat. Mention du droit de portabilité : le client récupère ses données et ses archives à sa demande.
+
+**Section 7 — Responsabilité et assurances.** Plafond de responsabilité (typiquement 1 à 2 fois le montant annuel facturé), exclusions classiques (force majeure, faute du client, indisponibilité tiers hors PA), obligation d'assurance RC professionnelle (minimum 500 000 euros). Cette section protège le développeur en cas de litige important.
+
+## Section 4 — Les clauses à négocier avec la PA partenaire
+
+Si le développeur revend la licence PA (modèle 1), il faut un contrat de partenariat distinct avec la PA. Points critiques à négocier :
+
+**Tarification partenaire.** Prix public vs prix partenaire, paliers de volume (réduction à partir de 50, 100, 500 clients), conditions d'accès à ces paliers.
+
+**Exclusivité.** Éviter l'exclusivité réciproque : pouvoir travailler avec 2 ou 3 PA selon le profil client.
+
+**Marques et communication.** Droits de mentionner la PA dans les supports commerciaux, obligations de branding, validation des communications mentionnant la marque.
+
+**Résiliation.** Conditions de sortie du partenariat et devenir des clients en cours. Clause essentielle : en cas de rupture, les clients existants restent chez le développeur avec maintien du tarif partenaire pendant la durée résiduelle de leur contrat.
+
+**Formation et certification.** Accès à la formation partenaire, certification technique, assistance avant-vente.
+
+## Section 5 — Les pièges à éviter
+
+**Engagement long imposé au client.** Un engagement 36 mois non résiliable est commercialement toxique et juridiquement fragile si le client est un non-professionnel au sens du Code de la consommation. Préférer 12 mois + reconduction tacite.
+
+**Périmètre flou.** « Accompagnement à la facturation électronique » sans détail est une porte ouverte au scope creep. Détailler chaque livrable.
+
+**Absence de clause de révision tarifaire.** Les coûts PA évoluent ; sans indexation prévue, une hausse de 20 % à 2 ans détruit la marge.
+
+**Oubli du RGPD.** Un contrat sans clause article 28 est nul de ce point de vue et expose à sanctions. Toujours inclure un accord de sous-traitance, même pour un flux minimal.
+
+**Pas de plafond de responsabilité.** En l'absence de plafond, le développeur est exposé à une responsabilité illimitée en cas de défaillance (ex : facture non émise, amende DGFiP reportée). Un plafond de 12 à 24 mois de revenus est le standard.
+
+**SLA sur éléments hors de contrôle.** Ne jamais s'engager sur la disponibilité d'une PA tierce que l'on revend. Renvoyer au SLA contractuel de la PA.
+
+## Exemple concret
+
+Contrat signé entre le développeur « Acme Conseil » et le cabinet « Expert Plus » (dirigeant Mme Bernard, 250 clients). Setup cabinet : 2 500 euros pour intégration, formation collaborateurs, mise en place du tableau de bord. Récurrent : facturation directe du développeur aux clients finaux du cabinet à 55 euros/mois/client, avec reversement de 15 euros/mois/client au cabinet (soit 27 % de commission cabinet). Durée : 24 mois reconductible avec préavis 3 mois. Clause RGPD renvoyant à un DPA annexé. Plafond de responsabilité : 24 fois le récurrent mensuel plafonné à 50 000 euros. Pénalité SLA : 15 % du récurrent du mois si réponse au support > 48h ouvrées. Résiliation anticipée pour faute possible après mise en demeure non résolue sous 30 jours.
+
+## À retenir
+
+- Trois modèles de pricing : forfait setup + récurrent revendu (marge maîtrisée), forfait + revshare PA (zéro risque), honoraires projet (revenu immédiat).
+- ROI cabinet type : 250 clients × 30 à 40 % d'adhésion × 50 à 85 euros/mois = 45 000 à 80 000 euros de CA récurrent annuel.
+- Sept sections contractuelles obligatoires : objet, livrables, prix, RGPD (article 28), SLA, durée/résiliation, responsabilité/assurances.
+- Pièges à éviter : périmètre flou, absence d'indexation, oubli RGPD, responsabilité illimitée, SLA sur tiers.
+- Préavis de résiliation standard : 3 mois. Engagement : 12 mois renouvelable tacitement.
+
+## Aller plus loin
+
+- [CNIL — Article 28 et contrats de sous-traitance](https://www.cnil.fr/fr/sous-traitant)
+- [Conseil supérieur de l'Ordre — Contrats et honoraires](https://www.experts-comptables.fr)
+- [Code de commerce — Délais de paiement](https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000005634379)
+- [FNFE-MPE — Cadre contractuel PA](https://fnfe-mpe.org)
+
+Les 8 modules MDX sont rédigés et livrés ci-dessus, séparés par `

@@ -1,0 +1,11 @@
+---
+import AcademyLayout from "@/layouts/AcademyLayout.astro";
+import ROICalculator from "@/components/tools/ROICalculator";
+---
+<AcademyLayout seo={{ title: "Calculateur ROI cabinet", description: "Projetez les revenus annuels d'une offre facturation électronique." }}>
+  <header class="mb-6 max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-primary)]">ROI cabinet</h1>
+    <p class="mt-3 text-[var(--color-muted-foreground)]">Ajustez les paramètres pour voir la projection en temps réel.</p>
+  </header>
+  <ROICalculator client:load />
+</AcademyLayout>

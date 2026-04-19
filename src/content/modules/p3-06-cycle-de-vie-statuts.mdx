@@ -1,0 +1,100 @@
+---
+title: "Cycle de vie et 14 statuts obligatoires"
+parcours: "technique"
+order: 6
+xp: 200
+duration: 15
+objectives:
+  - "Identifier les 14 statuts du cycle de vie d'une facture électronique"
+  - "Distinguer statuts obligatoires et statuts recommandés"
+  - "Comprendre les transitions d'état et les événements associés"
+  - "Analyser l'impact des statuts sur l'exigibilité TVA"
+  - "Modéliser le flux d'événements côté ERP et PA"
+sources:
+  - label: "AIFE — Spécifications externes : dossier statuts"
+    url: "https://www.impots.gouv.fr/"
+  - label: "FNFE-MPE — guide cycle de vie facture"
+    url: "https://fnfe-mpe.org/factur-x/"
+  - label: "DGFiP — documentation e-invoicing / e-reporting"
+    url: "https://www.impots.gouv.fr/particulier/la-facturation-electronique"
+quiz:
+  - question: "Combien de statuts obligatoires sont définis par la réforme française ?"
+    options:
+      - "6"
+      - "10"
+      - "14"
+      - "20"
+    correct: 2
+    explanation: "Voir la section correspondante du module."
+  - question: "Lequel de ces statuts est un statut obligatoire selon la documentation ?"
+    options:
+      - "Archivée"
+      - "Imprimée"
+      - "Déposée"
+      - "Scannée"
+    correct: 2
+    explanation: "Voir la section correspondante du module."
+  - question: "Quel statut indique qu'une facture a été refusée par le destinataire ?"
+    options:
+      - "Rejetée"
+      - "Refusée"
+      - "Invalidée"
+      - "Annulée"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Le statut 'Encaissée' a un impact direct sur :"
+    options:
+      - "Le numéro de facture"
+      - "L'exigibilité de la TVA pour les prestations de services"
+      - "La couleur du PDF"
+      - "Rien de particulier"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Qui est typiquement à l'origine d'un statut 'Rejetée' ?"
+    options:
+      - "Le destinataire"
+      - "La Plateforme Agréée ou le PPF pour non-conformité technique"
+      - "Le service TVA"
+      - "L'émetteur lui-même"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+---
+# Cycle de vie et 14 statuts obligatoires
+
+Dans la facturation électronique française post-2026, une facture n'est plus un fichier statique qu'on émet et qu'on oublie : elle vit un **cycle complet** jalonné de **statuts** que les Plateformes Agréées doivent remonter. Ces statuts servent à la fois le suivi commercial (où en est ma facture ?), le contrôle fiscal (exigibilité TVA) et la mécanique juridique (recouvrement, pénalités).
+
+## 1. Les 14 statuts du cycle de vie
+
+Selon la documentation officielle (spécifications externes AIFE), on distingue **14 statuts** structurants. Certains sont **obligatoires** (toute PA doit les émettre quand l'événement se produit), d'autres **recommandés** (optionnels mais utiles).
+
+| # | Statut | Émetteur typique | Obligation | Signification |
+|---|--------|------------------|------------|---------------|
+| 1 | Déposée | PA émettrice | Obligatoire | Facture reçue par la PA |
+| 2 | Rejetée | PA émettrice ou PPF | Obligatoire | Non conforme techniquement |
+| 3 | Prise en charge | PA destinataire | Obligatoire | Reçue par la PA du destinataire |
+| 4 | Mise à disposition | PA destinataire | Obligatoire | Disponible pour le destinataire |
+| 5 | Refusée | Destinataire | Obligatoire | Refus pour motif commercial/fiscal |
+| 6 | Approuvée | Destinataire | Recommandé | Accord formel |
+| 7 | Paiement transmis | Destinataire / banque | Recommandé | Ordre de paiement émis |
+| 8 | Encaissée | Émetteur | **Obligatoire pour services** | Paiement reçu |
+| 9 | Suspendue | Destinataire | Recommandé | Facture en suspens (litige) |
+| 10 | Litige | Destinataire | Recommandé | Litige formel |
+| 11 | Litige levé | Destinataire | Recommandé | Résolution du litige |
+| 12 | Approbation partielle | Destinataire | Recommandé | Accord partiel |
+| 13 | Complétée | Émetteur/PA | Recommandé | Processus terminé |
+| 14 | Archivée | PA / Archiveur | Recommandé | Archivage légal |
+
+**Note** : la liste exacte et la désignation peuvent évoluer ; certaines versions de la documentation externe regroupent ou renomment certains statuts. Les 14 ci-dessus représentent la vision consolidée à la date du document.
+
+## 2. Statuts obligatoires vs recommandés
+
+Les **statuts obligatoires** doivent être générés et transmis par les acteurs du cycle sans exception. Ils sont la colonne vertébrale de la traçabilité CTC :
+
+- **Déposée**, **Rejetée**, **Prise en charge**, **Mise à disposition** : côté plateforme.
+- **Refusée**, **Encaissée** (pour les services) : côté destinataire/émetteur, mais transmis via PA.
+
+Les **statuts recommandés** enrichissent le dialogue commercial (approbation, suspension, litige) sans être imposés par la DGFiP. Ils facilitent la gestion mais restent optionnels.
+
+## 3. Flux d'événements typique
+
+Voici un diagramme textuel du parcours heureux puis des branches d'erreur :

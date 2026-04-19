@@ -1,0 +1,19 @@
+---
+import { Info, AlertTriangle, CheckCircle2, Lightbulb } from "lucide-react";
+export interface Props { type?: "info" | "warning" | "success" | "tip"; title?: string }
+const { type = "info", title } = Astro.props;
+const styles = {
+  info: { bg: "bg-sky-50", border: "border-sky-200", fg: "text-sky-900", Icon: Info },
+  warning: { bg: "bg-amber-50", border: "border-amber-200", fg: "text-amber-900", Icon: AlertTriangle },
+  success: { bg: "bg-emerald-50", border: "border-emerald-200", fg: "text-emerald-900", Icon: CheckCircle2 },
+  tip: { bg: "bg-violet-50", border: "border-violet-200", fg: "text-violet-900", Icon: Lightbulb },
+}[type];
+const { Icon } = styles;
+---
+<aside role="note" class={`not-prose my-6 rounded-xl border p-4 flex gap-3 ${styles.bg} ${styles.border} ${styles.fg}`}>
+  <Icon className="h-5 w-5 mt-0.5 flex-shrink-0" aria-hidden="true" />
+  <div class="flex-1 text-sm">
+    {title && <p class="font-semibold mb-1">{title}</p>}
+    <div class="prose prose-sm max-w-none"><slot /></div>
+  </div>
+</aside>

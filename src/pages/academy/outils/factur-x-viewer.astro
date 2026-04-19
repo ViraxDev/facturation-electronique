@@ -1,0 +1,11 @@
+---
+import AcademyLayout from "@/layouts/AcademyLayout.astro";
+import FacturXViewer from "@/components/tools/FacturXViewer";
+---
+<AcademyLayout seo={{ title: "Visualiseur Factur-X", description: "Inspectez le XML embarqué dans un PDF Factur-X — traitement local." }}>
+  <header class="mb-6 max-w-3xl">
+    <h1 class="text-3xl sm:text-4xl font-bold text-[var(--color-primary)]">Visualiseur Factur-X</h1>
+    <p class="mt-3 text-[var(--color-muted-foreground)]">Déposez un PDF Factur-X : le XML est extrait et affiché localement.</p>
+  </header>
+  <FacturXViewer client:only="react" />
+</AcademyLayout>

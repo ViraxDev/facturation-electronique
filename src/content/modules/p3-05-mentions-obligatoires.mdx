@@ -1,0 +1,148 @@
+---
+title: "Mentions obligatoires (26 socle + 8 cibles)"
+parcours: "technique"
+order: 5
+xp: 200
+duration: 18
+objectives:
+  - "Connaître les 26 mentions obligatoires socle du Code général des impôts"
+  - "Identifier les 8 nouvelles mentions liées à la réforme 2026-2027"
+  - "Mapper chaque mention vers le BT EN 16931 correspondant"
+  - "Anticiper les contrôles de conformité des PA"
+  - "Distinguer les mentions en portée fiscale vs portée CTC"
+sources:
+  - label: "Code général des impôts, article 242 nonies A"
+    url: "https://www.legifrance.gouv.fr/"
+  - label: "Article 289 CGI (mentions TVA)"
+    url: "https://www.legifrance.gouv.fr/"
+  - label: "Décret et spécifications externes AIFE pour la réforme 2026"
+    url: "https://www.legifrance.gouv.fr/"
+  - label: "Norme EN 16931-1 mapping BT"
+    url: "https://www.afnor.org/"
+quiz:
+  - question: "Combien de mentions obligatoires initiales figurent au CGI pour une facture électronique française ?"
+    options:
+      - "15"
+      - "20"
+      - "26"
+      - "34"
+    correct: 2
+    explanation: "Voir la section correspondante du module."
+  - question: "Combien de nouvelles mentions cibles sont ajoutées par la réforme 2026-2027 ?"
+    options:
+      - "3"
+      - "5"
+      - "8"
+      - "12"
+    correct: 2
+    explanation: "Voir la section correspondante du module."
+  - question: "Quel BT EN 16931 correspond au numéro SIREN de l'émetteur ?"
+    options:
+      - "BT-30 (Seller legal registration identifier)"
+      - "BT-1 (Invoice number)"
+      - "BT-44 (Buyer name)"
+      - "BT-2 (Invoice issue date)"
+    correct: 0
+    explanation: "Voir la section correspondante du module."
+  - question: "La catégorie d'opération biens/services est une mention :"
+    options:
+      - "Facultative"
+      - "Recommandée seulement"
+      - "Nouvelle, introduite par la réforme 2026-2027"
+      - "Présente depuis 1993"
+    correct: 2
+    explanation: "Voir la section correspondante du module."
+  - question: "L'option pour le paiement de la TVA sur les débits doit :"
+    options:
+      - "Être ignorée en électronique"
+      - "Figurer sur la facture si l'émetteur y a opté"
+      - "Être envoyée séparément"
+      - "Être remplacée par un code à barres"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+---
+# Mentions obligatoires (26 socle + 8 cibles)
+
+Toute facture française, papier ou électronique, doit comporter un ensemble de **mentions obligatoires** définies principalement par l'article **242 nonies A** de l'annexe II du CGI, l'article **289** du CGI (mentions TVA) et le Code de commerce (articles **L.441-9**). La réforme 2026-2027 ne supprime aucune mention, mais en **ajoute 8 nouvelles** pour les besoins du CTC et du e-reporting.
+
+## 1. Les 26 mentions socle
+
+Les mentions historiques (parfois regroupées différemment selon les sources) couvrent l'identification des parties, la description des opérations, les montants, les dates et les références. Voici la liste consolidée et son mapping vers EN 16931 :
+
+| # | Mention | BT EN 16931 | Cardinalité |
+|---|---------|-------------|-------------|
+| 1 | Numéro de facture (séquentiel chronologique) | BT-1 | 1..1 |
+| 2 | Date d'émission | BT-2 | 1..1 |
+| 3 | Date de la vente ou prestation | BT-72 (BG-14 Invoicing period) | 0..1 |
+| 4 | Nom ou raison sociale du vendeur | BT-27 | 1..1 |
+| 5 | Adresse du siège social vendeur | BT-35 à BT-40 | 1..1 |
+| 6 | Forme juridique et capital social vendeur | BT-33 (complément) | 0..1 |
+| 7 | Numéro RCS + ville du greffe | BT-30 / BT-31 | 1..1 |
+| 8 | Numéro SIREN vendeur | BT-30 | 1..1 |
+| 9 | Numéro TVA intracommunautaire vendeur | BT-31 | 0..1 (obligatoire si assujetti) |
+| 10 | Nom ou raison sociale client | BT-44 | 1..1 |
+| 11 | Adresse de facturation du client | BT-50 à BT-55 | 1..1 |
+| 12 | Numéro TVA intracommunautaire client (UE, autoliq.) | BT-48 | 0..1 |
+| 13 | Désignation du produit ou service | BT-153 (par ligne) | 1..n |
+| 14 | Quantité | BT-129 | 1..n |
+| 15 | Prix unitaire HT | BT-146 | 1..n |
+| 16 | Taux de TVA applicable | BT-152 / BT-119 | 1..n |
+| 17 | Remise ou ristourne acquise à la date de facturation | BT-136 / BT-100 | 0..n |
+| 18 | Somme totale HT | BT-109 | 1..1 |
+| 19 | Somme totale TVA | BT-110 | 1..1 |
+| 20 | Somme totale TTC | BT-112 | 1..1 |
+| 21 | Ventilation TVA par taux | BG-23 | 1..n |
+| 22 | Date de paiement ou échéance | BT-9 | 0..1 |
+| 23 | Conditions d'escompte | BT-20 | 0..1 |
+| 24 | Taux des pénalités de retard | BT-22 / BT-20 | 1..1 |
+| 25 | Indemnité forfaitaire de recouvrement (40 €) | BT-22 (mention) | 1..1 |
+| 26 | Mentions spécifiques (autoliquidation, franchise TVA, art. 293 B) | BT-120 | 0..n |
+
+Ces 26 mentions ne sont pas toutes obligatoires pour toutes les factures : certaines dépendent du régime TVA (ex : mention de franchise en base art. 293 B seulement si applicable). Mais l'ensemble doit pouvoir être porté par la facture.
+
+## 2. Les 8 nouvelles mentions cibles (réforme 2026-2027)
+
+La réforme introduit **8 mentions supplémentaires** motivées par le CTC et le e-reporting. Selon les spécifications externes de l'AIFE et les décrets d'application :
+
+| # | Nouvelle mention | BT EN 16931 / extension | Motif |
+|---|------------------|--------------------------|-------|
+| 1 | **Adresse de livraison** (si différente de l'adresse du client) | BG-15 (BT-70 à BT-78) | Territorialité TVA |
+| 2 | **Catégorie d'opération** (livraison de biens, prestation de services, mixte) | Extension FR (profil Extended) | Rapprochement e-reporting |
+| 3 | **Option pour le paiement de la TVA sur les débits** | BT-120 mention texte | Exigibilité TVA |
+| 4 | **Numéro de bon de commande** (si existe) | BT-13 | Traçabilité commande |
+| 5 | **Date de livraison** (si différente de la date d'émission) | BT-72 | Fait générateur TVA |
+| 6 | **Identifiant unique de la facture** dans la PA émettrice | Extension (id plateforme) | Routage et traçabilité |
+| 7 | **Référence du cadre de marché** (B2G / marchés publics) | BT-12 / BT-13 | Transparence publique |
+| 8 | **Devise de facturation** et, si différente, **devise de comptabilisation TVA** | BT-5 / BT-6 | e-reporting multidevises |
+
+Les numéros et libellés peuvent varier légèrement selon les versions des spécifications AIFE. Se référer systématiquement à la dernière version officielle.
+
+## 3. Mapping vers les BT : logique globale
+
+Le mapping repose sur trois principes :
+
+1. **Les mentions d'identification** (SIREN, adresse, TVA intracom) mappent vers les BG-4 (Seller) et BG-7 (Buyer) et leurs BT associés.
+2. **Les mentions financières** (HT, TVA, TTC) mappent vers BG-22 (Document totals) et BG-23 (VAT breakdown).
+3. **Les mentions textuelles** (autoliquidation, régimes spécifiques) passent par BT-120 (VAT category breakdown note) ou BG-1 (Invoice note).
+
+## 4. Contrôles par les PA
+
+Chaque Plateforme Agréée applique un jeu de validations :
+
+- **XSD** : conformité structurelle au schéma UBL ou CII.
+- **Schematron EN 16931 CORE** : règles BR-* (Business Rules), BR-CO-* (cohérence), BR-CL-* (listes de codes).
+- **Règles françaises BR-FR-*** : présence des mentions obligatoires françaises, validation du SIREN (format + algorithme de Luhn), validation du numéro de TVA intracom (format pays + algorithme).
+- **Règles CTC** : présence des extensions Extended requises, cohérence des catégories biens/services.
+
+Une facture à laquelle manque l'une des mentions obligatoires peut être **rejetée** par la PA avec un code d'erreur explicite, et un **statut de rejet** (cf. module P3-06) remonté à l'émetteur.
+
+## 5. Mentions en portée fiscale vs portée CTC
+
+- **Portée fiscale** (CGI art. 289, 242 nonies A) : mentions opposables fiscalement. Leur absence entraîne un risque de **rejet de déduction TVA** côté client.
+- **Portée CTC** : mentions exigées pour le bon fonctionnement du e-reporting et du e-invoicing. Leur absence entraîne un **rejet plateforme** mais n'entache pas nécessairement la validité fiscale de la facture si elle est transmise par ailleurs.
+
+Cette distinction est importante : toutes les mentions nouvelles ne sont pas au même niveau juridique.
+
+## Exemple concret
+
+Extrait XML CII d'une facture portant les mentions principales :

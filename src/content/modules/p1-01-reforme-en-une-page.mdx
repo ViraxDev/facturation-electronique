@@ -1,0 +1,81 @@
+---
+title: "La réforme en une page"
+parcours: "fondations"
+order: 1
+xp: 100
+duration: 8
+objectives:
+  - "Comprendre pourquoi la France impose la facturation électronique"
+  - "Connaître les trois objectifs gouvernementaux majeurs de la réforme"
+  - "Mémoriser les deux dates clés de 2026 et 2027"
+  - "Distinguer la facturation électronique du simple PDF envoyé par mail"
+sources:
+  - label: "economie.gouv.fr — Tout savoir sur la facturation électronique"
+    url: "https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises"
+  - label: "impots.gouv.fr — La facturation électronique"
+    url: "https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique"
+  - label: "Ordonnance n° 2021-1190 du 15 septembre 2021"
+    url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000044044176"
+quiz:
+  - question: "À partir de quelle date toutes les entreprises françaises assujetties à la TVA devront-elles être capables de recevoir des factures électroniques ?"
+    options: ["1er janvier 2026", "1er septembre 2026", "1er septembre 2027", "1er janvier 2028"]
+    correct: 1
+    explanation: "Le 1er septembre 2026 marque l'entrée en vigueur de l'obligation de réception pour toutes les entreprises assujetties à la TVA, quelle que soit leur taille."
+  - question: "Quel est le principal objectif fiscal de la réforme ?"
+    options: ["Réduire le coût du papier", "Lutter contre la fraude à la TVA", "Imposer un nouvel impôt", "Remplacer les experts-comptables"]
+    correct: 1
+    explanation: "L'écart de TVA en France est estimé entre 12 et 15 milliards d'euros par an ; la transmission automatique des données doit le réduire."
+  - question: "Un PDF simple envoyé par e-mail est-il une facture électronique au sens de la réforme ?"
+    options: ["Oui, tout PDF est une facture électronique", "Non, il faut un format structuré conforme", "Uniquement si signé électroniquement", "Seulement pour les factures > 1 000 €"]
+    correct: 1
+    explanation: "Il faut un format structuré (Factur-X, UBL, CII) permettant un traitement automatique."
+  - question: "Combien de milliards d'euros de gains de productivité sont attendus ?"
+    options: ["Environ 1 milliard", "Environ 4,5 milliards", "Environ 10 milliards", "Environ 20 milliards"]
+    correct: 1
+    explanation: "Les estimations publiques tablent sur environ 4,5 milliards d'euros de gains cumulés."
+  - question: "À partir de quelle date toutes les entreprises devront-elles émettre en format électronique ?"
+    options: ["1er sept. 2026 pour les GE", "1er sept. 2027 pour toutes", "1er janv. 2028 pour les TPE", "1er sept. 2029"]
+    correct: 1
+    explanation: "Le 1er septembre 2027, l'obligation d'émission s'applique à toutes les entreprises assujetties à la TVA."
+---
+
+## Introduction
+
+La France a fait le choix, par l'ordonnance n° 2021-1190 du 15 septembre 2021, de rendre obligatoire la facturation électronique interentreprises (B2B) ainsi que la transmission électronique de certaines données de transaction à l'administration fiscale. Initialement prévue pour juillet 2024, la réforme a été reportée à septembre 2026 par la loi de finances pour 2024.
+
+## Pourquoi la France impose la facturation électronique
+
+**Lutte contre la fraude à la TVA.** L'écart entre la TVA théoriquement due et celle effectivement collectée (le « VAT Gap ») est estimé à 12-15 milliards d'euros par an.
+
+**Gains de productivité.** Le traitement d'une facture papier coûte 10-20 € à une PME. L'automatisation vise environ 4,5 milliards d'euros de gains cumulés.
+
+**Simplification déclarative.** À terme, pré-remplissage automatique des déclarations de TVA.
+
+## Les trois piliers techniques
+
+**E-invoicing.** Émission/réception des factures B2B domestiques dans un format structuré (Factur-X, UBL 2.1, UN/CEFACT CII), conforme à EN 16931.
+
+**E-reporting de transactions.** Transmission à la DGFiP des données non couvertes par l'e-invoicing : B2C, international, intracommunautaire.
+
+**E-reporting de paiement.** Pour les prestations de services, transmission des données d'encaissement.
+
+## Les deux dates à retenir
+
+**1er septembre 2026** — Toutes les entreprises assujetties à la TVA doivent pouvoir recevoir. Les GE et ETI doivent émettre.
+
+**1er septembre 2027** — L'obligation d'émission s'étend aux PME, TPE et micro-entreprises.
+
+## Ce qui change concrètement
+
+Canal imposé : toute facture transite par une Plateforme Agréée (PA, anciennement PDP). Format structuré obligatoire. Données de transaction remontées à la DGFiP.
+
+## Exemple concret
+
+« Atelier Dupuis » (SARL) vend des pièces à une ETI française. À partir du 1er septembre 2027 : saisie dans le logiciel → Factur-X généré → PA d'Atelier Dupuis → interrogation Annuaire central → PA du client → intégration automatique. Coût par facture : de 12 € à moins de 2 €.
+
+## À retenir
+
+- Trois objectifs : lutter contre la fraude TVA (12-15 Md€), gains de productivité (~4,5 Md€), simplification déclarative.
+- Deux dates : 1er sept. 2026 (réception universelle + émission GE/ETI) et 1er sept. 2027 (émission toutes tailles).
+- PDF libre par mail ≠ facture conforme : il faut un format structuré.
+- Schéma reposant sur des Plateformes Agréées reliées à un Annuaire central DGFiP.

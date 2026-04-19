@@ -1,0 +1,107 @@
+---
+title: "Intégration Factur-X dans un ERP"
+parcours: "technique"
+order: 9
+xp: 250
+duration: 20
+objectives:
+  - "Choisir entre génération Factur-X côté ERP ou côté PA"
+  - "Concevoir les hooks et événements de facturation vers la PA"
+  - "Gérer les erreurs, retries et rapprochement des statuts"
+  - "Comparer les contraintes SaaS vs on-premise"
+  - "Appliquer une checklist projet en 10 étapes"
+sources:
+  - label: "FNFE-MPE — guide d'intégration Factur-X"
+    url: "https://fnfe-mpe.org/factur-x/"
+  - label: "Documentations éditeurs ERP (Sage, Cegid, SAP, Odoo)"
+    url: "https://www.impots.gouv.fr/"
+  - label: "Spécifications externes AIFE"
+    url: "https://www.impots.gouv.fr/"
+quiz:
+  - question: "Quel avantage principal de la génération Factur-X côté ERP ?"
+    options:
+      - "Aucune maintenance"
+      - "Contrôle total sur le contenu et la cohérence visuel/XML"
+      - "Indépendance vis-à-vis du réseau"
+      - "Absence de test requis"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Dans un flux 'génération côté PA', l'ERP envoie typiquement :"
+    options:
+      - "Le PDF Factur-X prêt"
+      - "Des données structurées (JSON ou UBL) que la PA convertit en Factur-X"
+      - "Une image scannée"
+      - "Un email"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Le rapprochement des statuts se fait typiquement :"
+    options:
+      - "Manuellement tous les mois"
+      - "Via webhooks signés + table d'événements côté ERP"
+      - "Par téléphone"
+      - "Il n'est pas nécessaire"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Un ERP SaaS multi-tenants doit gérer :"
+    options:
+      - "Une seule connexion PA pour tous"
+      - "La séparation des credentials par tenant (client final)"
+      - "Aucune authentification"
+      - "Uniquement des API Keys partagées"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Quelle étape de la checklist projet est généralement la première ?"
+    options:
+      - "Passage en production"
+      - "Choix de la PA partenaire et compréhension de son API"
+      - "Formation des utilisateurs finaux"
+      - "Signature du contrat client"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+---
+# Intégration Factur-X dans un ERP
+
+Intégrer la facturation électronique dans un ERP est un **projet transverse** qui touche la comptabilité, les achats, la DSI et la direction juridique. Le développeur est au cœur de l'exécution. Ce module livre les patterns d'architecture, les pièges courants et une checklist en 10 étapes.
+
+## 1. Génération côté ERP vs génération côté PA
+
+Deux architectures opposées :
+
+### Génération côté ERP
+
+L'ERP produit directement le fichier Factur-X (PDF/A-3 + XML) et le dépose sur la PA.
+
+**Avantages** :
+
+- Contrôle total du rendu visuel et du contenu XML.
+- Cohérence garantie entre ce que voit l'utilisateur et ce qui est transmis.
+- Indépendance technologique : changement de PA facilité.
+- Archivage local possible avant transmission.
+
+**Inconvénients** :
+
+- Complexité : nécessite une lib Factur-X, un moteur PDF/A-3 et des validateurs Schematron.
+- Maintenance des mises à jour de spec (Factur-X 1.0.07 → versions ultérieures).
+- Responsabilité de la conformité à l'éditeur ERP.
+
+### Génération côté PA
+
+L'ERP envoie des **données structurées** (JSON propriétaire, UBL ou CII nu) via API, et la PA construit le Factur-X.
+
+**Avantages** :
+
+- Moins de code côté ERP.
+- La PA absorbe les évolutions de spec.
+- Rapidité de mise en œuvre.
+
+**Inconvénients** :
+
+- Dépendance forte à la PA (format pivot propriétaire).
+- Moins de contrôle sur le rendu visuel.
+- Migration de PA plus coûteuse.
+
+**Pratique courante** : hybride. L'ERP génère le XML (source de vérité), la PA transforme si nécessaire et rend éventuellement le PDF.
+
+## 2. Hook facture validée → appel PA
+
+Dans l'ERP, le point d'injection typique est l'événement *facture validée* (la facture n'est plus modifiable). Architecture :

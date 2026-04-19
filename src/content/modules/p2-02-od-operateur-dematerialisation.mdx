@@ -1,0 +1,88 @@
+---
+title: "OD : opérateur de dématérialisation"
+parcours: "ecosysteme"
+order: 7
+xp: 100
+duration: 10
+objectives:
+  - "Définir ce qu'est un Opérateur de Dématérialisation (OD)"
+  - "Distinguer les rôles et responsabilités OD vs PA"
+  - "Comprendre le schéma OD + PA dans la chaîne de facturation"
+sources:
+  - label: "Impots.gouv.fr — Écosystème facturation électronique"
+    url: "https://www.impots.gouv.fr/facturation-electronique"
+  - label: "FNFE-MPE — Rôles OD"
+    url: "https://fnfe-mpe.org/"
+  - label: "Economie.gouv.fr — Dématérialisation"
+    url: "https://www.economie.gouv.fr/facturation-electronique-entreprises"
+quiz:
+  - question: "Un OD est-il immatriculé par la DGFiP ?"
+    options: ["Oui, au même titre qu'une PA", "Non, aucune immatriculation n'est exigée", "Oui, mais avec un régime allégé", "Non, seul l'adossement à une PA est requis"]
+    correct: 3
+    explanation: "Un OD n'est pas immatriculé : il intervient en aval ou en amont d'une PA, qui porte la responsabilité réglementaire."
+  - question: "Quelle est la différence principale entre un OD et une PA ?"
+    options: ["L'OD n'a pas le droit de transmettre directement les données à la DGFiP", "L'OD est obligatoirement gratuit", "L'OD est réservé aux grandes entreprises", "Il n'y a aucune différence"]
+    correct: 0
+    explanation: "Un OD ne transmet jamais directement les données fiscales à la DGFiP : il s'appuie sur une PA qui assure ce rôle réglementé."
+  - question: "Quel type d'acteur est typiquement un OD ?"
+    options: ["Uniquement les banques", "Éditeurs d'ERP, de logiciels de gestion, prestataires EDI", "Uniquement des administrations", "Un organisme public"]
+    correct: 1
+    explanation: "Les OD sont principalement des éditeurs d'ERP/logiciels comptables, des prestataires EDI, ou des portails sectoriels."
+  - question: "Dans le schéma OD + PA, qui garantit la conformité réglementaire finale ?"
+    options: ["L'OD seul", "La PA adossée", "L'entreprise cliente", "La DGFiP"]
+    correct: 1
+    explanation: "La PA adossée engage sa responsabilité : l'OD apporte l'interface et les services métier, la PA l'agrément."
+  - question: "Un OD peut-il fonctionner sans être rattaché à une PA ?"
+    options: ["Oui, sans limite", "Oui pour le B2G uniquement", "Non, il doit obligatoirement être adossé à une PA ou au PPF", "Oui s'il dessert moins de 100 entreprises"]
+    correct: 2
+    explanation: "À partir du 1er septembre 2026, un OD doit obligatoirement s'appuyer sur une PA (ou sur le PPF réduit) pour assurer les transmissions."
+---
+
+## Introduction
+
+À côté des PA (Plateformes Agréées), l'écosystème de la facturation électronique française reconnaît un second type d'acteur : l'**Opérateur de Dématérialisation (OD)**. Ce terme, bien qu'il n'apparaisse pas explicitement dans le décret n° 2022-1299, désigne une catégorie d'intervenants essentiels qui ne disposent pas d'immatriculation propre mais qui interviennent dans la chaîne via une PA. Comprendre la distinction OD/PA est crucial pour les entreprises, car la majorité des éditeurs logiciels se positionnent en OD plutôt qu'en PA.
+
+## Qu'est-ce qu'un OD ?
+
+Un OD est un prestataire technique qui fournit des services de dématérialisation (saisie, conversion, archivage, portail client, intégration ERP) **sans endosser la responsabilité réglementaire** de transmission à la DGFiP. Il peut s'agir :
+
+- D'**éditeurs de logiciels de gestion** (comptabilité, facturation, ERP) qui ajoutent un module e-invoicing à leur produit.
+- De **prestataires EDI historiques** qui assuraient déjà des échanges dématérialisés dans des filières sectorielles (grande distribution, automobile, santé).
+- De **portails sectoriels ou fédérations professionnelles** qui agrègent les flux de leurs adhérents.
+- De **tiers de confiance** spécialisés en archivage à valeur probante.
+
+L'OD joue un rôle d'intermédiaire fonctionnel : il reste souvent le point de contact naturel pour l'entreprise, mais il délègue à une PA l'ensemble des interactions réglementaires avec l'annuaire PPF et la DGFiP.
+
+## Le schéma OD + PA
+
+Dans la pratique, l'architecture la plus fréquente est la suivante :
+
+1. L'entreprise utilise son ERP ou son outil de facturation, qui intègre nativement un module OD.
+2. L'OD prépare la facture (Factur-X, UBL ou CII), applique les règles métier, propose l'archivage.
+3. L'OD transmet la facture à une **PA partenaire** (adossement contractuel).
+4. La PA contrôle, transmet les données fiscales à la DGFiP, route la facture via l'annuaire PPF.
+5. Les statuts de cycle de vie remontent de la PA vers l'OD, puis vers l'ERP de l'entreprise.
+
+Ce schéma permet aux éditeurs de se spécialiser sur leur valeur ajoutée métier sans supporter le coût d'un agrément (audit, SecNumCloud, assurances, garanties financières).
+
+## Les obligations de l'OD
+
+Si un OD n'est pas immatriculé, il n'est pas pour autant exempt de toute obligation :
+
+- **Contrat d'adossement** avec une (ou plusieurs) PA, encadrant le partage de responsabilités et les flux de données.
+- **Conformité RGPD** sur les données personnelles traitées (coordonnées, signataires).
+- **Qualité des formats** : l'OD doit produire des fichiers Factur-X, UBL ou CII conformes aux spécifications AIFE.
+- **Information client** : l'OD doit informer ses utilisateurs du nom de la PA adossée, condition de traçabilité.
+- **Continuité de service** : engagement contractuel vis-à-vis de ses clients, répercuté sur le SLA de la PA.
+
+## Exemple concret
+
+"Cabinet Dupuis", petite TPE comptable qui utilise un logiciel de facturation SaaS français. L'éditeur s'est positionné en **OD** et a signé un partenariat d'adossement avec une PA nationale. Pour Cabinet Dupuis, rien ne change visuellement : il saisit ses factures dans son interface habituelle. En coulisses, l'éditeur convertit la facture en Factur-X, la pousse à la PA partenaire via API, qui se charge de la transmission DGFiP et du routage vers le destinataire. L'éditeur affiche dans ses CGU le nom de la PA utilisée.
+
+## À retenir
+
+- Un **OD** fournit des services de dématérialisation mais **n'est pas immatriculé**.
+- Il doit obligatoirement s'adosser à une **PA** pour opérer à partir de septembre 2026.
+- La **PA porte la responsabilité réglementaire** ; l'OD apporte l'interface et les services métier.
+- Le schéma **OD + PA** est le plus répandu chez les éditeurs d'ERP et de logiciels comptables.
+- L'entreprise doit savoir **quelle PA est derrière son OD**, pour tracer ses obligations fiscales.

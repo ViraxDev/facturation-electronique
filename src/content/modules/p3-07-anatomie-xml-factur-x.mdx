@@ -1,0 +1,68 @@
+---
+title: "Anatomie d'un XML Factur-X commenté"
+parcours: "technique"
+order: 7
+xp: 250
+duration: 20
+objectives:
+  - "Lire et comprendre un XML Factur-X complet (profil BASIC)"
+  - "Identifier les namespaces et la structure racine CII"
+  - "Naviguer dans ExchangedDocument et SupplyChainTradeTransaction"
+  - "Localiser les BT/BG dans l'arbre XML CII"
+  - "Savoir étendre le modèle avec une ligne supplémentaire"
+sources:
+  - label: "UN/CEFACT CII D16B schema"
+    url: "https://www.impots.gouv.fr/"
+  - label: "FNFE-MPE — Factur-X 1.0.07 Technical Specification (profil BASIC)"
+    url: "https://fnfe-mpe.org/factur-x/"
+  - label: "EN 16931-3-3 : binding CII"
+    url: "https://www.afnor.org/"
+quiz:
+  - question: "Quel est l'élément racine d'un XML Factur-X CII ?"
+    options:
+      - "<Invoice>"
+      - "<rsm:CrossIndustryInvoice>"
+      - "<FacturX>"
+      - "<UBLInvoice>"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Le bloc ApplicableHeaderTradeAgreement contient :"
+    options:
+      - "Les totaux de la facture"
+      - "Les informations vendeur/acheteur et contractuelles"
+      - "Les lignes de facture"
+      - "Les signatures électroniques"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Dans quel bloc se trouve le total TTC (BT-112) ?"
+    options:
+      - "ApplicableHeaderTradeAgreement"
+      - "ApplicableHeaderTradeDelivery"
+      - "ApplicableHeaderTradeSettlement/SpecifiedTradeSettlementHeaderMonetarySummation"
+      - "ExchangedDocumentContext"
+    correct: 2
+    explanation: "Voir la section correspondante du module."
+  - question: "Quel préfixe de namespace correspond aux éléments réutilisables du modèle CII (RAM) ?"
+    options:
+      - "rsm:"
+      - "ram:"
+      - "udt:"
+      - "qdt:"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Que contient l'élément ExchangedDocumentContext ?"
+    options:
+      - "Les totaux monétaires"
+      - "Le contexte métier : profil de facture (GuidelineSpecifiedDocumentContextParameter)"
+      - "La signature XML"
+      - "La liste des pièces jointes"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+---
+# Anatomie d'un XML Factur-X commenté
+
+Dans ce module, nous disséquons un **XML Factur-X complet au profil BASIC**, en syntaxe UN/CEFACT CII. L'objectif : vous rendre capable de lire, diagnostiquer et modifier un tel fichier. La structure suit rigoureusement le binding **EN 16931-3-3**, et chaque bloc principal porte un ou plusieurs BT/BG de la norme.
+
+## 1. Structure générale CII
+
+Un XML CII a la hiérarchie suivante :

@@ -1,0 +1,103 @@
+---
+title: "Flux Y expliqué"
+parcours: "ecosysteme"
+order: 10
+xp: 100
+duration: 10
+objectives:
+  - "Comprendre la topologie en Y de l'écosystème français"
+  - "Visualiser le circuit complet émetteur → PA → annuaire → PA → destinataire"
+  - "Identifier les points de transmission fiscale vers la DGFiP"
+sources:
+  - label: "Impots.gouv.fr — Schéma en Y"
+    url: "https://www.impots.gouv.fr/facturation-electronique"
+  - label: "FNFE-MPE — Architecture française"
+    url: "https://fnfe-mpe.org/"
+  - label: "AIFE — Documentation technique"
+    url: "https://communaute.chorus-pro.gouv.fr/"
+quiz:
+  - question: "Pourquoi parle-t-on d'un schéma 'en Y' ?"
+    options: ["Parce que le logo de la DGFiP est un Y", "Parce que le flux facture suit les PA tandis qu'une branche remonte vers le PPF/DGFiP", "Parce qu'il y a 3 acteurs principaux", "Parce que le circuit dessine un Y à l'écran"]
+    correct: 1
+    explanation: "Le Y représente la séparation : le flux facture circule entre PA (branche horizontale) tandis qu'une branche verticale alimente le PPF/DGFiP."
+  - question: "Combien de PA interviennent typiquement dans une transaction B2B ?"
+    options: ["Une seule", "Deux : celle de l'émetteur et celle du destinataire", "Trois", "Aucune"]
+    correct: 1
+    explanation: "Chaque partie choisit sa PA ; la facture transite donc entre la PA de l'émetteur et celle du destinataire via l'annuaire PPF."
+  - question: "Qui interroge l'annuaire PPF pour router la facture ?"
+    options: ["L'entreprise émettrice", "La PA de l'émetteur", "Le destinataire", "La DGFiP"]
+    correct: 1
+    explanation: "C'est la PA de l'émetteur qui interroge l'annuaire pour identifier la PA du destinataire et router le message."
+  - question: "Quelles données remontent au PPF dans le schéma en Y ?"
+    options: ["La facture entière", "Les données fiscales extraites et les statuts de cycle de vie", "Rien", "Uniquement les factures de plus de 1000 €"]
+    correct: 1
+    explanation: "Seules les données fiscales normalisées et les statuts obligatoires remontent au PPF, pas l'intégralité de la facture."
+  - question: "Le flux Y implique-t-il que les PA se parlent directement entre elles ?"
+    options: ["Oui, via l'annuaire PPF et les protocoles d'interopérabilité", "Non, tout passe par le PPF", "Uniquement pour les factures > 10 000 €", "Uniquement entre PA du même éditeur"]
+    correct: 0
+    explanation: "Les PA échangent directement (peer-to-peer) après consultation de l'annuaire, pour des raisons de performance et de robustesse."
+---
+
+## Introduction
+
+La réforme française a retenu une architecture dite **en Y**, qui se distingue à la fois du modèle pré-réforme (factures papier ou PDF libres) et du modèle Peppol pur (réseau maillé sans concentrateur fiscal central). Ce schéma en Y est la clé pour comprendre comment circulent les factures et les données fiscales à partir du 1er septembre 2026. Le Y symbolise la **bifurcation** entre la circulation métier des factures (branche horizontale, entre PA) et la remontée fiscale vers la DGFiP (branche verticale, vers le PPF).
+
+## Topologie du Y
+
+Le schéma en Y repose sur quatre acteurs :
+
+- L'**émetteur** (fournisseur), rattaché à sa **PA émettrice**.
+- Le **destinataire** (client), rattaché à sa **PA destinataire**.
+- L'**annuaire PPF**, pivot de référencement.
+- Le **concentrateur PPF/DGFiP**, pivot fiscal.
+
+Visuellement :
+
+```
+ Émetteur → PA émettrice ────────────→ PA destinataire → Destinataire
+                \                            /
+                 \                          /
+                  → PPF (annuaire + DGFiP) ←
+```
+
+## Le parcours d'une facture
+
+1. L'émetteur saisit ou génère sa facture dans son ERP, en format Factur-X, UBL ou CII.
+2. La facture est transmise à sa **PA émettrice**.
+3. La PA émettrice contrôle la conformité (mentions obligatoires, cohérence TVA, format).
+4. La PA émettrice interroge l'**annuaire PPF** avec le SIREN/SIRET du destinataire.
+5. L'annuaire retourne l'identifiant de la **PA destinataire** et les formats acceptés.
+6. La PA émettrice transmet la facture à la PA destinataire (protocole d'interopérabilité, généralement AS4/Peppol ou API sécurisée).
+7. La PA destinataire met la facture à disposition du destinataire, qui l'ingère dans son ERP.
+8. Les **statuts de cycle de vie** (reçue, acceptée, rejetée, payée) remontent en sens inverse.
+
+## La branche fiscale
+
+Simultanément, les PA (émettrice et destinataire selon les statuts) alimentent le **concentrateur fiscal PPF** :
+
+- **E-invoicing** : extraction des données fiscales de chaque facture B2B (montants HT/TTC, taux TVA, identifiants, date d'exigibilité).
+- **Statuts obligatoires** : notamment l'**encaissement**, critique pour l'exigibilité TVA sur prestations de services (article 269-2-c du CGI).
+- **E-reporting** : transactions B2C, internationales, données de paiement, pour couvrir les flux non couverts par l'e-invoicing.
+
+La DGFiP exploite ces données pour le **pré-remplissage de la déclaration de TVA**, le contrôle fiscal et la statistique publique.
+
+## Les avantages du Y
+
+L'architecture en Y combine plusieurs qualités :
+
+- **Résilience** : plusieurs PA concurrentes, pas de point unique de défaillance pour la circulation des factures.
+- **Marché concurrentiel** : les entreprises choisissent librement leur PA, ce qui tire les prix et l'innovation.
+- **Souveraineté fiscale** : la DGFiP reste maîtresse de la donnée via le concentrateur PPF.
+- **Interopérabilité européenne** : l'alignement sur les profils Peppol BIS Billing 3.0 facilite les extensions futures (ViDA, paquet TVA à l'ère numérique).
+
+## Exemple concret
+
+"MétalForge SAS" (émetteur, PA = Alpha) facture 12 500 € HT à "AutoParts SARL" (destinataire, PA = Beta). Alpha reçoit le Factur-X, valide la conformité, interroge l'annuaire PPF avec le SIRET d'AutoParts. L'annuaire renvoie "PA = Beta, format = UBL accepté". Alpha convertit éventuellement le message, le transmet à Beta via AS4. Beta dépose la facture dans la GED d'AutoParts. Simultanément, Alpha transmet les données fiscales au PPF : montant HT, TVA 20 %, date, identifiants. Quand AutoParts paye, Beta remonte le statut "encaissée" au PPF, qui bascule la TVA en exigible sur la période de paiement.
+
+## À retenir
+
+- L'architecture française est un **Y** : circulation horizontale des factures, remontée verticale des données fiscales.
+- Chaque entreprise a **sa PA** : la transaction mobilise donc **deux PA** et l'annuaire PPF.
+- L'**annuaire PPF** est interrogé pour chaque facture, afin de router correctement.
+- Le **concentrateur PPF** reçoit les données fiscales et les statuts, pas la facture entière.
+- Le schéma en Y assure **résilience, concurrence, souveraineté et interopérabilité**.

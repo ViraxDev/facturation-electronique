@@ -1,0 +1,135 @@
+---
+title: "Les 3 formats socles : UBL, CII, Factur-X"
+parcours: "technique"
+order: 2
+xp: 150
+duration: 12
+objectives:
+  - "Identifier les 3 formats socles acceptés en France : UBL, CII, Factur-X"
+  - "Comprendre les origines et la gouvernance de chaque format"
+  - "Distinguer les usages géographiques et sectoriels"
+  - "Justifier la coexistence de 3 formats plutôt qu'un seul"
+  - "Anticiper le support par les Plateformes Agréées (PA)"
+sources:
+  - label: "AIFE — Spécifications externes Chorus Pro"
+    url: "https://www.impots.gouv.fr/"
+  - label: "OASIS UBL 2.1 specification"
+    url: "https://www.impots.gouv.fr/"
+  - label: "UN/CEFACT Cross Industry Invoice (CII) D16B"
+    url: "https://www.impots.gouv.fr/"
+  - label: "FNFE-MPE — guide Factur-X v1.0.07"
+    url: "https://fnfe-mpe.org/factur-x/"
+quiz:
+  - question: "Quel organisme est à l'origine du format UBL ?"
+    options:
+      - "ISO"
+      - "OASIS"
+      - "UN/CEFACT"
+      - "AFNOR"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Qu'est-ce que le format CII ?"
+    options:
+      - "Un format JSON pour les factures"
+      - "Le Cross Industry Invoice de UN/CEFACT, en XML"
+      - "Une extension d'EDIFACT"
+      - "Un format PDF spécifique"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Factur-X est un format hybride combinant :"
+    options:
+      - "HTML et CSS"
+      - "PDF/A-3 et XML CII"
+      - "UBL et JSON"
+      - "XML et XSLT"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Quel format est majoritairement adopté par les pays nordiques via PEPPOL ?"
+    options:
+      - "CII"
+      - "UBL"
+      - "Factur-X"
+      - "EDIFACT"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "En France, sous la réforme 2026-2027, combien de formats socles minimum doivent être acceptés par toute PA ?"
+    options:
+      - "1"
+      - "2"
+      - "3"
+      - "5"
+    correct: 2
+    explanation: "Voir la section correspondante du module."
+---
+# Les 3 formats socles : UBL, CII, Factur-X
+
+La norme EN 16931 définit la sémantique, mais les outils ont besoin d'une **syntaxe concrète** pour sérialiser et transporter les factures. En France, la réforme 2026-2027 impose trois formats socles que toute Plateforme Agréée (PA) doit accepter : **UBL**, **UN/CEFACT CII** et **Factur-X**. Ce trio n'est pas le fruit du hasard, mais reflète l'héritage technique, économique et géographique du monde de la facture électronique.
+
+## 1. UBL — Universal Business Language
+
+**UBL** (Universal Business Language) est un standard XML développé par le consortium **OASIS**. La version 2.1 est celle de référence pour EN 16931 (binding EN 16931-3-2).
+
+Caractéristiques :
+
+- **XML pur** : une facture UBL est un fichier `.xml` autoporteur.
+- **Racine** : élément `<Invoice>` (ou `<CreditNote>` pour une note de crédit).
+- **Namespaces** : `urn:oasis:names:specification:ubl:schema:xsd:Invoice-2` et espaces associés (cac, cbc).
+- **Granularité fine** : chaque BT/BG de la norme possède un mapping direct.
+- **Gouvernance** : OASIS UBL Technical Committee, ouverte.
+
+Adoption géographique : UBL est dominant dans les **pays nordiques, le Benelux, l'Espagne, l'Italie (FatturaPA est inspiré mais propriétaire), le Royaume-Uni** et sur l'ensemble du réseau **PEPPOL** (qui impose UBL 2.1 via le profil BIS Billing 3.0).
+
+UBL se distingue par sa **lisibilité relative** et son large écosystème d'outils open source (validateurs, stylesheets, libs Java/Python/.NET).
+
+## 2. UN/CEFACT CII — Cross Industry Invoice
+
+**CII** (Cross Industry Invoice) est la facture standard de **UN/CEFACT** (United Nations Centre for Trade Facilitation and Electronic Business), également en XML. Le binding EN 16931-3-3 la rattache à la norme européenne.
+
+Caractéristiques :
+
+- **XML multi-namespaces** : `rsm:`, `ram:`, `qdt:`, `udt:`.
+- **Racine** : `<rsm:CrossIndustryInvoice>`.
+- **Héritage EDIFACT** : CII reprend des éléments conceptuels et codifications (UNTDID) d'EDIFACT, mais en syntaxe XML.
+- **Granularité très fine** et structure plus verbeuse qu'UBL.
+- **Gouvernance** : UN/CEFACT, internationale (ONU).
+
+Adoption géographique : CII est historiquement préféré en **Allemagne, France et certaines industries** (automobile, grande distribution européenne) où l'EDIFACT était dominant. CII est la syntaxe XML **sous-jacente** à Factur-X.
+
+## 3. Factur-X — le format hybride
+
+**Factur-X** (Factur-X 1.0.07 en version de référence) est un format **hybride** franco-allemand, co-développé par **FNFE-MPE** (France) et **FeRD** (Allemagne, où il s'appelle **ZUGFeRD**). Il combine :
+
+- Un **fichier PDF/A-3** (PDF archivable ISO 19005-3) : portée visuelle et humainement lisible.
+- Un **fichier XML CII embarqué** dans le PDF en tant que pièce jointe normalisée (attribut `AFRelationship="Alternative"` ou `"Source"` selon la version).
+
+Le XML est nommé `factur-x.xml` (ou `zugferd.xml` dans les versions historiques). C'est la version structurée, machine-exploitable, tandis que le PDF garantit la visualisation humaine sans outil spécifique.
+
+Factur-X définit **5 profils** (voir module P3-04) qui vont du minimal (quelques BT pour le rapprochement) au complet (Extended conforme EN 16931 + extensions FR).
+
+Adoption géographique : Factur-X est dominant en **France, Allemagne (sous le nom ZUGFeRD), Luxembourg** et adopté par plusieurs grands groupes européens. Son atout majeur : la **double valence** PDF+XML rend l'adoption progressive indolore pour les TPE/PME.
+
+## 4. Pourquoi 3 formats et non 1 ?
+
+Le choix français de supporter 3 formats s'explique par :
+
+1. **Héritage historique** : chaque format correspond à des écosystèmes installés depuis des années. Imposer un format unique aurait forcé des migrations massives.
+2. **Interopérabilité européenne** : PEPPOL (UBL) et les échanges transfrontaliers nécessitent UBL ; l'ancrage franco-allemand impose CII/Factur-X.
+3. **Adoption progressive** : Factur-X permet aux PME de commencer avec un PDF enrichi, sans révolutionner leur système.
+4. **Sémantique commune** : les 3 formats partagent la même sémantique EN 16931, donc la conversion entre eux est automatisable (outillage de type *transformation XSLT* ou mapping programmatique).
+
+## 5. Support par les Plateformes Agréées
+
+Selon la documentation officielle de la DGFiP et de l'AIFE, toute PA candidate à l'immatriculation doit :
+
+- Accepter en entrée les 3 formats socles.
+- Extraire et valider le XML (que ce soit du UBL, du CII autonome, ou du CII extrait d'un Factur-X).
+- Convertir éventuellement entre formats pour acheminer la facture à la PA destinataire.
+- Transmettre à la DGFiP les données structurées selon les extensions CTC.
+
+En pratique, les PA utilisent des bibliothèques de validation conformes (Schematron EN 16931, règles BR-*, règles françaises BR-FR-*) et des moteurs de transformation format-à-format.
+
+## Exemple concret
+
+Voici le même en-tête de facture dans les trois formats :
+
+**UBL (extrait) :**

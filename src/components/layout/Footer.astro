@@ -1,0 +1,44 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="mt-24 border-t border-[var(--color-border)] bg-[var(--color-card)]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <div class="flex items-center gap-2 font-semibold text-[var(--color-primary)]">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-sky-600 to-sky-500 text-white text-sm">FE</span>
+        Facturation Électronique 2026
+      </div>
+      <p class="mt-3 text-sm text-[var(--color-muted-foreground)] measure">Accompagnement des cabinets d'experts-comptables pour la réforme du 1ᵉʳ septembre 2026.</p>
+    </div>
+    <div>
+      <h3 class="text-sm font-semibold text-[var(--color-primary)] mb-3">Commercial</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a class="hover:text-[var(--color-accent)]" href="/pour-comptables">Pour les cabinets</a></li>
+        <li><a class="hover:text-[var(--color-accent)]" href="/offres">Offres & tarifs</a></li>
+        <li><a class="hover:text-[var(--color-accent)]" href="/cas-clients">Cas clients</a></li>
+        <li><a class="hover:text-[var(--color-accent)]" href="/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-sm font-semibold text-[var(--color-primary)] mb-3">Academy</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a class="hover:text-[var(--color-accent)]" href="/academy">Hub Academy</a></li>
+        <li><a class="hover:text-[var(--color-accent)]" href="/academy/lexique">Lexique</a></li>
+        <li><a class="hover:text-[var(--color-accent)]" href="/academy/veille">Veille</a></li>
+        <li><a class="hover:text-[var(--color-accent)]" href="/academy/outils">Outils interactifs</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-sm font-semibold text-[var(--color-primary)] mb-3">Sources officielles</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a class="hover:text-[var(--color-accent)]" href="https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique" rel="noopener" target="_blank">impots.gouv.fr ↗</a></li>
+        <li><a class="hover:text-[var(--color-accent)]" href="https://fnfe-mpe.org/factur-x/" rel="noopener" target="_blank">FNFE-MPE ↗</a></li>
+        <li><a class="hover:text-[var(--color-accent)]" href="https://www.francenum.gouv.fr/" rel="noopener" target="_blank">France Num ↗</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-[var(--color-border)] py-4 px-4 sm:px-6 lg:px-8 text-xs text-[var(--color-muted-foreground)] flex flex-col sm:flex-row gap-2 justify-between mx-auto max-w-7xl">
+    <p>© {year} Facturation Électronique 2026. Tous droits réservés.</p>
+    <p>Site pédagogique indépendant — non affilié à la DGFiP.</p>
+  </div>
+</footer>

@@ -1,0 +1,97 @@
+---
+title: "Factur-X : PDF/A-3 + XML intégré"
+parcours: "technique"
+order: 3
+xp: 200
+duration: 18
+objectives:
+  - "Maîtriser l'anatomie d'un fichier Factur-X PDF/A-3"
+  - "Comprendre l'embedding du XML via les mécanismes PDF/A-3"
+  - "Identifier les métadonnées XMP requises"
+  - "Connaître les outils et bibliothèques de génération"
+  - "Valider la conformité PDF/A-3 et l'intégrité de l'XML embarqué"
+sources:
+  - label: "ISO 19005-3:2012 — PDF/A-3"
+    url: "https://www.afnor.org/"
+  - label: "FNFE-MPE — Factur-X 1.0.07 Technical Specification"
+    url: "https://fnfe-mpe.org/factur-x/"
+  - label: "ZUGFeRD 2.3.2 documentation (FeRD)"
+    url: "https://www.impots.gouv.fr/"
+  - label: "veraPDF — outil de validation PDF/A"
+    url: "https://www.impots.gouv.fr/"
+quiz:
+  - question: "Quelle norme ISO définit le format PDF/A-3 utilisé par Factur-X ?"
+    options:
+      - "ISO 19005-1"
+      - "ISO 19005-2"
+      - "ISO 19005-3"
+      - "ISO 32000-2"
+    correct: 2
+    explanation: "Voir la section correspondante du module."
+  - question: "Sous quel nom de fichier le XML est-il embarqué dans un Factur-X récent ?"
+    options:
+      - "invoice.xml"
+      - "factur-x.xml"
+      - "edi.xml"
+      - "data.xml"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Quelle valeur de la relation AFRelationship est typiquement utilisée pour le XML Factur-X ?"
+    options:
+      - "Source"
+      - "Data"
+      - "Alternative"
+      - "Unspecified"
+    correct: 2
+    explanation: "Voir la section correspondante du module."
+  - question: "Où sont stockées les métadonnées XMP déclarant la présence du Factur-X ?"
+    options:
+      - "Dans un fichier texte séparé"
+      - "Dans le Document Catalog du PDF, stream /Metadata"
+      - "Dans le header PDF"
+      - "Dans un champ AcroForm"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+  - question: "Quel outil est couramment utilisé pour valider la conformité PDF/A-3 ?"
+    options:
+      - "XMLLint"
+      - "veraPDF"
+      - "curl"
+      - "Pandoc"
+    correct: 1
+    explanation: "Voir la section correspondante du module."
+---
+# Factur-X : PDF/A-3 + XML intégré
+
+Factur-X est le format hybride phare de la facturation électronique française. Comprendre son anatomie est essentiel pour tout développeur ou expert-comptable technique amené à générer, valider ou consommer des factures dans l'écosystème français post-2026.
+
+## 1. Anatomie d'un fichier Factur-X
+
+Un fichier Factur-X est **physiquement un PDF**, mais un PDF très particulier :
+
+- Il respecte la norme **ISO 19005-3:2012 (PDF/A-3)**, garantissant sa conservation long terme.
+- Il contient un **stream de fichier embarqué** nommé `factur-x.xml` (ou `zugferd-invoice.xml` pour les anciennes versions ZUGFeRD 1.x).
+- Il déclare dans ses **métadonnées XMP** la présence et le profil Factur-X.
+
+L'utilisateur final ouvre un PDF classique, lisible à l'œil. L'ERP ou la PA du destinataire extrait le XML et traite les données structurées. C'est le principe de la **double valence**.
+
+## 2. PDF/A-3 : la norme d'archivage permettant l'embedding
+
+PDF/A est une famille de normes ISO dérivées de PDF, conçues pour l'archivage :
+
+- **PDF/A-1** (ISO 19005-1, 2005) : interdit les fichiers embarqués.
+- **PDF/A-2** (ISO 19005-2, 2011) : autorise l'embedding mais uniquement d'autres PDF/A.
+- **PDF/A-3** (ISO 19005-3, 2012) : autorise l'embedding de **n'importe quel fichier** (XML, CSV, feuilles de calcul…), avec déclaration obligatoire de la relation.
+
+C'est donc PDF/A-3 qui permet à Factur-X d'exister, en embarquant un XML CII tout en restant un document archivable conforme.
+
+Critères PDF/A-3 typiques :
+
+- Polices toutes **intégrées** (embedded).
+- Absence de contenus dynamiques (JavaScript, formulaires actifs non déclarés).
+- Espaces colorimétriques explicites (ICC profiles).
+- Métadonnées XMP présentes et cohérentes.
+
+## 3. Embedding du XML dans le PDF
+
+Dans la structure PDF, l'embedding passe par le dictionnaire **Name tree** `/EmbeddedFiles` du catalogue, et par l'entrée `/AF` (Associated Files). Exemple conceptuel en syntaxe PDF :

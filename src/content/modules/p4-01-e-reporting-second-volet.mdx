@@ -1,0 +1,98 @@
+---
+title: "E-reporting : second volet de la réforme"
+parcours: "e-reporting"
+order: 22
+xp: 100
+duration: 10
+objectives:
+  - "Comprendre la distinction entre e-invoicing et e-reporting"
+  - "Identifier les flux couverts par l'e-reporting"
+  - "Saisir les enjeux fiscaux (TVA, fraude, pré-remplissage)"
+sources:
+  - label: "Impots.gouv.fr — E-reporting"
+    url: "https://www.impots.gouv.fr/facturation-electronique"
+  - label: "Economie.gouv.fr — Réforme TVA"
+    url: "https://www.economie.gouv.fr/facturation-electronique-entreprises"
+  - label: "Legifrance — Article 290 CGI"
+    url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046859812"
+quiz:
+  - question: "Qu'est-ce que l'e-reporting ?"
+    options: ["La transmission de la facture électronique au client", "La transmission à la DGFiP des données de transactions non couvertes par l'e-invoicing", "Un rapport annuel de TVA", "Un audit obligatoire"]
+    correct: 1
+    explanation: "L'e-reporting transmet à la DGFiP les données des transactions B2C, internationales et les données de paiement."
+  - question: "Quel flux n'est PAS couvert par l'e-invoicing mais par l'e-reporting ?"
+    options: ["Facture entre deux assujettis français", "Vente à un particulier français (B2C)", "Facture B2G", "Facture intragroupe domestique"]
+    correct: 1
+    explanation: "Les ventes B2C relèvent de l'e-reporting : pas de facture électronique structurée obligatoire, mais transmission des données agrégées."
+  - question: "L'e-reporting concerne-t-il les transactions internationales ?"
+    options: ["Non", "Oui, B2B et B2C avec un non-établi en France", "Uniquement les ventes hors UE", "Uniquement les achats"]
+    correct: 1
+    explanation: "Les transactions internationales B2B et B2C avec un opérateur non établi en France relèvent de l'e-reporting."
+  - question: "Quel est l'objectif principal de l'e-reporting pour la DGFiP ?"
+    options: ["Remplacer la déclaration de TVA", "Améliorer le pré-remplissage TVA et lutter contre la fraude", "Imposer de nouvelles taxes", "Surveiller les salariés"]
+    correct: 1
+    explanation: "L'e-reporting donne à la DGFiP une vision plus fine des flux pour pré-remplir la TVA et détecter les anomalies."
+  - question: "À partir de quelle date l'e-reporting devient-il obligatoire pour tous ?"
+    options: ["2025", "1er septembre 2026 pour GE/ETI, 1er septembre 2027 pour PME/TPE/micro", "2028", "Jamais obligatoire"]
+    correct: 1
+    explanation: "Le calendrier e-reporting s'aligne sur l'e-invoicing : 2026 pour GE/ETI, 2027 pour PME/TPE/micro."
+---
+
+## Introduction
+
+La réforme française repose sur **deux piliers complémentaires** : l'**e-invoicing** (facturation électronique B2B domestique entre assujettis français) et l'**e-reporting** (transmission à la DGFiP des données des transactions non couvertes par l'e-invoicing). Souvent moins médiatisé, l'e-reporting est pourtant tout aussi structurant. Il permet à l'administration fiscale d'avoir une vision exhaustive des flux économiques, afin de pré-remplir la déclaration de TVA, de lutter contre la fraude et de produire des statistiques conjoncturelles. Ce module introduit le second volet et son articulation avec l'e-invoicing.
+
+## E-invoicing vs e-reporting
+
+La distinction est simple mais cruciale :
+
+- **E-invoicing** : émission et réception d'une **facture électronique structurée** (Factur-X, UBL, CII) entre deux **assujettis français**. Le flux est porté par les PA dans le schéma en Y.
+- **E-reporting** : **transmission à la DGFiP** de **données de transactions** quand la facture électronique structurée n'est pas obligatoire (B2C, international) ou pour compléter l'e-invoicing (statut d'encaissement).
+
+Autrement dit, l'e-invoicing transporte une facture, l'e-reporting transporte des **données fiscales agrégées**.
+
+## Les flux couverts par l'e-reporting
+
+Trois grandes catégories de flux :
+
+1. **B2C domestique** : ventes à des particuliers en France (commerces, restaurants, services à la personne, e-commerce grand public).
+2. **Transactions internationales** :
+   - B2B avec assujetti **établi hors de France** (UE ou hors UE).
+   - B2C avec acheteur **hors de France**.
+   - Achats auprès de fournisseurs étrangers (auto-liquidation).
+3. **Données de paiement (encaissement)** : pour les **prestations de services** relevant de la TVA sur les encaissements, la date d'encaissement doit être remontée (indépendamment du flux B2B/B2C).
+
+## Les enjeux fiscaux
+
+L'e-reporting sert plusieurs objectifs :
+
+- **Pré-remplissage de la déclaration de TVA (CA3, CA12)** : la DGFiP prépare la déclaration à partir des flux e-invoicing et e-reporting.
+- **Lutte contre la fraude carrousel** : visibilité sur les chaînes d'intermédiation, notamment en transfrontalier.
+- **Statistiques économiques** : conjoncture, mesure des flux sectoriels, ajustement des politiques publiques.
+- **Convergence européenne (ViDA)** : le règlement TVA à l'ère numérique (Digital Reporting Requirements) rend l'e-reporting quasi-obligatoire à l'échelle UE d'ici 2030 pour les transactions intracommunautaires.
+
+## L'articulation avec l'e-invoicing
+
+Pour une entreprise assujettie, les deux flux se combinent. Une boulangerie BtoB/BtoC fera :
+
+- **E-invoicing** pour ses ventes au restaurant de quartier (assujetti français).
+- **E-reporting** pour ses ventes en caisse aux particuliers.
+- **E-reporting** pour une vente à un touriste belge (si prestation non livrée en France ou client hors de France selon les règles TVA).
+
+Dans la pratique, l'entreprise ne manipule **qu'un seul outil** : sa PA, qui gère automatiquement le routage e-invoicing ou e-reporting en fonction de la nature de la transaction.
+
+## Exemple concret
+
+"Restaurant Le Bourguignon" réalise 80 % de son CA en B2C (particuliers qui paient sur place ou via une plateforme de réservation) et 20 % en B2B (séminaires, repas d'affaires facturés à des entreprises). À partir du 1er septembre 2027 (PME), l'établissement doit :
+
+- Émettre des **factures électroniques** pour les 20 % B2B (via sa PA, Factur-X).
+- Transmettre en **e-reporting** les données des 80 % B2C (total quotidien par taux de TVA, via sa caisse connectée à la PA).
+- Transmettre les **dates d'encaissement** des factures B2B (statut cycle de vie "encaissée").
+
+## À retenir
+
+- L'**e-reporting** est le **second volet** obligatoire de la réforme, à côté de l'e-invoicing.
+- Il couvre **B2C domestique, international, et données de paiement**.
+- Il alimente le **pré-remplissage TVA** et la **lutte anti-fraude**.
+- Le calendrier est **aligné** : 2026 (GE/ETI), 2027 (PME/TPE/micro).
+- En pratique, la **même PA** gère les deux flux : l'entreprise ne voit qu'un seul canal.
