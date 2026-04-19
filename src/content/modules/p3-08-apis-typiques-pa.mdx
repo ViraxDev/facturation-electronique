@@ -59,7 +59,11 @@ quiz:
     correct: 2
     explanation: "Voir la section correspondante du module."
 ---
+import APISequence from "@/components/academy/viz/technique/APISequence";
+
 # APIs typiques d'une PA : REST, webhooks
+
+<APISequence client:visible />
 
 Les Plateformes Agréées exposent à leurs clients (ERP, portails, SaaS) des **APIs REST** pour le dépôt, la consultation et le suivi des factures. Si chaque PA personnalise son offre, un **tronc commun** se dégage, conforme aux spécifications externes AIFE. Ce module décrit les patterns récurrents, l'authentification, les webhooks et les bonnes pratiques d'intégration.
 

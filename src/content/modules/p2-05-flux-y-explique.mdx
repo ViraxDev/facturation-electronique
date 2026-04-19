@@ -38,6 +38,8 @@ quiz:
     explanation: "Les PA échangent directement (peer-to-peer) après consultation de l'annuaire, pour des raisons de performance et de robustesse."
 ---
 
+import FluxY from "@/components/academy/viz/ecosysteme/FluxY";
+
 ## Introduction
 
 La réforme française a retenu une architecture dite **en Y**, qui se distingue à la fois du modèle pré-réforme (factures papier ou PDF libres) et du modèle Peppol pur (réseau maillé sans concentrateur fiscal central). Ce schéma en Y est la clé pour comprendre comment circulent les factures et les données fiscales à partir du 1er septembre 2026. Le Y symbolise la **bifurcation** entre la circulation métier des factures (branche horizontale, entre PA) et la remontée fiscale vers la DGFiP (branche verticale, vers le PPF).
@@ -59,6 +61,8 @@ Visuellement :
                  \                          /
                   → PPF (annuaire + DGFiP) ←
 ```
+
+<FluxY client:visible />
 
 ## Le parcours d'une facture
 

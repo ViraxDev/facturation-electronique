@@ -41,6 +41,9 @@ quiz:
     explanation: "L'obligation repose sur l'assujettissement à la TVA au titre d'activités économiques. Une association qui se borne à percevoir des cotisations d'adhérents sans activité économique lucrative n'est pas assujettie et sort du périmètre. En revanche, une association ayant un secteur lucratif assujetti est concernée pour ce secteur."
 ---
 
+import ScopeFlow from "@/components/academy/viz/fondations/ScopeFlow";
+import CompanyMap from "@/components/academy/viz/fondations/CompanyMap";
+
 ## Introduction
 
 Délimiter le périmètre exact de la réforme est l'une des étapes les plus délicates de l'accompagnement d'un client. Toutes les factures ne sont pas concernées, et certaines situations frontalières (franchise de TVA, associations, activités mixtes, international) demandent une analyse cas par cas. Ce module fournit la cartographie complète du périmètre.
@@ -56,6 +59,8 @@ Deuxième critère : le destinataire est une autre entreprise établie en France
 Troisième critère : l'opération est une livraison de biens ou une prestation de services située en France au sens des règles de TVA.
 
 Lorsque ces trois critères sont réunis, la facture doit être émise et reçue via une PA, dans un format électronique structuré conforme à la norme EN 16931.
+
+<CompanyMap client:visible />
 
 ## Section 2 — Le périmètre e-reporting : le complément indispensable
 
@@ -96,6 +101,8 @@ Face à une opération, l'ordre des questions est le suivant.
 - Le destinataire est-il un particulier ? Si oui, e-reporting.
 - Le destinataire est-il une entreprise étrangère ? Si oui, e-reporting.
 - Le destinataire est-il une entreprise française assujettie à la TVA ? Si oui, e-invoicing obligatoire.
+
+<ScopeFlow client:visible />
 
 ## Exemple concret
 

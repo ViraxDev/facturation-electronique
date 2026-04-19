@@ -38,6 +38,8 @@ quiz:
     explanation: "Chaque encaissement (total ou partiel) doit être remonté avec montant et date pour respecter l'exigibilité TVA proportionnelle."
 ---
 
+import PaymentTimeline from "@/components/academy/viz/e-reporting/PaymentTimeline";
+
 ## Introduction
 
 Troisième composante de l'e-reporting (avec le B2C et l'international) : les **données de paiement**, ou plus exactement les **encaissements**. Cette exigence a une finalité fiscale précise : pour certaines opérations — notamment les **prestations de services** — la TVA est exigible à la date d'encaissement (art. 269-2-c du CGI), et non à la date de facturation. Pour que la DGFiP puisse pré-remplir la déclaration TVA et auditer l'exigibilité, il faut qu'elle dispose des **dates et montants d'encaissement**. C'est précisément ce que l'e-reporting va transmettre.
@@ -93,6 +95,8 @@ La qualité dépend donc de la **bonne connexion ERP/banque/PA**. Les éditeurs 
 - Statut "encaissée partiel" le 15 novembre, montant 6 000 € → TVA exigible sur novembre = 1 000 €.
 
 La DGFiP pré-remplit la CA3 d'octobre avec 1 000 € et celle de novembre avec 1 000 €.
+
+<PaymentTimeline client:visible />
 
 ## À retenir
 

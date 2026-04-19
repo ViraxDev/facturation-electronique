@@ -39,6 +39,9 @@ quiz:
     explanation: "Le 1er septembre 2027, l'obligation d'émission s'applique à toutes les entreprises assujetties à la TVA."
 ---
 
+import AnimatedStats from "@/components/academy/viz/fondations/AnimatedStats";
+import PillarsDiagram from "@/components/academy/viz/fondations/PillarsDiagram";
+
 ## Introduction
 
 La France a fait le choix, par l'ordonnance n° 2021-1190 du 15 septembre 2021, de rendre obligatoire la facturation électronique interentreprises (B2B) ainsi que la transmission électronique de certaines données de transaction à l'administration fiscale. Initialement prévue pour juillet 2024, la réforme a été reportée à septembre 2026 par la loi de finances pour 2024.
@@ -51,6 +54,8 @@ La France a fait le choix, par l'ordonnance n° 2021-1190 du 15 septembre 2021, 
 
 **Simplification déclarative.** À terme, pré-remplissage automatique des déclarations de TVA.
 
+<AnimatedStats client:visible />
+
 ## Les trois piliers techniques
 
 **E-invoicing.** Émission/réception des factures B2B domestiques dans un format structuré (Factur-X, UBL 2.1, UN/CEFACT CII), conforme à EN 16931.
@@ -58,6 +63,8 @@ La France a fait le choix, par l'ordonnance n° 2021-1190 du 15 septembre 2021, 
 **E-reporting de transactions.** Transmission à la DGFiP des données non couvertes par l'e-invoicing : B2C, international, intracommunautaire.
 
 **E-reporting de paiement.** Pour les prestations de services, transmission des données d'encaissement.
+
+<PillarsDiagram client:visible />
 
 ## Les deux dates à retenir
 

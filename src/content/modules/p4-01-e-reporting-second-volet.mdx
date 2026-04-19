@@ -38,6 +38,8 @@ quiz:
     explanation: "Le calendrier e-reporting s'aligne sur l'e-invoicing : 2026 pour GE/ETI, 2027 pour PME/TPE/micro."
 ---
 
+import FluxDualDiagram from "@/components/academy/viz/e-reporting/FluxDualDiagram";
+
 ## Introduction
 
 La réforme française repose sur **deux piliers complémentaires** : l'**e-invoicing** (facturation électronique B2B domestique entre assujettis français) et l'**e-reporting** (transmission à la DGFiP des données des transactions non couvertes par l'e-invoicing). Souvent moins médiatisé, l'e-reporting est pourtant tout aussi structurant. Il permet à l'administration fiscale d'avoir une vision exhaustive des flux économiques, afin de pré-remplir la déclaration de TVA, de lutter contre la fraude et de produire des statistiques conjoncturelles. Ce module introduit le second volet et son articulation avec l'e-invoicing.
@@ -50,6 +52,8 @@ La distinction est simple mais cruciale :
 - **E-reporting** : **transmission à la DGFiP** de **données de transactions** quand la facture électronique structurée n'est pas obligatoire (B2C, international) ou pour compléter l'e-invoicing (statut d'encaissement).
 
 Autrement dit, l'e-invoicing transporte une facture, l'e-reporting transporte des **données fiscales agrégées**.
+
+<FluxDualDiagram client:visible />
 
 ## Les flux couverts par l'e-reporting
 

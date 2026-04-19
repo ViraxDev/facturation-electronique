@@ -59,7 +59,11 @@ quiz:
     correct: 2
     explanation: "Voir la section correspondante du module."
 ---
+import CinqProfilsStack from "@/components/academy/viz/technique/CinqProfilsStack";
+
 # Les 5 profils Factur-X
+
+<CinqProfilsStack client:visible />
 
 Factur-X n'est pas monolithique : il définit **5 profils** de richesse croissante. Chaque profil détermine quels Business Terms (BT) et Business Groups (BG) sont présents dans le XML embarqué. Le choix du profil est un arbitrage entre **simplicité d'implémentation** et **exhaustivité fonctionnelle**.
 

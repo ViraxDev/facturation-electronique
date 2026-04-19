@@ -38,6 +38,8 @@ quiz:
     explanation: "B2C = e-reporting agrégé, pas de facture individuelle obligatoire ; et comme tout assujetti, il doit pouvoir recevoir en e-invoicing dès 2026."
 ---
 
+import SpecialCasesDecisionTree from "@/components/academy/viz/e-reporting/SpecialCasesDecisionTree";
+
 ## Introduction
 
 La réforme ne crée pas d'exemption générale pour les petites structures : **tous les assujettis à la TVA**, même ceux en **franchise en base** ou au **régime micro**, sont concernés. Cependant, certaines adaptations et tolérances sont prévues pour tenir compte de la réalité économique et technique de ces acteurs. Ce module fait le tour des cas particuliers : auto-entrepreneurs, micro-BNC/BIC, franchisés TVA (art. 293 B CGI), opérations hors champ, exonérées, etc.
@@ -51,6 +53,8 @@ Un auto-entrepreneur (micro-entreprise) est, au sens fiscal, un **assujetti à l
 - Il doit remonter les **données d'e-reporting** pour ses ventes B2C (qui sont souvent l'essentiel de son activité) et pour ses éventuelles transactions internationales.
 
 En pratique, de nombreuses **offres PA gratuites ou très économiques** (quelques euros par mois) sont proposées spécifiquement pour ce profil, souvent incluses dans un logiciel de gestion micro (Shine, Qonto, Indy, Tiime, Abby…).
+
+<SpecialCasesDecisionTree client:visible />
 
 ## La franchise en base de TVA
 

@@ -59,7 +59,11 @@ quiz:
     correct: 1
     explanation: "Voir la section correspondante du module."
 ---
+import XMLTreeViewer from "@/components/academy/viz/technique/XMLTreeViewer";
+
 # Anatomie d'un XML Factur-X commenté
+
+<XMLTreeViewer client:visible />
 
 Dans ce module, nous disséquons un **XML Factur-X complet au profil BASIC**, en syntaxe UN/CEFACT CII. L'objectif : vous rendre capable de lire, diagnostiquer et modifier un tel fichier. La structure suit rigoureusement le binding **EN 16931-3-3**, et chaque bloc principal porte un ou plusieurs BT/BG de la norme.
 

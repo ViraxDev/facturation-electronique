@@ -38,6 +38,8 @@ quiz:
     explanation: "L'annuaire référence chaque entreprise par son identifiant (SIREN/SIRET) et la PA qu'elle a choisie pour recevoir ses factures."
 ---
 
+import PpfAnnuaire from "@/components/academy/viz/ecosysteme/PpfAnnuaire";
+
 ## Introduction
 
 Pensé à l'origine comme la pièce maîtresse de la réforme, le **PPF (Portail Public de Facturation)** devait jouer un double rôle : offrir un service gratuit d'émission et de réception pour toutes les entreprises, et centraliser les données fiscales. L'annonce du ministère de l'Économie et des Finances en **juillet 2024**, confirmée en octobre 2024, a profondément modifié cette architecture. Le PPF conserve désormais un **rôle réduit**, centré sur deux fonctions techniques : **l'annuaire central** et le **concentrateur fiscal**. Comprendre cette évolution est indispensable pour dimensionner son projet de conformité.
@@ -56,6 +58,8 @@ Première mission maintenue : l'**annuaire**. C'est une base de données nationa
 - Le **statut actif** de l'inscription.
 
 Cet annuaire est le pivot du routage interopérable : quand la PA de l'émetteur prépare une facture, elle interroge l'annuaire pour identifier la PA du destinataire et router le message en conséquence, de façon comparable au réseau Peppol européen.
+
+<PpfAnnuaire client:visible />
 
 ## Le concentrateur fiscal
 

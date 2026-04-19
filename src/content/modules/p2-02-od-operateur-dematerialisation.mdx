@@ -38,6 +38,8 @@ quiz:
     explanation: "À partir du 1er septembre 2026, un OD doit obligatoirement s'appuyer sur une PA (ou sur le PPF réduit) pour assurer les transmissions."
 ---
 
+import OdPaChain from "@/components/academy/viz/ecosysteme/OdPaChain";
+
 ## Introduction
 
 À côté des PA (Plateformes Agréées), l'écosystème de la facturation électronique française reconnaît un second type d'acteur : l'**Opérateur de Dématérialisation (OD)**. Ce terme, bien qu'il n'apparaisse pas explicitement dans le décret n° 2022-1299, désigne une catégorie d'intervenants essentiels qui ne disposent pas d'immatriculation propre mais qui interviennent dans la chaîne via une PA. Comprendre la distinction OD/PA est crucial pour les entreprises, car la majorité des éditeurs logiciels se positionnent en OD plutôt qu'en PA.
@@ -52,6 +54,8 @@ Un OD est un prestataire technique qui fournit des services de dématérialisati
 - De **tiers de confiance** spécialisés en archivage à valeur probante.
 
 L'OD joue un rôle d'intermédiaire fonctionnel : il reste souvent le point de contact naturel pour l'entreprise, mais il délègue à une PA l'ensemble des interactions réglementaires avec l'annuaire PPF et la DGFiP.
+
+<OdPaChain client:visible />
 
 ## Le schéma OD + PA
 

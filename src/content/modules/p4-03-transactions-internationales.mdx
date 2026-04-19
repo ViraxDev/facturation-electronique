@@ -38,6 +38,8 @@ quiz:
     explanation: "Les ventes B2C transfrontalières relèvent de l'e-reporting selon les règles TVA (OSS/IOSS notamment)."
 ---
 
+import WorldMap from "@/components/academy/viz/e-reporting/WorldMap";
+
 ## Introduction
 
 La dimension internationale est souvent le **point aveugle** des projets e-invoicing. L'e-invoicing B2B domestique concerne les transactions entre assujettis français ; dès qu'une partie est **non établie en France**, on bascule sur l'**e-reporting**. Le régime varie selon qu'il s'agit d'**UE** ou de **hors UE**, de **B2B** ou de **B2C**, de **livraisons de biens** ou de **prestations de services**. Ce module fait le tour de ces situations, de leur traitement et de la convergence attendue avec le paquet européen **ViDA**.
@@ -51,6 +53,8 @@ Trois axes structurent l'analyse :
 3. **Localisation** : UE (intracommunautaire) ou hors UE (import/export).
 
 Cela donne 8 combinaisons principales, qui relèvent **toutes de l'e-reporting** dans la réforme française (sous réserve d'exceptions pour les opérations non imposables en France).
+
+<WorldMap client:visible />
 
 ## Les ventes (émission)
 

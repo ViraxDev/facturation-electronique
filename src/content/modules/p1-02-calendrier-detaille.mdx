@@ -41,6 +41,9 @@ quiz:
     explanation: "La loi de finances pour 2024 (article 91) a officialisé le nouveau calendrier après le report décidé en 2023. L'ordonnance de 2021 reste le texte fondateur, mais les dates effectives ont été fixées par cette loi de finances."
 ---
 
+import Timeline from "@/components/academy/viz/fondations/Timeline";
+import CompanyMap from "@/components/academy/viz/fondations/CompanyMap";
+
 ## Introduction
 
 Comprendre le calendrier de la réforme est indispensable avant toute démarche d'accompagnement. Les dates ne sont pas symboliques : elles conditionnent la facturation légale des clients du cabinet, l'éligibilité aux sanctions et le rythme de déploiement des outils. Ce module détaille qui doit faire quoi, quand, et comment identifier la catégorie d'une entreprise donnée.
@@ -78,6 +81,10 @@ Le tableau chronologique est le suivant.
 **1er septembre 2027.** Entrée en vigueur de l'obligation d'émission pour les PME, les TPE et les micro-entreprises. À cette date, l'ensemble du B2B domestique entre entreprises françaises est en facturation électronique.
 
 **Période intermédiaire entre septembre 2026 et septembre 2027.** Une PME reçoit électroniquement ses factures de ses fournisseurs GE/ETI, mais continue d'émettre elle-même au format antérieur (papier ou PDF) vers ses propres clients. Ce décalage crée un « mix » temporaire qu'il faut savoir gérer dans les outils.
+
+<Timeline client:visible />
+
+<CompanyMap client:visible />
 
 ## Section 4 — Qui fait quoi, concrètement
 

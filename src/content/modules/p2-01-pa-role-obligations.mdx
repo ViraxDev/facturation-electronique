@@ -38,6 +38,8 @@ quiz:
     explanation: "La durée légale de conservation est de 10 ans, conformément aux obligations fiscales et comptables françaises."
 ---
 
+import PaStations from "@/components/academy/viz/ecosysteme/PaStations";
+
 ## Introduction
 
 La réforme de la facturation électronique française repose sur un acteur central : la **Plateforme Agréée (PA)**, anciennement appelée **Plateforme de Dématérialisation Partenaire (PDP)**. Depuis la refonte du dispositif annoncée en 2024, l'administration a privilégié le terme PA pour insister sur la dimension d'agrément et de contrôle exercé par l'État. Comprendre le rôle des PA est indispensable : elles constituent le pivot opérationnel par lequel transitent les factures électroniques entre émetteurs et destinataires à partir du **1er septembre 2026** (obligation de réception pour toutes les entreprises, et émission pour les grandes entreprises et ETI).
@@ -51,6 +53,8 @@ Une PA est un opérateur privé, immatriculé par l'**AIFE** (Agence pour l'Info
 3. **Interopérabilité** avec toutes les autres PA via un annuaire central géré par le **PPF** (Portail Public de Facturation).
 
 L'immatriculation PA est délivrée pour une durée de **3 ans renouvelables** après un dossier d'agrément exigeant : audit technique, conformité RGPD, SecNumCloud ou équivalent, engagement de service, capacités financières et garanties assurantielles. Au printemps 2025, plus de 80 candidats étaient engagés dans le processus d'immatriculation.
+
+<PaStations client:visible />
 
 ## Les obligations techniques
 

@@ -41,6 +41,9 @@ quiz:
     explanation: "Une facture non conforme expose le client à un refus du droit à déduction de la TVA, car l'article 271 du CGI subordonne ce droit à la détention d'une facture conforme. Le risque peut atteindre plusieurs milliers d'euros par dossier en cas de contrôle fiscal."
 ---
 
+import SanctionsChart from "@/components/academy/viz/fondations/SanctionsChart";
+import RiskScenario from "@/components/academy/viz/fondations/RiskScenario";
+
 ## Introduction
 
 Les sanctions financières de la réforme sont calibrées pour être suffisamment dissuasives sans être écrasantes pour les petites structures. Mais derrière l'amende administrative, le risque le plus redoutable pour une entreprise n'est pas l'amende elle-même : c'est la perte du droit à déduction de la TVA sur des factures non conformes, qui peut se chiffrer en dizaines de milliers d'euros lors d'un contrôle fiscal. Ce module détaille le régime des sanctions et construit l'argumentaire risque.
@@ -64,6 +67,8 @@ L'unité sanctionnée n'est pas la facture individuelle mais la transmission pé
 Le plafond plus élevé qu'en e-invoicing (45 000 euros contre 15 000 euros) tient à la nature fiscale plus sensible de l'e-reporting : les données concernent directement l'assiette de TVA et sont la matière première du pré-remplissage déclaratif. Un manquement a un impact plus direct sur la capacité de l'administration à contrôler.
 
 Les deux plafonds se cumulent : une entreprise qui manque simultanément à ses obligations d'e-invoicing et d'e-reporting peut théoriquement être sanctionnée à hauteur de 60 000 euros par an (15 000 + 45 000).
+
+<SanctionsChart client:visible />
 
 ## Section 3 — Les risques indirects, bien plus lourds
 
@@ -103,6 +108,8 @@ Une PME de 40 salariés émet 1 500 factures B2B par an, d'un montant moyen de 8
 - Coût d'un accompagnement cabinet pour régularisation en urgence : 5 000 à 15 000 euros.
 
 Le total dépasse aisément 100 000 euros, là où un accompagnement préventif à 3 000 euros aurait suffi. C'est précisément ce ratio qui justifie le discours commercial du développeur.
+
+<RiskScenario client:visible />
 
 ## À retenir
 

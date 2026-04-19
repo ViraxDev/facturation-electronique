@@ -38,6 +38,8 @@ quiz:
     explanation: "L'e-reporting B2C n'implique pas la transmission d'identifiants client : il s'agit d'agrégats."
 ---
 
+import TicketZAggregator from "@/components/academy/viz/e-reporting/TicketZAggregator";
+
 ## Introduction
 
 Parmi les flux couverts par l'e-reporting, le **B2C domestique** est le plus volumétriquement massif : ventes en commerce, restauration, e-commerce grand public, services à la personne. À la différence de l'e-invoicing B2B, il n'y a pas de facture électronique structurée par transaction : l'administration attend des **données agrégées** sur une base régulière. Ce module détaille quoi transmettre, comment, et avec quelle périodicité.
@@ -54,6 +56,8 @@ Pour chaque période (généralement la journée), la PA transmet au PPF pour le
 - **Code devise** (EUR par défaut).
 
 Aucune donnée nominative de client n'est transmise : le B2C e-reporting est **structurellement anonyme**, ce qui le distingue de l'e-invoicing où les identifiants des parties sont obligatoires.
+
+<TicketZAggregator client:visible />
 
 ## La source : le ticket Z
 

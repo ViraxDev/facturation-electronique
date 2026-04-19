@@ -41,6 +41,8 @@ quiz:
     explanation: "Le modèle revshare (commission sur les abonnements PA souscrits par les clients) aligne les intérêts entre la PA et l'apporteur d'affaires, et simplifie la facturation pour le cabinet (la PA facture directement le client). En contrepartie, la part revshare est généralement inférieure à la marge d'une revente directe, ce qui limite le gain."
 ---
 
+import RoiMicro from "@/components/academy/viz/business/RoiMicro";
+
 ## Introduction
 
 Le pricing d'une offre cabinet conditionne deux choses : sa rentabilité pour le développeur et son acceptabilité par le cabinet et ses clients. Mal calibré, il détruit la relation commerciale ; bien calibré, il finance la pérennité du modèle et justifie la qualité du service. Ce module présente les trois grands modèles de facturation, le calcul de ROI d'un cabinet type, et la structure d'un contrat d'accompagnement juridiquement solide.
@@ -56,6 +58,8 @@ Le pricing d'une offre cabinet conditionne deux choses : sa rentabilité pour le
 Le mix recommandé pour un développeur solo ou petite structure est un modèle 1 principal pour les clients PME (revenus récurrents structurants), complété par un modèle 3 pour les missions ponctuelles (clients qui ne veulent pas de récurrent) et un modèle 2 de secours quand le cabinet préfère déléguer la facturation.
 
 ## Section 2 — Le calcul de ROI d'un cabinet type
+
+<RoiMicro client:visible />
 
 Prenons un cabinet de 250 clients, représentatif du marché français. L'hypothèse médiane est : 70 % de TPE (175), 25 % de PME (63), 5 % d'ETI (12). Taux d'adhésion à l'offre cabinet : 40 % des TPE (70), 60 % des PME (38), 80 % des ETI (10), soit 118 clients facturés.
 

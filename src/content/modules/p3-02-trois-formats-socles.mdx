@@ -61,7 +61,11 @@ quiz:
     correct: 2
     explanation: "Voir la section correspondante du module."
 ---
+import TroisFormatsCompare from "@/components/academy/viz/technique/TroisFormatsCompare";
+
 # Les 3 formats socles : UBL, CII, Factur-X
+
+<TroisFormatsCompare client:visible />
 
 La norme EN 16931 définit la sémantique, mais les outils ont besoin d'une **syntaxe concrète** pour sérialiser et transporter les factures. En France, la réforme 2026-2027 impose trois formats socles que toute Plateforme Agréée (PA) doit accepter : **UBL**, **UN/CEFACT CII** et **Factur-X**. Ce trio n'est pas le fruit du hasard, mais reflète l'héritage technique, économique et géographique du monde de la facture électronique.
 

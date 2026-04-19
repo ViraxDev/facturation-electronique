@@ -38,6 +38,8 @@ quiz:
     explanation: "Les PA transmettent souvent en continu : pas besoin d'attendre la fin de période, ce qui fluidifie la charge."
 ---
 
+import FrequencyCalendar from "@/components/academy/viz/e-reporting/FrequencyCalendar";
+
 ## Introduction
 
 L'e-reporting n'a de sens que s'il est **à jour** : une donnée remontée trois mois après la transaction perd l'essentiel de son intérêt pour le pré-remplissage TVA et la lutte anti-fraude. La réglementation impose donc des **fréquences** et des **échéances** précises, calées sur le **régime TVA** de chaque entreprise. Ce module fait le tour des rythmes à respecter et des pièges à éviter.
@@ -63,6 +65,8 @@ Les fréquences minimales ont été précisées par l'administration :
 | Franchise | Annuelle simplifiée | À préciser selon textes |
 
 En pratique, les PA transmettent **au fil de l'eau** (hebdomadairement voire quotidiennement) pour les flux automatisables. Cela évite une "tempête" de fin de mois et donne une meilleure qualité de donnée.
+
+<FrequencyCalendar client:visible />
 
 ## Les statuts obligatoires et leur timing
 

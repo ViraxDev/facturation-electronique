@@ -41,6 +41,9 @@ quiz:
     explanation: "L'AFNOR (Association Française de Normalisation) est l'organisme de normalisation qui porte la transposition des normes européennes, notamment EN 16931 (norme sémantique de la facture électronique). Les autres acteurs (DGFiP, FNFE-MPE) appliquent ou diffusent ces normes sans en être l'émetteur."
 ---
 
+import ActorRoles from "@/components/academy/viz/fondations/ActorRoles";
+import ActorsSchema from "@/components/academy/viz/fondations/ActorsSchema";
+
 ## Introduction
 
 Le dispositif français de facturation électronique mobilise une dizaine d'acteurs aux rôles parfois proches et facilement confondus. Une cartographie claire est indispensable pour comprendre les flux, choisir les partenaires et dialoguer avec les clients. Ce module présente chaque acteur, son rôle, sa position dans la hiérarchie, et illustre l'ensemble par un schéma narratif.
@@ -83,6 +86,8 @@ Note importante sur le PPF. Dans les premières versions du dispositif (2021-202
 
 **Les syndicats et fédérations professionnelles** (CGPME/CPME, MEDEF, U2P, Fédération du Conseil, etc.) servent de relais d'information auprès de leurs adhérents et remontent les difficultés d'application au gouvernement.
 
+<ActorRoles client:visible />
+
 ## Section 4 — Le schéma en Y, illustré narrativement
 
 Imaginons une facture émise par Atelier Dupuis à destination de Groupe Industrix. Atelier Dupuis utilise la PA Alpha, Industrix utilise la PA Beta.
@@ -96,6 +101,8 @@ Imaginons une facture émise par Atelier Dupuis à destination de Groupe Industr
 7. L'Annuaire central enregistre l'événement.
 
 Le « Y » se dessine : deux branches (émetteur et récepteur) convergent vers l'Annuaire central DGFiP. Ce modèle est décentralisé sur le plan de l'acheminement (pas de plateforme unique d'État qui traiterait tous les flux) mais centralisé sur le plan de la donnée fiscale (la DGFiP voit tout passer).
+
+<ActorsSchema client:visible />
 
 ## Section 5 — La position du développeur dans l'écosystème
 
