@@ -1,72 +1,112 @@
 ---
 import MarketingLayout from "@/layouts/MarketingLayout.astro";
-import { Target, Users, Briefcase, TrendingUp, ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Handshake, Search, Rocket, ShieldCheck } from "lucide-react";
 
-const painPoints = [
-  "Vos clients TPE/PME ne comprennent pas encore l'obligation 2026/2027.",
-  "Vous cherchez un canal de revenus récurrent aligné sur votre expertise.",
-  "Vous devez qualifier vite quelle Plateforme Agréée recommander.",
-  "Vous voulez un livrable clé-en-main à vendre en entretien annuel.",
+const roles = {
+  cabinet: [
+    "Détecter le besoin lors des rendez-vous annuels ou de clôture.",
+    "Qualifier le client (taille, ERP en place, échéance réforme).",
+    "Transmettre le dossier via un formulaire partagé.",
+    "Conserver la relation client et la facturation du conseil.",
+  ],
+  dev: [
+    "Répondre sous 48 h avec un devis ferme ou un pré-diagnostic.",
+    "Réaliser l'intégration technique (audit, connecteur, tests).",
+    "Documenter et livrer un dossier de mise en conformité signé.",
+    "Rester disponible pour le support post-déploiement.",
+  ],
+};
+
+const modeles = [
+  { Icon: Handshake, title: "Apport d'affaires", text: "Vous apportez le client, je facture, je vous reverse 15 % du montant de la prestation.", highlight: "15 %" },
+  { Icon: ShieldCheck, title: "Co-traitance", text: "Vous facturez le client à votre tarif, je vous facture en sous-traitance technique. Marge cabinet conservée.", highlight: "Marge libre" },
+  { Icon: Rocket, title: "Mission conjointe", text: "Prestation co-signée (cabinet + intégrateur). Utile pour les gros clients qui veulent un seul interlocuteur.", highlight: "Sur devis" },
 ];
 
-const benefits = [
-  { Icon: Target, title: "Audit 360°", text: "Diagnostic express de chaque client : date butoir, flux, outil en place." },
-  { Icon: Users, title: "Onboarding piloté", text: "Scripts d'appel, checklists, modèles de contrats et de courriers." },
-  { Icon: Briefcase, title: "Tarification prête", text: "3 packs à revendre avec marge cabinet jusqu'à 50 %." },
-  { Icon: TrendingUp, title: "Revenus récurrents", text: "150 clients équipés × 25 €/mois = 45 k€ de MRR annuel." },
+const etapes = [
+  { n: "01", title: "Premier call", text: "30 min pour comprendre votre base clients et les cas que vous anticipez." },
+  { n: "02", title: "Contrat partenaire", text: "NDA + contrat d'apporteur ou de co-traitance, signature électronique." },
+  { n: "03", title: "Dossier cabinet", text: "Kit d'argumentaire, grille de qualification, formulaire de transmission." },
+  { n: "04", title: "Mission client", text: "Je réalise, vous facturez le conseil, on partage selon le modèle choisi." },
 ];
 ---
-<MarketingLayout seo={{ title: "Pour les cabinets — Facturation Électronique", description: "Transformez l'obligation 2026 en opportunité commerciale récurrente." }}>
+<MarketingLayout seo={{ title: "Partenariat cabinet — Facturation Électronique", description: "Vous détectez, je livre. Apport d'affaires, co-traitance ou mission conjointe." }}>
   <section class="bg-hero-sky">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-12">
       <div class="max-w-3xl">
-        <span class="eyebrow">Pour les cabinets</span>
-        <h1 class="mt-5 text-[40px] sm:text-5xl lg:text-6xl font-bold tracking-[-0.025em] text-[var(--color-primary)] leading-[1.04]">L'obligation 2026.<br/><span class="text-gradient-sky">Votre opportunité récurrente.</span></h1>
-        <p class="mt-5 text-lg text-[var(--color-muted-foreground)] max-w-xl leading-snug">L'expertise, les outils et les offres pour équiper votre base TPE/PME avant le 1ᵉʳ septembre 2027.</p>
+        <span class="eyebrow">Partenariat cabinet</span>
+        <h1 class="mt-5 text-[40px] sm:text-5xl lg:text-6xl font-bold tracking-[-0.025em] text-[var(--color-primary)] leading-[1.04]">Vous connaissez vos clients.<br/><span class="text-gradient-sky">Moi, leur SI.</span></h1>
+        <p class="mt-5 text-lg text-[var(--color-muted-foreground)] max-w-xl leading-snug">Je suis développeur indépendant spécialisé sur la réforme. Vous détectez les besoins techniques chez vos clients TPE/PME, je les réalise. Trois modèles de collaboration au choix.</p>
       </div>
     </div>
   </section>
 
   <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-    <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-5">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Qui fait quoi</h2>
+      <p class="mt-3 text-[var(--color-muted-foreground)]">Une répartition claire, pas de concurrence sur votre périmètre de conseil.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
       <div class="rounded-[20px] border border-[var(--color-border)] bg-white p-7 shadow-[var(--shadow-subtle)]">
-        <h2 class="text-xl font-bold text-[var(--color-primary)]">Les frictions que l'on lève</h2>
+        <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#0369A1] to-[#0284C7] text-white"><Search className="h-5 w-5" aria-hidden="true"/></div>
+        <h3 class="mt-4 text-xl font-bold text-[var(--color-primary)]">Le cabinet</h3>
         <ul class="mt-5 space-y-3">
-          {painPoints.map((p) => (
-            <li class="flex gap-3 items-start text-[15px]">
-              <span class="flex-shrink-0 mt-0.5 inline-flex h-[22px] w-[22px] items-center justify-center rounded-full bg-emerald-50 text-emerald-600"><Check className="h-3 w-3" strokeWidth={3} aria-hidden="true"/></span>
-              <span class="text-[var(--color-secondary)]">{p}</span>
-            </li>
+          {roles.cabinet.map((r) => (
+            <li class="flex gap-3 items-start text-[15px]"><span class="flex-shrink-0 mt-0.5 inline-flex h-[22px] w-[22px] items-center justify-center rounded-full bg-sky-50 text-sky-700"><Check className="h-3 w-3" strokeWidth={3} aria-hidden="true"/></span><span class="text-[var(--color-secondary)]">{r}</span></li>
           ))}
         </ul>
       </div>
-      <div class="rounded-[20px] bg-navy-deep text-white p-7">
-        <h2 class="text-xl font-bold">Projection cabinet type</h2>
-        <div class="mt-5">
-          <div class="text-[56px] font-bold tracking-[-0.03em] tabular leading-none text-gradient-xp">+40 k€</div>
-          <div class="mt-2 text-sm text-slate-400">année 1 (150 clients × 60 % équipés × 25 €/mois)</div>
-        </div>
-        <dl class="mt-6 space-y-2.5 text-sm text-slate-300">
-          <div class="flex justify-between border-b border-white/10 pb-2"><dt>Base clients</dt><dd class="tabular font-semibold text-white">150</dd></div>
-          <div class="flex justify-between border-b border-white/10 pb-2"><dt>Taux d'équipement</dt><dd class="tabular font-semibold text-white">60 %</dd></div>
-          <div class="flex justify-between"><dt>MRR additionnel</dt><dd class="tabular font-bold text-amber-300">2 250 € / mois</dd></div>
-        </dl>
+      <div class="rounded-[20px] border border-[var(--color-border)] bg-white p-7 shadow-[var(--shadow-subtle)]">
+        <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#7C3AED] to-[#0284C7] text-white"><Rocket className="h-5 w-5" aria-hidden="true"/></div>
+        <h3 class="mt-4 text-xl font-bold text-[var(--color-primary)]">Le développeur (moi)</h3>
+        <ul class="mt-5 space-y-3">
+          {roles.dev.map((r) => (
+            <li class="flex gap-3 items-start text-[15px]"><span class="flex-shrink-0 mt-0.5 inline-flex h-[22px] w-[22px] items-center justify-center rounded-full bg-violet-50 text-violet-700"><Check className="h-3 w-3" strokeWidth={3} aria-hidden="true"/></span><span class="text-[var(--color-secondary)]">{r}</span></li>
+          ))}
+        </ul>
       </div>
     </div>
+  </section>
 
-    <h2 class="mt-16 text-2xl font-bold text-[var(--color-primary)] text-center">Ce que vous trouvez dans la plateforme</h2>
-    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      {benefits.map(({ Icon, title, text }) => (
-        <div class="rounded-2xl border border-[var(--color-border)] bg-white p-6 shadow-[var(--shadow-subtle)] hover:shadow-[var(--shadow-card)] transition-shadow">
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">3 modèles de collaboration</h2>
+      <p class="mt-3 text-[var(--color-muted-foreground)]">Choisissez selon votre confort commercial et juridique.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {modeles.map(({ Icon, title, text, highlight }) => (
+        <div class="rounded-2xl border border-[var(--color-border)] bg-white p-6 shadow-[var(--shadow-subtle)]">
           <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#0369A1] to-[#0284C7] text-white"><Icon className="h-5 w-5" aria-hidden="true"/></div>
-          <h3 class="mt-4 font-bold text-[var(--color-primary)]">{title}</h3>
+          <div class="mt-4 text-[32px] font-bold tabular tracking-[-0.02em] text-gradient-sky leading-none">{highlight}</div>
+          <h3 class="mt-3 font-bold text-[var(--color-primary)]">{title}</h3>
           <p class="mt-2 text-sm text-[var(--color-muted-foreground)] leading-snug">{text}</p>
         </div>
       ))}
     </div>
+  </section>
 
-    <div class="mt-16 text-center">
-      <a href="/contact" class="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold">Demander une démo 30 min <ArrowRight className="h-4 w-4" aria-hidden="true"/></a>
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Le parcours partenaire en 4 étapes</h2>
+    </div>
+    <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {etapes.map((e) => (
+        <li class="rounded-2xl border border-[var(--color-border)] bg-white p-6 shadow-[var(--shadow-subtle)]">
+          <div class="text-xs font-bold tabular tracking-[0.1em] text-[var(--color-accent)]">{e.n}</div>
+          <h3 class="mt-2 font-bold text-[var(--color-primary)]">{e.title}</h3>
+          <p class="mt-2 text-sm text-[var(--color-muted-foreground)] leading-snug">{e.text}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="bg-navy-deep text-white rounded-[28px] px-8 sm:px-12 py-14 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white max-w-2xl mx-auto">On en parle 30 minutes ?</h2>
+      <p class="mt-4 text-lg text-slate-400 max-w-xl mx-auto">Je vous explique le modèle, le dossier partenaire et quelques cas déjà livrés.</p>
+      <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+        <a href="/contact" class="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold">Caler un call <ArrowRight className="h-4 w-4" aria-hidden="true"/></a>
+      </div>
     </div>
   </section>
 </MarketingLayout>

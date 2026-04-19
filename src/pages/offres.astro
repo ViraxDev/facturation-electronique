@@ -3,17 +3,57 @@ import MarketingLayout from "@/layouts/MarketingLayout.astro";
 import { Check, ArrowRight } from "lucide-react";
 
 const plans = [
-  { name: "Essentiel", price: "39 €", suffix: "/ mois / cabinet", sub: "Jusqu'à 20 clients accompagnés", features: ["Portail client en marque blanche", "Formation e-learning (5 parcours)", "Simulateur d'éligibilité", "Support email sous 48h"], cta: "Commencer", highlighted: false },
-  { name: "Cabinet", price: "79 €", suffix: "/ mois / cabinet", sub: "Jusqu'à 150 clients · le plus choisi", features: ["Tout le pack Essentiel", "Argumentaire commercial clé en main", "Certifications Academy illimitées", "Comparateur PA + ROI cabinet", "Support prioritaire sous 4h"], cta: "Démarrer l'essai", highlighted: true },
-  { name: "Entreprise", price: "Sur devis", suffix: "", sub: "Clientèle 150+ · multi-sites", features: ["Tout le pack Cabinet", "Intégration ERP sur mesure", "Webinars mensuels co-brandés", "Account manager dédié", "SLA 4h ouvrées · 99,9 %"], cta: "Nous contacter", highlighted: false },
+  {
+    name: "Audit technique",
+    price: "À partir de 1 490 €",
+    suffix: "forfait",
+    sub: "Diagnostic express du SI client",
+    features: [
+      "Cartographie ERP / logiciels métier",
+      "Choix de la Plateforme Agréée adaptée",
+      "Plan de migration chiffré et daté",
+      "Livrable PDF co-signable avec le cabinet",
+    ],
+    cta: "Demander un audit",
+    highlighted: false,
+  },
+  {
+    name: "Intégration clé en main",
+    price: "À partir de 4 900 €",
+    suffix: "forfait",
+    sub: "Le plus choisi par les cabinets partenaires",
+    features: [
+      "Connecteur ERP ↔ Plateforme Agréée",
+      "Génération Factur-X + mapping EN 16931",
+      "Recette complète sur jeu de factures",
+      "Documentation + formation 2 h équipe client",
+      "Support post-déploiement 30 jours",
+    ],
+    cta: "Cadrer le projet",
+    highlighted: true,
+  },
+  {
+    name: "Développement sur mesure",
+    price: "650 € / jour",
+    suffix: "TJM",
+    sub: "Connecteurs atypiques, e-reporting complexe",
+    features: [
+      "Développement API / webhooks spécifiques",
+      "E-reporting B2C ou international",
+      "Intégration ERP legacy (sur devis)",
+      "Astreinte et SLA négociables",
+    ],
+    cta: "Discuter du besoin",
+    highlighted: false,
+  },
 ];
 ---
-<MarketingLayout seo={{ title: "Tarifs — Facturation Électronique", description: "3 offres pour cabinets : Essentiel, Cabinet, Entreprise." }}>
+<MarketingLayout seo={{ title: "Prestations — Facturation Électronique", description: "Audit, intégration forfait ou TJM sur-mesure pour la réforme." }}>
   <section class="bg-hero-sky">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-10 text-center">
-      <span class="eyebrow">Tarification transparente</span>
-      <h1 class="mt-5 text-[40px] sm:text-5xl font-bold tracking-[-0.025em] text-[var(--color-primary)] leading-[1.05]">Un prix fixe.<br/><span class="text-gradient-sky">Pas par client, pas par facture.</span></h1>
-      <p class="mt-5 text-lg text-[var(--color-muted-foreground)] max-w-xl mx-auto leading-snug">Facturez la valeur ajoutée à vos clients, pas la plateforme. Essai gratuit 30 jours, sans carte bancaire.</p>
+      <span class="eyebrow">Prestations d'intégration</span>
+      <h1 class="mt-5 text-[40px] sm:text-5xl font-bold tracking-[-0.025em] text-[var(--color-primary)] leading-[1.05]">Trois formats.<br/><span class="text-gradient-sky">Toujours livrés, jamais facturés à vide.</span></h1>
+      <p class="mt-5 text-lg text-[var(--color-muted-foreground)] max-w-xl mx-auto leading-snug">Tarifs publics pour les cabinets partenaires. Marge cabinet conservée en co-traitance, apport d'affaires en option (15 %).</p>
     </div>
   </section>
 
@@ -25,7 +65,7 @@ const plans = [
           <h3 class="text-lg font-bold text-[var(--color-primary)]">{p.name}</h3>
           <p class="mt-1 text-xs text-[var(--color-muted-foreground)]">{p.sub}</p>
           <div class="mt-5 flex items-baseline gap-1.5">
-            <span class="text-[44px] font-bold tabular leading-none tracking-[-0.03em] text-[var(--color-primary)]">{p.price}</span>
+            <span class="text-[28px] font-bold tabular leading-none tracking-[-0.02em] text-[var(--color-primary)]">{p.price}</span>
             {p.suffix && <span class="text-xs text-[var(--color-muted-foreground)]">{p.suffix}</span>}
           </div>
           <ul class="mt-6 space-y-2.5 text-[14px] flex-1">
@@ -36,6 +76,6 @@ const plans = [
       ))}
     </div>
 
-    <p class="mt-10 text-center text-xs text-[var(--color-muted-foreground)]">Tous les prix sont hors taxes. Sans engagement. Migration des 30 premiers clients offerte sur le pack Cabinet.</p>
+    <p class="mt-10 text-center text-xs text-[var(--color-muted-foreground)]">Tous les prix sont hors taxes. Devis ferme sous 48 h. Conditions partenaires cabinet disponibles sur demande.</p>
   </section>
 </MarketingLayout>

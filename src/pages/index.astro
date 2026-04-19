@@ -1,33 +1,33 @@
 ---
 import MarketingLayout from "@/layouts/MarketingLayout.astro";
-import { ArrowRight, Check, X, Quote } from "lucide-react";
+import { ArrowRight, Check, Handshake, Code2, FileCode2 } from "lucide-react";
 
-const painPoints = [
-  { strong: "Clients perdus", rest: "qui vont chez le concurrent déjà « Factur-X ready »." },
-  { strong: "Ré-saisie manuelle", rest: "des factures reçues en PDF non conformes." },
-  { strong: "Explication à répéter", rest: "à des clients qui n'ouvrent pas leurs e-mails." },
-  { strong: "Aucun argumentaire structuré", rest: "pour packager l'offre et facturer le setup." },
+const detectors = [
+  { strong: "ERP non compatible", rest: "Factur-X / EN 16931 — le client vous demande quoi faire." },
+  { strong: "Connecteur PA manquant", rest: "entre le logiciel métier et la Plateforme Agréée choisie." },
+  { strong: "E-reporting à câbler", rest: "(B2C, international, encaissements) sur des flux existants." },
+  { strong: "Migration des données", rest: "d'archivage, de référentiels clients, de formats de sortie." },
 ];
 
-const testimonials = [
-  { initials: "MD", quote: "On a équipé 112 clients en 4 mois. La plateforme a fait tout le travail ; on a juste accompagné.", name: "Marine Deville", role: "Cabinet Deville & associés · Lyon · 180 clients" },
-  { initials: "PL", quote: "Le simulateur d'éligibilité, on l'utilise en rendez-vous commercial. Ça convainc en 2 minutes.", name: "Pierre Lamy", role: "Lamy Conseil · Bordeaux · 45 clients" },
-  { initials: "SB", quote: "Les certifications Academy motivent les collaborateurs. Turnover divisé par deux cette année.", name: "Sophie Benhamou", role: "BGC Experts · Paris · 320 clients" },
+const livrables = [
+  { Icon: FileCode2, title: "Audit technique", text: "Cartographie SI du client, choix PA, plan de migration chiffré." },
+  { Icon: Code2, title: "Intégration", text: "Connecteurs ERP ↔ PA, génération Factur-X, mapping EN 16931." },
+  { Icon: Handshake, title: "E-reporting", text: "Flux B2C / international / paiement mis en conformité." },
 ];
 ---
-<MarketingLayout seo={{ title: "Facturation Électronique 2026 — Plateforme pour cabinets d'experts-comptables", description: "Transformez l'obligation 1ᵉʳ septembre 2026 en levier de revenus récurrents." }}>
+<MarketingLayout seo={{ title: "Développeur Facturation Électronique — Partenaire des experts-comptables", description: "J'intègre la réforme chez les clients de votre cabinet. Vous gardez la relation, je livre la technique." }}>
   <section class="bg-hero-sky">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-24 text-center">
-      <span class="eyebrow">Réforme 1ᵉʳ septembre 2026</span>
+      <span class="eyebrow">Développeur · Factur-X · EN 16931</span>
       <h1 class="mt-5 text-[40px] sm:text-5xl lg:text-6xl font-bold tracking-[-0.025em] text-[var(--color-primary)] leading-[1.04] max-w-4xl mx-auto">
-        Maîtrisez la réforme.<br/><span class="text-gradient-sky">Équipez vos clients.</span>
+        Vous détectez le besoin.<br/><span class="text-gradient-sky">Je livre la technique.</span>
       </h1>
-      <p class="mt-5 text-lg sm:text-xl text-[var(--color-muted-foreground)] max-w-xl mx-auto leading-snug">
-        La plateforme complète pour les cabinets d'experts-comptables qui veulent transformer l'obligation Factur-X en levier de revenus récurrents.
+      <p class="mt-5 text-lg sm:text-xl text-[var(--color-muted-foreground)] max-w-2xl mx-auto leading-snug">
+        Développeur indépendant spécialisé sur la réforme française. J'interviens chez les clients de votre cabinet pour l'intégration Factur-X, les connecteurs PA et l'e-reporting — en apport d'affaires ou co-traitance.
       </p>
       <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="/contact" class="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold">Démarrer l'essai gratuit <ArrowRight className="h-4 w-4" aria-hidden="true"/></a>
-        <a href="/offres" class="inline-flex items-center gap-2 rounded-xl border border-[var(--color-border)] bg-white px-6 py-3.5 text-sm font-semibold hover:bg-[var(--color-muted)]">Voir une démo</a>
+        <a href="/contact" class="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold">Proposer un partenariat <ArrowRight className="h-4 w-4" aria-hidden="true"/></a>
+        <a href="/pour-comptables" class="inline-flex items-center gap-2 rounded-xl border border-[var(--color-border)] bg-white px-6 py-3.5 text-sm font-semibold hover:bg-[var(--color-muted)]">Comment on collabore</a>
       </div>
       <div class="mt-10 inline-flex flex-wrap gap-6 rounded-2xl bg-white border border-[var(--color-border)] px-6 py-3.5 shadow-[var(--shadow-card)]">
         <div class="flex items-center gap-2.5">
@@ -45,64 +45,58 @@ const testimonials = [
 
   <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
     <div class="text-center max-w-2xl mx-auto mb-12">
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Pour les cabinets qui refusent de subir 2026.</h2>
-      <p class="mt-3 text-lg text-[var(--color-muted-foreground)]">Pendant que vos confrères improvisent, vous industrialisez la conformité de vos 150 clients — et vous facturez la valeur ajoutée.</p>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Les cas que vos clients vont vous remonter.</h2>
+      <p class="mt-3 text-lg text-[var(--color-muted-foreground)]">Vous qualifiez, vous m'envoyez le dossier technique, j'interviens. La relation client reste au cabinet.</p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-5">
       <div class="rounded-[20px] border border-[var(--color-border)] bg-white p-7 shadow-[var(--shadow-subtle)]">
-        <h3 class="text-xl font-bold text-[var(--color-primary)]">Les points de friction vécus par 78 % des cabinets</h3>
+        <h3 class="text-xl font-bold text-[var(--color-primary)]">Quand m'appeler en renfort</h3>
         <ul class="mt-5 space-y-3">
-          {painPoints.map((p) => (
+          {detectors.map((p) => (
             <li class="flex gap-3 items-start text-[15px]">
-              <span class="flex-shrink-0 mt-0.5 inline-flex h-[22px] w-[22px] items-center justify-center rounded-full bg-red-50 text-red-600"><X className="h-3 w-3" aria-hidden="true" strokeWidth={3}/></span>
+              <span class="flex-shrink-0 mt-0.5 inline-flex h-[22px] w-[22px] items-center justify-center rounded-full bg-sky-50 text-sky-700"><Check className="h-3 w-3" aria-hidden="true" strokeWidth={3}/></span>
               <span><strong>{p.strong}</strong> {p.rest}</span>
             </li>
           ))}
         </ul>
       </div>
       <div class="rounded-[20px] bg-navy-deep text-white p-7">
-        <h3 class="text-xl font-bold text-white">Projection revenus</h3>
+        <h3 class="text-xl font-bold text-white">Le deal partenaire</h3>
         <div class="mt-5">
-          <div class="text-[56px] font-bold tracking-[-0.03em] tabular leading-none text-gradient-xp">+120 k€</div>
-          <div class="mt-2 text-sm text-slate-400">de MRR cumulé / an pour un cabinet moyen (150 clients × 68 €/mois)</div>
+          <div class="text-[56px] font-bold tracking-[-0.03em] tabular leading-none text-gradient-xp">15 %</div>
+          <div class="mt-2 text-sm text-slate-400">d'apport d'affaires sur chaque mission apportée (ou co-facturation au choix)</div>
         </div>
         <ul class="mt-6 space-y-2 text-sm text-slate-300">
-          <li class="flex gap-2.5 items-center"><Check className="h-3.5 w-3.5 text-emerald-400 flex-shrink-0" aria-hidden="true"/> Portail client prêt à l'emploi</li>
-          <li class="flex gap-2.5 items-center"><Check className="h-3.5 w-3.5 text-emerald-400 flex-shrink-0" aria-hidden="true"/> Argumentaire commercial clé en main</li>
-          <li class="flex gap-2.5 items-center"><Check className="h-3.5 w-3.5 text-emerald-400 flex-shrink-0" aria-hidden="true"/> Certifications gratuites pour vos collaborateurs</li>
+          <li class="flex gap-2.5 items-center"><Check className="h-3.5 w-3.5 text-emerald-400 flex-shrink-0" aria-hidden="true"/> Devis sous 48 h après votre qualification</li>
+          <li class="flex gap-2.5 items-center"><Check className="h-3.5 w-3.5 text-emerald-400 flex-shrink-0" aria-hidden="true"/> Le cabinet reste l'interlocuteur du client</li>
+          <li class="flex gap-2.5 items-center"><Check className="h-3.5 w-3.5 text-emerald-400 flex-shrink-0" aria-hidden="true"/> NDA et contrat d'apporteur signés avant échange</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Ils ont équipé leurs clients avant le 1ᵉʳ septembre.</h2>
-      <p class="mt-3 text-lg text-[var(--color-muted-foreground)]">Trois cabinets, trois tailles — un même résultat : aucune perte de client, du revenu récurrent en plus.</p>
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Ce que je livre concrètement.</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      {testimonials.map((t) => (
-        <figure class="rounded-2xl border border-[var(--color-border)] bg-white p-6">
-          <blockquote class="text-[15px] leading-snug font-medium text-[var(--color-primary)] before:content-['«_'] before:text-[var(--color-accent)] before:font-bold after:content-['_»'] after:text-[var(--color-accent)] after:font-bold">{t.quote}</blockquote>
-          <figcaption class="mt-5 pt-4 border-t border-[var(--color-border)] flex gap-3 items-center">
-            <div class="h-[38px] w-[38px] rounded-full bg-gradient-to-br from-[#0369A1] to-[#0284C7] text-white flex items-center justify-center font-bold text-[13px]">{t.initials}</div>
-            <div>
-              <div class="text-[13px] font-bold text-[var(--color-primary)]">{t.name}</div>
-              <div class="text-xs text-[var(--color-muted-foreground)]">{t.role}</div>
-            </div>
-          </figcaption>
-        </figure>
+      {livrables.map(({ Icon, title, text }) => (
+        <div class="rounded-2xl border border-[var(--color-border)] bg-white p-6 shadow-[var(--shadow-subtle)]">
+          <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#0369A1] to-[#0284C7] text-white"><Icon className="h-5 w-5" aria-hidden="true"/></div>
+          <h3 class="mt-4 font-bold text-[var(--color-primary)]">{title}</h3>
+          <p class="mt-2 text-sm text-[var(--color-muted-foreground)] leading-snug">{text}</p>
+        </div>
       ))}
     </div>
   </section>
 
   <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
     <div class="bg-navy-deep text-white rounded-[28px] px-8 sm:px-12 py-14 text-center">
-      <h2 class="text-3xl sm:text-4xl font-bold text-white max-w-2xl mx-auto">Mettez votre cabinet en conformité. Et en position de vendre.</h2>
-      <p class="mt-4 text-lg text-slate-400 max-w-xl mx-auto">Essai gratuit 30 jours, sans carte bancaire. Migration assistée sur vos 30 premiers clients offerte.</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white max-w-2xl mx-auto">Devenez cabinet partenaire.</h2>
+      <p class="mt-4 text-lg text-slate-400 max-w-xl mx-auto">Un premier call de 30 minutes pour cadrer la collaboration et un dossier apporteur sur-mesure.</p>
       <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
-        <a href="/contact" class="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold">Démarrer maintenant <ArrowRight className="h-4 w-4" aria-hidden="true"/></a>
-        <a href="/contact" class="inline-flex items-center gap-2 rounded-xl border border-slate-700 px-6 py-3.5 text-sm font-semibold text-white hover:bg-slate-800">Parler à un conseiller</a>
+        <a href="/contact" class="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold">Caler un call <ArrowRight className="h-4 w-4" aria-hidden="true"/></a>
+        <a href="/offres" class="inline-flex items-center gap-2 rounded-xl border border-slate-700 px-6 py-3.5 text-sm font-semibold text-white hover:bg-slate-800">Voir les prestations</a>
       </div>
     </div>
   </section>
