@@ -1,6 +1,6 @@
 ---
 import MarketingLayout from "@/layouts/MarketingLayout.astro";
-import { Target, Users, Briefcase, TrendingUp, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Target, Users, Briefcase, TrendingUp, ArrowRight, Check } from "lucide-react";
 
 const painPoints = [
   "Vos clients TPE/PME ne comprennent pas encore l'obligation 2026/2027.",
@@ -12,48 +12,61 @@ const painPoints = [
 const benefits = [
   { Icon: Target, title: "Audit 360°", text: "Diagnostic express de chaque client : date butoir, flux, outil en place." },
   { Icon: Users, title: "Onboarding piloté", text: "Scripts d'appel, checklists, modèles de contrats et de courriers." },
-  { Icon: Briefcase, title: "Tarification prête", text: "3 packs (Starter / Pro / Expert) à revendre avec marge cabinet." },
-  { Icon: TrendingUp, title: "Revenus récurrents", text: "Sur 150 clients TPE équipés 25 €/mois : 45 k€ de MRR." },
+  { Icon: Briefcase, title: "Tarification prête", text: "3 packs à revendre avec marge cabinet jusqu'à 50 %." },
+  { Icon: TrendingUp, title: "Revenus récurrents", text: "150 clients équipés × 25 €/mois = 45 k€ de MRR annuel." },
 ];
 ---
-<MarketingLayout seo={{ title: "Pour les cabinets d'experts-comptables", description: "Transformez l'obligation 2026 en opportunité commerciale récurrente." }}>
-  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-    <div class="max-w-3xl">
-      <span class="inline-flex items-center gap-2 rounded-full bg-sky-100 text-sky-900 px-3 py-1 text-xs font-semibold">Pour les cabinets</span>
-      <h1 class="mt-5 text-4xl sm:text-5xl font-bold tracking-tight text-[var(--color-primary)]">L'obligation 2026 est une opportunité récurrente.</h1>
-      <p class="mt-5 text-lg text-[var(--color-secondary)]">Nous fournissons au cabinet l'expertise, les outils et les offres pour équiper sa base clients TPE/PME avant le 1ᵉʳ septembre 2027.</p>
+<MarketingLayout seo={{ title: "Pour les cabinets — Facturation Électronique", description: "Transformez l'obligation 2026 en opportunité commerciale récurrente." }}>
+  <section class="bg-hero-sky">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+      <div class="max-w-3xl">
+        <span class="eyebrow">Pour les cabinets</span>
+        <h1 class="mt-5 text-[40px] sm:text-5xl lg:text-6xl font-bold tracking-[-0.025em] text-[var(--color-primary)] leading-[1.04]">L'obligation 2026.<br/><span class="text-gradient-sky">Votre opportunité récurrente.</span></h1>
+        <p class="mt-5 text-lg text-[var(--color-muted-foreground)] max-w-xl leading-snug">L'expertise, les outils et les offres pour équiper votre base TPE/PME avant le 1ᵉʳ septembre 2027.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-6">
-        <h2 class="text-lg font-semibold text-[var(--color-primary)]">Les frictions que l'on lève</h2>
-        <ul class="mt-4 space-y-2 text-sm">
-          {painPoints.map((p) => <li class="flex gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-600 flex-shrink-0 mt-0.5" aria-hidden="true"/><span>{p}</span></li>)}
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-5">
+      <div class="rounded-[20px] border border-[var(--color-border)] bg-white p-7 shadow-[var(--shadow-subtle)]">
+        <h2 class="text-xl font-bold text-[var(--color-primary)]">Les frictions que l'on lève</h2>
+        <ul class="mt-5 space-y-3">
+          {painPoints.map((p) => (
+            <li class="flex gap-3 items-start text-[15px]">
+              <span class="flex-shrink-0 mt-0.5 inline-flex h-[22px] w-[22px] items-center justify-center rounded-full bg-emerald-50 text-emerald-600"><Check className="h-3 w-3" strokeWidth={3} aria-hidden="true"/></span>
+              <span class="text-[var(--color-secondary)]">{p}</span>
+            </li>
+          ))}
         </ul>
       </div>
-      <div class="rounded-2xl bg-gradient-to-br from-[var(--color-primary)] to-slate-800 text-white p-6">
-        <h2 class="text-lg font-semibold">Projection cabinet type</h2>
-        <dl class="mt-4 space-y-3 text-sm">
-          <div class="flex justify-between"><dt>150 clients TPE/PME</dt><dd class="tabular">× 60 % équipés</dd></div>
-          <div class="flex justify-between"><dt>Prix mensuel moyen</dt><dd class="tabular">25 € HT</dd></div>
-          <div class="flex justify-between pt-3 border-t border-white/20"><dt class="font-semibold">MRR additionnel</dt><dd class="tabular text-amber-300 font-bold">2 250 € / mois</dd></div>
-          <div class="flex justify-between"><dt class="font-semibold">Année 1</dt><dd class="tabular text-amber-300 font-bold">≈ 40 500 €</dd></div>
+      <div class="rounded-[20px] bg-navy-deep text-white p-7">
+        <h2 class="text-xl font-bold">Projection cabinet type</h2>
+        <div class="mt-5">
+          <div class="text-[56px] font-bold tracking-[-0.03em] tabular leading-none text-gradient-xp">+40 k€</div>
+          <div class="mt-2 text-sm text-slate-400">année 1 (150 clients × 60 % équipés × 25 €/mois)</div>
+        </div>
+        <dl class="mt-6 space-y-2.5 text-sm text-slate-300">
+          <div class="flex justify-between border-b border-white/10 pb-2"><dt>Base clients</dt><dd class="tabular font-semibold text-white">150</dd></div>
+          <div class="flex justify-between border-b border-white/10 pb-2"><dt>Taux d'équipement</dt><dd class="tabular font-semibold text-white">60 %</dd></div>
+          <div class="flex justify-between"><dt>MRR additionnel</dt><dd class="tabular font-bold text-amber-300">2 250 € / mois</dd></div>
         </dl>
       </div>
     </div>
 
-    <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <h2 class="mt-16 text-2xl font-bold text-[var(--color-primary)] text-center">Ce que vous trouvez dans la plateforme</h2>
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {benefits.map(({ Icon, title, text }) => (
-        <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-5">
-          <div class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-700"><Icon className="h-5 w-5" aria-hidden="true"/></div>
-          <h3 class="mt-4 font-semibold text-[var(--color-primary)]">{title}</h3>
-          <p class="mt-2 text-sm text-[var(--color-muted-foreground)]">{text}</p>
+        <div class="rounded-2xl border border-[var(--color-border)] bg-white p-6 shadow-[var(--shadow-subtle)] hover:shadow-[var(--shadow-card)] transition-shadow">
+          <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#0369A1] to-[#0284C7] text-white"><Icon className="h-5 w-5" aria-hidden="true"/></div>
+          <h3 class="mt-4 font-bold text-[var(--color-primary)]">{title}</h3>
+          <p class="mt-2 text-sm text-[var(--color-muted-foreground)] leading-snug">{text}</p>
         </div>
       ))}
     </div>
 
     <div class="mt-16 text-center">
-      <a href="/contact" class="btn-primary inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold">Demander une démo 30 min <ArrowRight className="h-4 w-4" aria-hidden="true"/></a>
+      <a href="/contact" class="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold">Demander une démo 30 min <ArrowRight className="h-4 w-4" aria-hidden="true"/></a>
     </div>
   </section>
 </MarketingLayout>

@@ -21,6 +21,12 @@
   --color-card: #FFFFFF;
   --color-card-foreground: #0F172A;
 
+  --color-parcours-fondations: #0369A1;
+  --color-parcours-ecosysteme: #0284C7;
+  --color-parcours-technique: #7C3AED;
+  --color-parcours-ereporting: #059669;
+  --color-parcours-business: #F59E0B;
+
   --color-success: #059669;
   --color-destructive: #DC2626;
   --color-warning: #D97706;
@@ -34,25 +40,11 @@
   --shadow-subtle: 0 1px 2px rgb(15 23 42 / 0.04), 0 1px 3px rgb(15 23 42 / 0.06);
   --shadow-card: 0 2px 4px rgb(15 23 42 / 0.04), 0 4px 12px rgb(15 23 42 / 0.06);
   --shadow-lifted: 0 8px 24px rgb(15 23 42 / 0.08), 0 2px 6px rgb(15 23 42 / 0.04);
+  --shadow-feat: 0 20px 40px -12px rgb(3 105 161 / 0.22);
 }
 
 @layer base {
-  :root {
-    color-scheme: light;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-background: #0B1120;
-      --color-foreground: #F1F5F9;
-      --color-card: #0F172A;
-      --color-card-foreground: #F1F5F9;
-      --color-muted: #1E293B;
-      --color-muted-foreground: #94A3B8;
-      --color-border: #1E293B;
-      color-scheme: dark;
-    }
-  }
+  :root { color-scheme: light; }
 
   * { border-color: var(--color-border); }
 
@@ -74,14 +66,10 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
     color: var(--color-primary);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    h1, h2, h3, h4, h5, h6 { color: var(--color-foreground); }
   }
 
   :focus-visible {
@@ -94,14 +82,34 @@
     background: color-mix(in oklab, var(--color-accent) 25%, transparent);
     color: var(--color-foreground);
   }
+}
 
+@layer utilities {
   .tabular { font-variant-numeric: tabular-nums; }
   .measure { max-width: 70ch; }
 
   .bg-glass {
-    background: color-mix(in oklab, var(--color-card) 70%, transparent);
+    background: color-mix(in oklab, #ffffff 70%, transparent);
     backdrop-filter: saturate(180%) blur(12px);
     -webkit-backdrop-filter: saturate(180%) blur(12px);
+  }
+
+  .bg-hero-sky { background: radial-gradient(120% 80% at 50% 0%, #E0F2FE 0%, #F8FAFC 60%); }
+  .bg-academy { background: linear-gradient(180deg, #FFFBEB 0%, #F0F9FF 280px, #F8FAFC 600px); }
+  .bg-navy-deep { background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); }
+  .bg-footer-dark { background: #0B1120; }
+
+  .text-gradient-sky {
+    background: linear-gradient(135deg, #0369A1, #0284C7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-xp {
+    background: linear-gradient(135deg, #FBBF24, #F59E0B);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .btn-primary {
@@ -109,8 +117,20 @@
     color: #fff;
     transition: transform 150ms ease-out, box-shadow 150ms ease-out, filter 150ms ease-out;
   }
-  .btn-primary:hover { filter: brightness(1.05); box-shadow: var(--shadow-lifted); }
+  .btn-primary:hover { filter: brightness(1.08); box-shadow: var(--shadow-lifted); }
   .btn-primary:active { transform: scale(0.98); }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #0369A1;
+    background: #E0F2FE;
+    padding: 5px 12px;
+    border-radius: 999px;
+    display: inline-block;
+  }
 
   .skip-link {
     position: absolute;

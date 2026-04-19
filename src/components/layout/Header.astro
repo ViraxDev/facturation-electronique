@@ -1,34 +1,34 @@
 ---
-import { Menu } from "lucide-react";
+import { Menu, ArrowRight } from "lucide-react";
 const path = Astro.url.pathname;
 const navItems = [
-  { href: "/pour-comptables", label: "Pour les cabinets" },
-  { href: "/offres", label: "Offres" },
-  { href: "/ressources", label: "Ressources" },
+  { href: "/pour-comptables", label: "Solutions" },
+  { href: "/offres", label: "Tarifs" },
   { href: "/academy", label: "Academy" },
-  { href: "/a-propos", label: "À propos" },
+  { href: "/ressources", label: "Ressources" },
+  { href: "/contact", label: "Contact" },
 ];
 ---
 <header class="sticky top-0 z-50 bg-glass border-b border-[var(--color-border)]">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-4">
-    <a href="/" class="flex items-center gap-2 font-semibold text-[var(--color-primary)]" aria-label="Facturation Électronique 2026 — Accueil">
-      <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-sky-600 to-sky-500 text-white text-sm">FE</span>
-      <span class="hidden sm:inline">Facturation&nbsp;Électronique</span>
-      <span class="sm:hidden">FE 2026</span>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+    <a href="/" class="flex items-center gap-2.5 font-bold text-[var(--color-primary)]" aria-label="Facturation Électronique — Accueil">
+      <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-[#0369A1] to-[#0284C7] text-white text-sm font-bold shadow-[var(--shadow-subtle)]">F<span class="text-[#FBBF24]">.</span></span>
+      <span class="hidden sm:inline text-[15px]">Facturation&nbsp;Électronique</span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-1" aria-label="Navigation principale">
+    <nav class="hidden md:flex items-center gap-0.5" aria-label="Navigation principale">
       {navItems.map((i) => (
         <a
           href={i.href}
-          class:list={["px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-[var(--color-muted)]", path.startsWith(i.href) ? "text-[var(--color-accent)]" : "text-[var(--color-secondary)]"]}
+          class:list={["px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-[var(--color-muted)]", path.startsWith(i.href) && i.href !== "/" ? "text-[var(--color-accent)]" : "text-[var(--color-secondary)]"]}
           aria-current={path.startsWith(i.href) ? "page" : undefined}
         >{i.label}</a>
       ))}
     </nav>
 
     <div class="flex items-center gap-2">
-      <a href="/contact" class="hidden sm:inline-flex btn-primary rounded-lg px-3 sm:px-4 py-2 text-sm font-semibold shadow-sm">Prendre RDV</a>
+      <a href="/contact" class="hidden sm:inline-flex items-center rounded-lg px-3 py-2 text-sm font-semibold text-[var(--color-secondary)] hover:bg-[var(--color-muted)]">Connexion</a>
+      <a href="/contact" class="hidden sm:inline-flex btn-primary items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold">Démarrer <ArrowRight className="h-3.5 w-3.5" aria-hidden="true"/></a>
       <button
         id="mobile-nav-toggle"
         class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--color-border)] bg-white"
@@ -44,7 +44,7 @@ const navItems = [
       {navItems.map((i) => (
         <a href={i.href} class="px-3 py-3 rounded-lg text-base font-medium hover:bg-[var(--color-muted)]">{i.label}</a>
       ))}
-      <a href="/contact" class="mt-2 btn-primary rounded-lg px-4 py-3 text-center text-base font-semibold">Prendre RDV</a>
+      <a href="/contact" class="mt-2 btn-primary rounded-lg px-4 py-3 text-center text-base font-semibold">Démarrer l'essai</a>
     </nav>
   </div>
 </header>
